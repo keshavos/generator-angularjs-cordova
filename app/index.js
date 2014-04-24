@@ -1,8 +1,11 @@
 'use strict';
+var fs = require('fs');
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var cordova = require('cordova');
+var plugman = require('plugman');
 
 
 var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
@@ -23,33 +26,149 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
 
     this.log(chalk.magenta('You\'re using the AngularjsCordova generator.'));
 
-    var prompts = [{
-      name: 'angularjsName',
-      message: 'What would you like to call your AngularJs application?',
-      default: 'AngularApp'
-    }, {
-      name: 'cordovaName',
-      message: 'What would you like to call your Cordova Application?',
-      default: 'HelloCordova'
-    }, {
-        name: 'appDescription',
-        message: 'How would you describe your application?',
-        default: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js'
-    }, {
-        name: 'appKeywords',
-        message: 'How would you describe your application in comma seperated key words?',
-        default: 'MongoDB, Express, AngularJS, Node.js'
-    }, {
-        name: 'appAuthor',
-        message: 'What is your company/author name?'
-    }, {
-        type: 'confirm',
-        name: 'addArticleExample',
-        message: 'Would you like to generate the article example CRUD module?',
-        default: true
-    }];
-
+    var prompts = [
+           {
+               name: 'appname',
+               message: 'What is the name of your app? (Spaces aren\'t allowed)',
+               default: 'HelloCordova'
+           },
+           {
+               name: 'packagename',
+               message: 'What would you like the package to be?',
+               default: 'io.cordova.hellocordova'
+           },
+           {
+               type: 'checkbox',
+               name: 'platforms',
+               message: 'What platforms would you like to add support for?',
+               choices: [
+                   {
+                       name: 'Android',
+                       value: 'android',
+                       checked: true
+                   },
+                   {
+                       name: 'iOS',
+                       value: 'ios',
+                       checked: false
+                   },
+                   {
+                       name: 'Blackberry 10',
+                       value: 'blackberry10',
+                       checked: false
+                   },
+                   {
+                       name: 'Windows Phone 7',
+                       value: 'wp7',
+                       checked: false
+                   },
+                   {
+                       name: 'Windows Phone 8',
+                       value: 'wp7',
+                       checked: false
+                   }
+               ]
+           },
+           {
+               type: 'checkbox',
+               name: 'plugins',
+               message: 'What plugins would you like to include by default? (X is selected. Press space to toggle)',
+               
+               choices: [
+                   {
+                       name: 'Splashscreen',
+                       value: 'org.apache.cordova.splashscreen',
+                       checked: true
+                   }, {
+                       name: 'Device Info',
+                       value: 'org.apache.cordova.device',
+                       checked: false
+                   }, {
+                       name: 'Dialogs',
+                       value: 'org.apache.cordova.dialogs',
+                       checked: false
+                   }, {
+                       name: 'Network Information',
+                       value: 'org.apache.cordova.network-information',
+                       checked: false
+                   }, {
+                       name: 'Vibration',
+                       value: 'org.apache.cordova.vibration',
+                       checked: false
+                   }, {
+                       name: 'Battery Events',
+                       value: 'org.apache.cordova.battery-status',
+                       checked: false
+                   }, {
+                       name: 'Accelerometer (Device motion)',
+                       value: 'org.apache.cordova.device-motion',
+                       checked: false
+                   }, {
+                       name: 'Accelerometer (Device orientation)',
+                       value: 'org.apache.cordova.device-orientation',
+                       checked: false
+                   }, {
+                       name: 'Camera',
+                       value: 'org.apache.cordova.camera',
+                       checked: false
+                   }, {
+                       name: 'Contacts',
+                       value: 'org.apache.cordova.contacts',
+                       checked: false
+                   }, {
+                       name: 'Geolocation',
+                       value: 'org.apache.cordova.geolocation',
+                       checked: false
+                   }, {
+                       name: 'In App Browser',
+                       value: 'org.apache.cordova.inappbrowser',
+                       checked: false
+                   }, {
+                       name: 'Media',
+                       value: 'org.apache.cordova.media',
+                       checked: false
+                   }, {
+                       name: 'Media Capture',
+                       value: 'org.apache.cordova.media-capture',
+                       checked: false
+                   }, {
+                       name: 'Access files on device',
+                       value: 'org.apache.cordova.file',
+                       checked: false
+                   }, {
+                       name: 'Access files on network/ File transfer (File API)',
+                       value: 'org.apache.cordova.file-transfer',
+                       checked: false
+                   }, {
+                       name: 'Globalization',
+                       value: 'org.apache.cordova.globalization',
+                       checked: false
+                   }
+               ]
+           }
+    ];
+    
+    
     this.prompt(prompts, function(props) {
+        //Cordova setup responses
+        for (var key in props) {
+            this[key] = props[key];
+        }
+
+        this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
+        this.scriptAppName = this.appname;
+
+        if (typeof this.env.options.appPath === 'undefined') {
+            try {
+                this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
+            } catch (e) {}
+            this.env.options.appPath = this.env.options.appPath || 'www';
+        }
+
+        this.appPath = this.env.options.appPath;
+        
+        
+        //AngularJs setup responses
         this.appName = props.angularjsName;
         this.appDescription = props.appDescription;
         this.appKeywords = props.appKeywords;
@@ -63,96 +182,199 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
   
+  /**
+   * Creates a cordova project with options obtained from the user
+   */
+  setupCordovaProject : function(){
+      var done = this.async();
+      
+      console.log("Creating cordova app: " + this.appname);
+      
+      try {
+          cordova.create(process.cwd(), this.packagename, this.appname, function () {
+              var cwd = process.cwd();
+              console.log('*****************************************');
+              console.log('Successfully created Empty Cordova project');
+              console.log('*****************************************');
+              done();
+          });
+      } catch (err) {
+          console.error('Failed to create cordova proect: ' + err);
+          process.exit(1);
+      }
+  }, 
   
-  askForAngularApplicationModules: function() {
+  /**
+   * Adds platforms as selected by the user
+   */
+  addPlatforms : function(){
+      var next = this.async();
+      
+      if (typeof this.platforms === 'undefined') {
+          return;
+      }
+      console.log('*****************************************');
+      console.log('Installing the selected Cordova platforms');
+      console.log('*****************************************');
+      
+      addPlatformsToCordova(0, this.platforms, next);
+  },
+  
+  
+  /**
+   * Adds the cordova plugins
+   */
+  addPlugins : function addPlugins() {
+      console.log('*****************************************');
+      console.log('Installing the selected Cordova plugins...');
+      console.log('*****************************************')
+      
+      var next = this.async();
+      if (this.plugins.length) {
+          addPluginsToCordova(0, this.plugins, next);
+      } else {
+          console.log(chalk.gray('no plugin selected'));
+          next();
+      }
+  },
+  
+  
+  /**
+   * Prompts to choose an sample cordova project or an AngularJs project
+   */
+  chooseSampleApplication : function(){
       var done = this.async();
 
-      var prompts = [{
-          type: 'checkbox',
-          name: 'modules',
-          message: 'Which AngularJS modules would you like to include?',
-          choices: [{
-              value: 'angularCookies',
-              name: 'ngCookies',
-              checked: true
-          }, {
-              value: 'angularAnimate',
-              name: 'ngAnimate',
-              checked: true
-          }, {
-              value: 'angularTouch',
-              name: 'ngTouch',
-              checked: true
-          }, {
-              value: 'angularSanitize',
-              name: 'ngSanitize',
-              checked: true
-          }]
-      }];
-
-      this.prompt(prompts, function(props) {
-          this.angularCookies = this._.contains(props.modules, 'angularCookies');
-          this.angularAnimate = this._.contains(props.modules, 'angularAnimate');
-          this.angularTouch = this._.contains(props.modules, 'angularTouch');
-          this.angularSanitize = this._.contains(props.modules, 'angularSanitize');
-
+      this.prompt([
+         {
+              type: 'confirm',
+              name: 'angularApp',
+              message: 'Would you like to add a sample AngularJs app?',
+              default: true
+         }
+      ], function(props){
+          this.angularApp = props.angularApp
           done();
       }.bind(this));
-  },
-  
-  
-  copyAngularJsApplicationFolder: function() {
       
-
-      // Create angularjs app folders
-      this.mkdir('app');
-      this.mkdir('app/js');
-      this.mkdir('app/modules');
-      this.mkdir('scripts');
-
-      // Copy app folder content
-      this.directory('app/css');
-      this.directory('app/img');
-      this.copy('app/js/application.js');
-
-      // Copy app folder modules
-      this.directory('app/modules/users');
-
-      // Copy core module files
-      this.directory('app/modules/core/config');
-      this.directory('app/modules/core/tests');
-      this.copy('app/modules/core/controllers/home.js');
-      this.copy('app/modules/core/views/home.html');
-      this.copy('app/modules/core/core.js');
-
-      // Copy project files
-      this.copy('gruntfile.js');
-      this.copy('server.js');
-      this.copy('Procfile');
-      this.copy('README.md');
-
-      // Copy project hidden files
-      this.copy('bowerrc', '.bowerrc');
-      this.copy('jshintrc', '.jshintrc');
-      this.copy('gitignore', '.gitignore');
-      this.copy('slugignore', '.slugignore');
-      this.copy('travis.yml', '.travis.yml');
+  }, 
+  
+  /**
+   * Sets configuration params for the AngularJs app 
+   */
+  setAngularJsOptions : function(){
+      var next = this.async();
       
-      //Copy the node web-server and the batch file
-      this.directory('scripts/webserver.js');
-      this.copy('start-server.bat');
-  },
+      if(this.angularApp){
+              console.log('*****************************************');
+              console.log('Generating a sample AngularJs app');
+              console.log('*****************************************');
+              
+              this.prompt([
+                {
+                    name: 'angularjsName',
+                    message: 'What would you like to call your AngularJs application?',
+                    default: 'AngularJsApp'
+                }, {
+                      name: 'appDescription',
+                      message: 'How would you describe your application?',
+                      default: 'Cordova app built with AngularJs'
+                }, {
+                      name: 'appKeywords',
+                      message: 'How would you describe your application in comma seperated key words?',
+                      default: 'Cordova, AngularJS'
+                }, {
+                      name: 'appAuthor',
+                      message: 'What is your company/author name?',
+                      default: 'numero webteam'
+                }, {
+                    type: 'checkbox',
+                    name: 'modules',
+                    message: 'Which AngularJS modules would you like to include?',
+                    choices: [
+                        {
+                            value: 'angularCookies',
+                            name: 'ngCookies',
+                            checked: true
+                        }, {
+                            value: 'angularAnimate',
+                            name: 'ngAnimate',
+                            checked: true
+                        }, {
+                            value: 'angularTouch',
+                            name: 'ngTouch',
+                            checked: true
+                        }, {
+                            value: 'angularSanitize',
+                            name: 'ngSanitize',
+                            checked: true
+                        } 
+                    ]
+                   }, {
+                       type: 'confirm',
+                       name: 'addArticleExample',
+                       message: 'Would you like to generate the article example CRUD module?',
+                       default: true
+                   }
+              ], function(props){
+                  //AngularJs setup responses
+                  this.appName = props.angularjsName;
+                  this.appDescription = props.appDescription;
+                  this.appKeywords = props.appKeywords;
+                  this.appAuthor = props.appAuthor;
+                  this.addArticleExample = props.addArticleExample;
+                  
+                  this.slugifiedAppName = this._.slugify(this.appName);
+                  this.humanizedAppName = this._.humanize(this.appName);
+                  this.capitalizedAppAuthor = this._.capitalize(this.appAuthor);
+                  
+                  this.angularCookies = this._.contains(props.modules, 'angularCookies');
+                  this.angularAnimate = this._.contains(props.modules, 'angularAnimate');
+                  this.angularTouch = this._.contains(props.modules, 'angularTouch');
+                  this.angularSanitize = this._.contains(props.modules, 'angularSanitize');
+                  next();
+              }.bind(this));
+          } else {
+              console.log('Adding a sample cordova project instead');
+              next();
+          }
+  }, //setAngularJsOptions
   
-  renderAngularApplicationConfigFile: function() {
-      this.template('app/js/_config.js', 'app/js/config.js');
-  },
+  /**
+   * Sets up the AngularJs app within the www/ directory
+   */
+  setupAngularJsApp : function(){
+      if(this.angularApp){
+          // Create angularjs app folders
+          this.mkdir('www/app');
+          
+          // Copy app folder modules
+          this.directory('app/', 'www/app');
+
+          // Copy project files
+          this.copy('gruntfile.js');
+          this.copy('Procfile');
+          this.copy('README.md');
+
+          // Copy project hidden files
+          this.copy('bowerrc', '.bowerrc');
+          this.copy('jshintrc', '.jshintrc');
+          this.copy('gitignore', '.gitignore');
+          this.copy('slugignore', '.slugignore');
+          this.copy('travis.yml', '.travis.yml');
+      }
+  }, 
   
+ 
   renderCoreModuleFiles: function() {
-      this.template('app/modules/core/views/_header.html', 'app/modules/core/views/header.html');
-      this.template('app/modules/core/controllers/_header.js', 'app/modules/core/controllers/header.js');
+      this.template('app/modules/core/views/_header.html', 'www/app/modules/core/views/header.html');
+      this.template('app/modules/core/controllers/_header.js', 'www/app/modules/core/controllers/header.js');
+      //this.remove('app/modules/core/controllers/_header.js');
+      //this.remove('app/modules/core/views/_header.html');
   },
 
   renderApplicationDependenciesFiles: function() {
+      this.template('app/js/_config.js', 'www/app/js/config.js');
       this.template('_package.json', 'package.json');
       this.template('_bower.json', 'bower.json');
   },
@@ -160,8 +382,37 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
   renderApplicationKarmaFile: function() {
       this.template('_karma.conf.js', 'karma.conf.js');
   }
-
+  
   
 });
+
+function addPlatformsToCordova(index, platforms, next) {
+    if (!(index < platforms.length)) {
+        next();
+        return;
+    }
+
+    try {
+        cordova.platform('add', platforms[index], function () {
+            console.log(chalk.green('✔ ') + ' added ' + chalk.gray(platforms[index]));
+            addPlatformsToCordova(index + 1, platforms, next);
+        });
+    } catch (err) {
+        console.error('Failed to add platform ' + platforms['index'] + ': ' + err);
+        process.exit(1);
+    }
+}
+
+function addPluginsToCordova(index, plugins, next) {
+    if (!(index < plugins.length)) {
+        next();
+        return;
+    }
+
+    cordova.plugin('add', plugins[index], function () {
+        console.log(chalk.green('✔ ') + ' added ' + chalk.gray(plugins[index]));
+        addPluginsToCordova(index + 1, plugins, next);
+    });
+}
 
 module.exports = AngularjsCordovaGenerator;
