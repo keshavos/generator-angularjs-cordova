@@ -4,24 +4,81 @@
     <meta charset="UTF-8">
     <title>Sample Cordova AngularJS file</title>
     <link rel="stylesheet" href="app/css/common.css">
-
-    <!--Include the library files -->
-    <script type="text/javascript" src="app/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="app/lib/angular-resource/angular-resource.js"></script>
-    <script type="text/javascript" src="app/lib/angular-cookies/angular-cookies.js"></script>
-    <script type="text/javascript" src="app/lib/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="app/lib/angular-touch/angular-touch.js"></script>
-    <script type="text/javascript" src="app/lib/angular-sanitize/angular-sanitize.js"></script>
-    <script type="text/javascript" src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="app/lib/angular-bootstrap/ui-bootstrap.js"></script>
-    <script type="text/javascript" src="app/lib/angular-ui-utils/ui-utils.js"></script>
-    <script type="text/javascript" src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <link rel="stylesheet" href="app/css/demo.css">
+    <link rel="stylesheet" href="app/css/rainbow.css">
+    <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<section ng-controller="HomeController">Index html</section>
+<!-- =================== Navigation bar =================== -->
+<header class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isCollapsed = !isCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand visible-xs" href="#">Yeoman AngularJs Cordova application</a>
+            </div>
+            <nav class="hidden-xs">
+                <ul class="nav navbar-nav">
+                    <a href="#" role="button" class="navbar-brand">
+                        Cordova-AngularJs App
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
 
+<div class="header-placeholder"></div>
+<div role="main">
+    <header class="bs-header text-center" id="overview">
+        <div class="container">
+            <h1>
+                Yeoman AngularJs Cordova application
+            </h1>
 
+            <p>AngularJs application running within a cordova app</p>
+        </div>
+    </header>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="uiview" ui-view>
+
+                    <h3>Dependencies</h3>
+                    <p>
+                        This repository contains a set of <strong>native AngularJS directives</strong> based on
+                        Bootstrap's markup and CSS. As a result no dependency on jQuery or Bootstrap's
+                        JavaScript is required. The <strong>only required dependencies</strong> are:
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div><!-- /.container -->
+</div><!-- /.main -->
+
+<footer class="footer">
+    <div class="container">
+        <p>Code licensed under <a href="https://github.com/keshavos/generator-angularjs-cordova/LICENSE">MIT License</a>.</p>
+    </div>
+</footer>
+
+<!--Include the library files -->
+<script type="text/javascript" src="app/lib/angular/angular.js"></script>
+<script type="text/javascript" src="app/lib/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="app/lib/angular-cookies/angular-cookies.js"></script>
+<script type="text/javascript" src="app/lib/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="app/lib/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="app/lib/angular-sanitize/angular-sanitize.js"></script>
+<script type="text/javascript" src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="app/lib/angular-bootstrap/ui-bootstrap.js"></script>
+<script type="text/javascript" src="app/lib/angular-ui-utils/ui-utils.js"></script>
+<script type="text/javascript" src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
 
 <!--Include the config files -->
 <script type="text/javascript" src="app/js/config.js"></script>
