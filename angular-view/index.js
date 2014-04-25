@@ -99,7 +99,7 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
                 // Save route file
 				this.writeFileFromString(routesFileContent, routesFilePath);
 			} else {
-				this.template('_routes.js', 'www/app/modules/' + this.slugifiedModuleName + '/config/routes.js')
+				this.template('_routes.js', 'app/modules/' + this.slugifiedModuleName + '/config/routes.js')
 			}
 		}
 	},

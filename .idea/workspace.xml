@@ -2,56 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73e50eb4-c326-4c93-8d4f-05365e592dd6" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\css\main.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\css\main.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\img\ionic.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\img\yeoman.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\android\icon-36-ldpi.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\android\icon-48-mdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\android\icon-72-hdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\android\icon-96-xhdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\bada-wac\icon-48-type5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\bada-wac\icon-50-type3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\bada-wac\icon-80-type4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\bada\icon-128.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\blackberry\icon-80.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\ios\icon-57-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\ios\icon-57.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\ios\icon-72-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\ios\icon-72.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\tizen\icon-128.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\webos\icon-64.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\windows-phone\icon-173-tile.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\windows-phone\icon-48.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\icon\windows-phone\icon-62-tile.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-hdpi-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-hdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-ldpi-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-ldpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-mdpi-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-mdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-xhdpi-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\android\screen-xhdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\bada-wac\screen-type3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\bada-wac\screen-type4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\bada-wac\screen-type5.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\bada\screen-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\blackberry\screen-225.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-ipad-landscape-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-ipad-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-ipad-portrait-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-ipad-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-iphone-landscape-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-iphone-landscape.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-iphone-portrait-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-iphone-portrait-568h-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\ios\screen-iphone-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\tizen\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\webos\screen-64.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\keshavos\selflearnprojects\generator-angularjs-cordova\app\cordova\res\screen\windows-phone\screen-portrait.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/app/css/demo.css" afterPath="$PROJECT_DIR$/app/templates/app/css/demo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-view/index.js" afterPath="$PROJECT_DIR$/angular-view/index.js" />
     </list>
     <ignored path="generator-angularjs-cordova.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,8 +28,28 @@
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/angular-view/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79833925" vertical-offset="1146" max-vertical-offset="1989">
-              <caret line="107" column="95" selection-start-line="107" selection-start-column="95" selection-end-line="107" selection-end-column="95" />
+            <state vertical-scroll-proportion="0.47568208" vertical-offset="1095" max-vertical-offset="1989">
+              <caret line="88" column="54" selection-start-line="88" selection-start-column="50" selection-end-line="88" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angular-module/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="1666">
+              <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6943" max-vertical-offset="7786">
+              <caret line="432" column="32" selection-start-line="432" selection-start-column="32" selection-end-line="432" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -99,16 +70,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
               <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angular-route/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="772" max-vertical-offset="1615">
-              <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -159,16 +120,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="136">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angular-module/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="1666">
-              <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -312,7 +263,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="angular-view" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -327,42 +278,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="angular-view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator-angularjs-cordova" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator-angularjs-cordova" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator-angularjs-cordova" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generator-angularjs-cordova" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -667,14 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7786">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angular-config/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
@@ -735,14 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="843">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angular-module/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="1666">
-          <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -811,10 +710,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6943" max-vertical-offset="7786">
+          <caret line="432" column="32" selection-start-line="432" selection-start-column="32" selection-end-line="432" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular-module/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="1666">
+          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/angular-view/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79833925" vertical-offset="1146" max-vertical-offset="1989">
-          <caret line="107" column="95" selection-start-line="107" selection-start-column="95" selection-end-line="107" selection-end-column="95" />
+        <state vertical-scroll-proportion="0.47568208" vertical-offset="1095" max-vertical-offset="1989">
+          <caret line="88" column="54" selection-start-line="88" selection-start-column="50" selection-end-line="88" selection-end-column="54" />
           <folding />
         </state>
       </provider>
