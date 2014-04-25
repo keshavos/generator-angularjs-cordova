@@ -159,7 +159,7 @@ border-color: #fff;
   text-shadow: 0 1px 0 rgba(0,0,0,.15);
   color: #cdbfe3;
   background-color: #563d7c;
-  background-image: url(header.png);
+  //background-image: url(header.png);
 }
 .bs-header a {
   color: #fff;
