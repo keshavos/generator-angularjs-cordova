@@ -27,9 +27,9 @@
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0", 
+    "chalk": "~0.4.0",
     "cordova": "3.4.1",
-    "plugman": "~0.10.0"
+    "fs-extra": "~0.8.1"
   },
   "devDependencies": {
     "mocha": "*"
