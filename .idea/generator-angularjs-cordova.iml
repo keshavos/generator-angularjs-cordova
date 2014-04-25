@@ -12,6 +12,7 @@
     <orderEntry type="library" name="cordova-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="jasmine-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="Node.js v0.10.26 Core Modules" level="application" />
+    <orderEntry type="library" name="generator-angularjs-cordova node_modules" level="project" />
   </component>
 </module>
 
