@@ -383,11 +383,9 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           //TODO Bulk copy everything and then process the templates in its own dedicated function?
           // Create angularjs app folder
           this.mkdir('www/app');
-          this.mkdir('www/libraries');
-          
+
           // Copy app folder modules
           this.directory('app/', 'www/app');
-          this.directory('libraries/', 'www/libraries');
           this.copy('index.html', 'www/index.html');
 
           // Copy project files
@@ -402,14 +400,6 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           this.copy('slugignore', '.slugignore');
           this.copy('travis.yml', '.travis.yml');
       }
-  },
-
-    /**
-     * Template files processed based on the config responses before copying across to the new project
-     */
-  renderCoreModuleFiles: function() {
-      /*this.template('app/modules/core/views/_header.html', 'www/app/modules/core/views/header.html');
-      this.template('app/modules/core/controllers/_header.js', 'www/app/modules/core/controllers/header.js');*/
   },
 
     /**
