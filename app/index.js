@@ -1,11 +1,12 @@
 'use strict';
-var fs = require('fs');
+var fs = require('fs'); //This could be replaced with the fs-extra module as it has helper methods over the fs methods
+var fsextra = require('fs-extra');
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var cordova = require('cordova');
-var plugman = require('plugman');
+
 
 
 var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
@@ -260,7 +261,7 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
   }, 
   
   /**
-   * Sets configuration params for the AngularJs app 
+   * Gets and sets configuration params for the AngularJs app
    */
   setAngularJsOptions : function(){
       var next = this.async();
@@ -339,17 +340,53 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
               next();
           }
   }, //setAngularJsOptions
-  
+
+    /**
+     * Removes the basic app that is initialized on cordova app creation
+     */
+  cleanupCordovaApp : function(){
+      var next = this.async();
+      if(this.angularApp){
+          //TODO Remove the initial corodva css/js/img/index.html which is generated
+          fsextra.remove('www/css', function(err){
+              if(err){
+                  return console.error(err);
+              }
+          });
+          fsextra.remove('www/img', function(err){
+              if(err){
+                  return console.error(err);
+              }
+          });
+          fsextra.remove('www/js', function(err){
+              if(err){
+                  return console.error(err);
+              }
+          });
+          fsextra.remove('www/index.html', function(err){
+              if(err){
+                  return console.error(err);
+              }
+          });
+      next();
+      console.log('*****************************************');
+      console.log('Removing the cordova app');
+      console.log('*****************************************');
+      }
+  },
+
   /**
    * Sets up the AngularJs app within the www/ directory
    */
   setupAngularJsApp : function(){
       if(this.angularApp){
-          // Create angularjs app folders
+          //TODO Bulk copy everything and then process the templates in its own dedicated function?
+          // Create angularjs app folder
           this.mkdir('www/app');
-          
+
           // Copy app folder modules
           this.directory('app/', 'www/app');
+          this.copy('index.html', 'www/index.html');
 
           // Copy project files
           this.copy('gruntfile.js');
@@ -363,22 +400,20 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           this.copy('slugignore', '.slugignore');
           this.copy('travis.yml', '.travis.yml');
       }
-  }, 
-  
- 
-  renderCoreModuleFiles: function() {
-      this.template('app/modules/core/views/_header.html', 'www/app/modules/core/views/header.html');
-      this.template('app/modules/core/controllers/_header.js', 'www/app/modules/core/controllers/header.js');
-      //this.remove('app/modules/core/controllers/_header.js');
-      //this.remove('app/modules/core/views/_header.html');
   },
 
+    /**
+     * Copies across the package and bower package dependency files
+     */
   renderApplicationDependenciesFiles: function() {
-      this.template('app/js/_config.js', 'www/app/js/config.js');
+      //this.template('app/js/_config.js', 'www/app/js/config.js');
       this.template('_package.json', 'package.json');
       this.template('_bower.json', 'bower.json');
   },
 
+    /**
+     * Copies across the karma test configuration files
+     */
   renderApplicationKarmaFile: function() {
       this.template('_karma.conf.js', 'karma.conf.js');
   }
