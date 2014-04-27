@@ -337,8 +337,9 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
               }.bind(this));
           } else {
               console.log('Adding a sample cordova project instead');
-              next();
+
           }
+      next();
   }, //setAngularJsOptions
 
     /**
@@ -379,7 +380,8 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
    * Sets up the AngularJs app within the www/ directory
    */
   setupAngularJsApp : function(){
-      if(this.angularApp){
+      var done = this.async();
+      if(this.angularApp) {
           //TODO Bulk copy everything and then process the templates in its own dedicated function?
           // Create angularjs app folder
           this.mkdir('www/app');
@@ -387,7 +389,7 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           // Copy app folder modules
           this.directory('app/', 'www/app');
           this.copy('index.html', 'www/index.html');
-
+      }
           // Copy project files
           this.copy('gruntfile.js');
           this.copy('Procfile');
@@ -399,7 +401,7 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           this.copy('gitignore', '.gitignore');
           this.copy('slugignore', '.slugignore');
           this.copy('travis.yml', '.travis.yml');
-      }
+      done();
   },
 
     /**

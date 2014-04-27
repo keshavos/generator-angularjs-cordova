@@ -33,20 +33,18 @@ npm install -g generator-angularjs-cordova
 ### Proposed Yeoman Generators for AngularJS
 
 * [angularjs-cordova](#application-generator)
-* [angularjs-cordova:crud-module](#crud-module-sub-generator)
-* [angularjs-cordova:angular-module](#angularjs-module-sub-generator)
-* [angularjs-cordova:angular-route](#angularjs-route-sub-generator)
+* [angularjs-cordova:angular-config](#angularjs-config-sub-generator)
 * [angularjs-cordova:angular-controller](#angularjs-controller-sub-generator)
-* [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
-* [angularjs-cordova:angular-service](#angularjs-service-sub-generator)
 * [angularjs-cordova:angular-directive](#angularjs-directive-sub-generator)
 * [angularjs-cordova:angular-filter](#angularjs-filter-sub-generator)
-* [angularjs-cordova:angular-config](#angularjs-config-sub-generator)
+* [angularjs-cordova:angular-module](#angularjs-module-sub-generator)
+* [angularjs-cordova:angular-route](#angularjs-route-sub-generator)
+* [angularjs-cordova:angular-service](#angularjs-service-sub-generator)
 * [angularjs-cordova:angular-test](#angularjs-test-sub-generator)
+* [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
 
-### Proposed Yeoman Generators for Cordova 
+### Proposed Yeoman Generators for Cordova
 
-* [angularjs-cordova](#application-generator)
 * [angularjs-cordova:cordova-name](#cordova-app-name)
 * [angularjs-cordova:cordova-id](#cordova-app-id)
 * [angularjs-cordova:cordova-platform-add](#cordova-platform-installer)
@@ -76,24 +74,7 @@ $ grunt
 Now, the application generator does a great job scaffolding a whole application, but daily work requires us to repeat a lot of structured code. For this purpose we provided you with some sub-generators to help you speed up your development.
 
 
-
-## CRUD Module Sub-Generator
-
-The CRUD module sub-generator will help you create a new CRUD module, similar to the article sample provided with the project. To create a new CRUD module you will need to use *yo* again:
-
-
-```
-$ yo angularjs-cordova:crud-module <module-name>
-```
-
-This will create both AngularJS and Express files supporting full CRUD functionality, and add the Karma and Mocha tests.
-
-
-**Note:** Don’t forget to use your module name as an argument when calling the CRUD module sub-generator.
-
-
-
-## AngularJS Module Sub-Generator
+s## AngularJS Module Sub-Generator
 
 Another redundant task is creating a new AngularJS module structure. For this purpose you can use the Angular module sub-generator. It will create the proper folder structure for you and the module initialization file. Creating a new AngularJS module is simple:
 
@@ -108,7 +89,7 @@ The sub-generator will ask for more information about your folder structure, and
 
 ## AngularJS Route Sub-Generator
 
-To construct your module you will often need to create a new route. The AngularJS route sub-generator will help you create a view, controller and a proper route in your module **routes.js** file. If it can’t find the module routes file the sub-generator will create one for you. Creating a new AngularJS route will involve executing this command:
+To construct your module you will often need to create a new route. The AngularJS route sub-generator will help you create a view, controller and a proper route in your module **routes.js** file. If it canï¿½t find the module routes file the sub-generator will create one for you. Creating a new AngularJS route will involve executing this command:
 
 
 
@@ -132,7 +113,7 @@ $ yo angularjs-cordova:angular-controller <controller-name>
 The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module **controllers** folder and a test file in the **tests** folder.
 
 
-**Don’t forget!** This time you pass the controller name as an argument. 
+**Donï¿½t forget!** This time you pass the controller name as an argument. 
 
 
 
@@ -145,7 +126,7 @@ Once you have your controller file ready, you may want to add a view that makes 
 $ yo angularjs-cordova:angular-view <view-name>
 ```
 
-The sub-generator will ask you for the module name under which you would like to create your new view, and some additional routing information. It will then create a new view file in that module's **views** folder and add a routing state to the module **routes.js** file. If it can’t find the module routes file it will create one for you.
+The sub-generator will ask you for the module name under which you would like to create your new view, and some additional routing information. It will then create a new view file in that module's **views** folder and add a routing state to the module **routes.js** file. If it canï¿½t find the module routes file it will create one for you.
 
 
 
@@ -203,17 +184,17 @@ The sub-generator will ask you for the module name under which you would like to
 
 ## AngularJS Test Sub-Generator
 
-Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers you’ll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:
+Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers youï¿½ll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:
 
 
 ```
 $ yo angularjs-cordova:angular-test <controller-name> 
 ```
 
-This will create a test file for your controller, and if the sub-generator doesn’t find the specified controller file, it will create one for you.
+This will create a test file for your controller, and if the sub-generator doesnï¿½t find the specified controller file, it will create one for you.
 
 
-**Don’t forget!** You're suppose to pass the controller name as an argument. 
+**Donï¿½t forget!** You're suppose to pass the controller name as an argument. 
 
 ### 
 ## License
