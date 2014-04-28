@@ -174,8 +174,7 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
         this.appDescription = props.appDescription;
         this.appKeywords = props.appKeywords;
         this.appAuthor = props.appAuthor;
-        this.addArticleExample = props.addArticleExample;
-        
+
         this.slugifiedAppName = this._.slugify(this.appName);
         this.humanizedAppName = this._.humanize(this.appName);
         this.capitalizedAppAuthor = this._.capitalize(this.appAuthor);
@@ -311,11 +310,6 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
                             checked: true
                         } 
                     ]
-                   }, {
-                       type: 'confirm',
-                       name: 'addArticleExample',
-                       message: 'Would you like to generate the article example CRUD module?',
-                       default: true
                    }
               ], function(props){
                   //AngularJs setup responses
@@ -323,8 +317,7 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
                   this.appDescription = props.appDescription;
                   this.appKeywords = props.appKeywords;
                   this.appAuthor = props.appAuthor;
-                  this.addArticleExample = props.addArticleExample;
-                  
+
                   this.slugifiedAppName = this._.slugify(this.appName);
                   this.humanizedAppName = this._.humanize(this.appName);
                   this.capitalizedAppAuthor = this._.capitalize(this.appAuthor);
@@ -337,9 +330,8 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
               }.bind(this));
           } else {
               console.log('Adding a sample cordova project instead');
-
+              next();
           }
-      next();
   }, //setAngularJsOptions
 
     /**

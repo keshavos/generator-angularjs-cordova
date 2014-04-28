@@ -85,8 +85,7 @@ describe('angularjs-cordova generator', function () {
       'appDescription': 'AppDescription',
       'appKeywords': 'Hello World',
       'appAuthor': 'Yeoman',
-      'modules': true,
-      'addArticleExample': true
+      'modules': true
     });
 
     this.app.options['skip-install'] = true;
