@@ -2,7 +2,7 @@
 
 (function() {
 	// <%= humanizedControllerName %> Controller Spec
-	describe('<%= humanizedControllerName %> Controller Tests', function() {
+	describe('Controller: <%= humanizedControllerName %>Controller', function() {
 		// Initialize global variables
 		var <%= classifiedControllerName %>Controller,
 			scope,

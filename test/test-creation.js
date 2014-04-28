@@ -3,47 +3,27 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 var fsextra = require('fs-extra');
+var _ = require('underscore.string');
 
 describe('angularjs-cordova generator', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
 
-      this.app = helpers.createGenerator('angularjs-cordova:app', [
-        '../../app'
-      ]);
+    var angularjsCordova;
 
-      done();
-    }.bind(this));
-  });
-
-
-    /*it('creates expected files when creating basic cordova app', function (done) {
-        this.timeout(15000);
-        var expected = [
-            // add files you expect to exist here.
-           'www/index.html'
+    beforeEach(function (done) {
+        var deps = [
+            '../../app'
         ];
-
-        helpers.mockPrompt(this.app, {
-            'appname': 'HelloWorld',
-            'packagename': 'com.angularjscordova.test',
-            'platforms': ['Android'],
-            'plugins': ['Splashscreen'],
-            'angularApp': false
-        });
-
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFile(expected);
+        helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+            if (err) {
+                done(err);
+            }
+            angularjsCordova = helpers.createGenerator('angularjs-cordova:app', deps);
+            angularjsCordova.options['skip-install'] = true;
             done();
         });
-    });*/
+    });
 
-
-  it('creates expected files when creating AngularJs-Cordova route', function (done) {
+    it('creates expected files when creating AngularJs-Cordova route', function (done) {
     this.timeout(15000);
     var expected = [
       // add files you expect to exist here.
@@ -75,7 +55,9 @@ describe('angularjs-cordova generator', function () {
         'karma.conf.js'
     ];
 
-    helpers.mockPrompt(this.app, {
+
+
+    helpers.mockPrompt(angularjsCordova, {
       'appname': 'HelloWorld',
       'packagename': 'com.angularjscordova.test',
       'platforms': ['Android'],
@@ -88,10 +70,62 @@ describe('angularjs-cordova generator', function () {
       'modules': true
     });
 
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
+    angularjsCordova.options['skip-install'] = true;
+    angularjsCordova.run({}, function () {
         helpers.assertFile(expected);
         done();
     });
   });
+
+    function generatorTest(generatorType, specType, targetDirectory, scriptNameFn, specNameFn, suffix, done) {
+        var angularGenerator;
+        var name = 'foo';
+        var deps = [path.join('../..', generatorType)];
+        angularGenerator = helpers.createGenerator('angularjs-cordova:' + generatorType, deps, [name]);
+
+        helpers.mockPrompt(angularjsCordova, {
+            'appname': 'HelloWorld',
+            'packagename': 'com.angularjscordova.test',
+            'platforms': ['Android'],
+            'plugins': ['Splashscreen'],
+            'angularApp': true,
+            'angularjsName': 'ngCordova',
+            'appDescription': 'AppDescription',
+            'appKeywords': 'Hello World',
+            'appAuthor': 'Yeoman',
+            'modules': true
+        });
+
+
+        angularjsCordova.run([], function (){
+            angularGenerator.run([], function () {
+               helpers.mockPrompt('', {'moduleName' : 'core'});
+                helpers.assertFiles([
+                    [path.join('www/app/modules/core/', targetDirectory, name + '.js'), new RegExp(specType + '\\(\'' + scriptNameFn(name) + suffix + '\'', 'g')],
+                    [path.join('www/app/modules/core/tests', name + '.spec.js'), new RegExp('describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'', 'g')]
+                ]);
+                done();
+           });
+        });
+    }
+
+    describe('Controller', function () {
+        it('should generate a new controller', function (done) {
+            this.timeout(15000);
+            generatorTest('angular-controller', 'controller', 'controllers', _.classify, _.classify, 'Controller', done);
+        });
+    });
+
+    /*describe('Directive', function () {
+        it('should generate a new directive', function (done) {
+            generatorTest('angular-directive', 'directive', 'directives', _.camelize, _.camelize, '', done);
+        });
+    });
+
+    describe('Filter', function () {
+        it('should generate a new filter', function (done) {
+            generatorTest('angular-filter', 'filter', 'filters', _.camelize, _.camelize, '', done);
+        });
+    });*/
+
 });
