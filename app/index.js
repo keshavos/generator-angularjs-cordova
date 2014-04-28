@@ -1,7 +1,6 @@
 'use strict';
 var fs = require('fs'); //This could be replaced with the fs-extra module as it has helper methods over the fs methods
 var fsextra = require('fs-extra');
-var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
@@ -18,6 +17,8 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
         this.installDependencies();
       }
     });
+
+
   },
 
   askFor: function () {
@@ -393,6 +394,8 @@ var AngularjsCordovaGenerator = yeoman.generators.Base.extend({
           this.copy('gitignore', '.gitignore');
           this.copy('slugignore', '.slugignore');
           this.copy('travis.yml', '.travis.yml');
+
+          this.config.save(); //http://yeoman.io/blog/cleanup.html
       done();
   },
 
