@@ -100,7 +100,19 @@ module.exports = function (grunt) {
                     'www/index.html'
                 ],
                 js: {
-                    src: ['www/app/modules/{,*/}*.{js}']
+                    src: ['www/app/js/{,*/}*.{js}', 'www/app/modules/{,*/}*.{js}']
+                },
+                css:{
+                    src: ['www/app/css/{,*/}*.{css}']
+                }
+            }
+        },
+
+        injector: {
+            options: {},
+            local_dependencies: {
+                files: {
+                    'www/index.html': ['www/app/js/**/*.js', 'www/app/modules/**/*.js', 'www/app/css/**/*.css']
                 }
             }
         },
@@ -130,7 +142,8 @@ grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', fu
 });
 
 grunt.registerTask('build', [
-    'bowerInstall'
+    'bowerInstall',
+    'injector'
 ]);
 
 grunt.registerTask('default', [
