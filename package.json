@@ -26,6 +26,7 @@
     "phonegap"
   ],
   "dependencies": {
+    "wiredep": "~1.0.0",
     "yeoman-generator": "~0.16.0",
     "chalk": "~0.4.0",
     "cordova": "~3.4.1-0.1.0",
@@ -34,7 +35,13 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "underscore.string": "~2.3.1"
+    "underscore.string": "~2.3.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-conventional-changelog": "~1.1.0",
+    "grunt-release": "~0.6.0",
+    "load-grunt-tasks": "~0.3.0",
+    "semver": "~2.2.1"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

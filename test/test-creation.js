@@ -58,16 +58,16 @@ describe('angularjs-cordova generator', function () {
 
 
     helpers.mockPrompt(angularjsCordova, {
-      'appname': 'HelloWorld',
-      'packagename': 'com.angularjscordova.test',
-      'platforms': ['Android'],
-      'plugins': ['Splashscreen'],
-      'angularApp': true,
-      'angularjsName': 'ngCordova',
-      'appDescription': 'AppDescription',
-      'appKeywords': 'Hello World',
-      'appAuthor': 'Yeoman',
-      'modules': true
+        'cordovaappname': 'HelloWorld',
+        'cordovapackagename': 'com.angularjscordova.test',
+        'platforms': ['Android'],
+        'plugins': ['Splashscreen'],
+        'angularApp': true,
+        'angularjsName': 'ngCordova',
+        'appDescription': 'AppDescription',
+        'appKeywords': 'Hello World',
+        'appAuthor': 'Yeoman',
+        'modules': ['ngCookies']
     });
 
     angularjsCordova.options['skip-install'] = true;
@@ -84,8 +84,8 @@ describe('angularjs-cordova generator', function () {
         angularGenerator = helpers.createGenerator('angularjs-cordova:' + generatorType, deps, [name]);
 
         helpers.mockPrompt(angularjsCordova, {
-            'appname': 'HelloWorld',
-            'packagename': 'com.angularjscordova.test',
+            'cordovaappname': 'HelloWorld',
+            'cordovapackagename': 'com.angularjscordova.test',
             'platforms': ['Android'],
             'plugins': ['Splashscreen'],
             'angularApp': true,
@@ -93,7 +93,7 @@ describe('angularjs-cordova generator', function () {
             'appDescription': 'AppDescription',
             'appKeywords': 'Hello World',
             'appAuthor': 'Yeoman',
-            'modules': true
+            'modules': ['ngCookies']
         });
 
 
