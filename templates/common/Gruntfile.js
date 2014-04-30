@@ -31,18 +31,26 @@ module.exports = function (grunt) {
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['/js/{,*/}*.js', '/modules/{,*/}*.js'],
-                tasks: ['newer:jshint:all'],
+                files: ['<%= yeoman.app %>/**/*.js'],
+                tasks: ['injector'],
                 options: {
                     livereload: true
                 }
             },
-            styles: {
-                files: ['/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
-            },
             gruntfile: {
-                files: ['Gruntfile.js']
+                files: ['Gruntfile.js'],
+                tasks: ['newer:jshint:all']
+            },
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                files: [
+                    'www/index.html',
+                    '<%= yeoman.app %>/css/{,*/}*.css',
+                    '<%= yeoman.app %>/{,*/}*.js',
+                    '<%= yeoman.app %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
             }
         },
 
@@ -58,8 +66,7 @@ module.exports = function (grunt) {
                 options: {
                     open: true,
                     base: [
-                        'www/',
-                        ''
+                        'www/'
                     ]
                 }
             },
@@ -79,7 +86,7 @@ module.exports = function (grunt) {
         concurrent: {
             server: ['copy:styles'],
             test: ['copy:styles'],
-            dist: ['copy:styles', 'imagemin', 'svgmin']
+            dist: ['copy:styles']
         },
 
         // Make sure code styles are up to par and there are no obvious mistakes
@@ -88,9 +95,10 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish')
             },
-            all: {
-                src: ['Gruntfile.js']
-            }
+            all: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/{,*/}*.js'
+            ]
         },
 
         // Automatically inject Bower components into the app

@@ -14,7 +14,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "postinstall": "bower install --config.interactive=false"
   },
   "files": [
     "app"
