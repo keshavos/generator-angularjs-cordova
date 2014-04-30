@@ -31,14 +31,14 @@ module.exports = function (grunt) {
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['<%= yeoman.app %>/js/{,*/}*.js', '<%= yeoman.app %>/modules/{,*/}*.js'],
+                files: ['/js/{,*/}*.js', '/modules/{,*/}*.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: true
                 }
             },
             styles: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+                files: ['/styles/{,*/}*.css'],
                 tasks: ['newer:copy:styles', 'autoprefixer']
             },
             gruntfile: {
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= yeoman.app %>'
+                        ''
                     ]
                 }
             },
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
                     base: [
                         '.tmp',
                         'test',
-                        '<%= yeoman.app %>'
+                        ''
                     ]
                 }
             }
@@ -98,21 +98,40 @@ module.exports = function (grunt) {
             target: {
                 src: [
                     'www/index.html'
-                ],
-                js: {
-                    src: ['www/app/js/{,*/}*.{js}', 'www/app/modules/{,*/}*.{js}']
-                },
-                css:{
-                    src: ['www/app/css/{,*/}*.{css}']
-                }
+                ]
             }
         },
 
+        //Injects all the scripts into the index html file
+        //TODO a bit messy atm. Could be improved !
         injector: {
-            options: {},
+            options: {
+                addRootSlash : false,
+                transform : function(filepath, index, length){
+                    filepath = filepath.substr(4,filepath.length);
+                    switch(filepath.substr((~-filepath.lastIndexOf(".") >>> 0) + 2)){
+                        case 'js' : return filepath = '<script src="'+filepath+'"></script>'
+                            break;
+                        case 'css': return filepath = '<link rel="stylesheet" href="'+filepath+'" />';
+                            break;
+                        default: console.log('File extension not supported');
+                            break;
+                    }
+                }
+            },
             local_dependencies: {
                 files: {
-                    'www/index.html': ['www/app/js/**/*.js', 'www/app/modules/**/*.js', 'www/app/css/**/*.css']
+                    'www/index.html': [
+                        'www/app/js/config.js',
+                        'www/app/js/application.js',
+                        'www/app/modules/*/*.js',
+                        'www/app/modules/*/config/*.js',
+                        'www/app/modules/*/services/*.js',
+                        'www/app/modules/*/directives/*.js',
+                        'www/app/modules/*/filters/*.js',
+                        'www/app/modules/*/controllers/*.js',
+                        'www/app/css/**/*.css'
+                    ]
                 }
             }
         },
@@ -125,29 +144,30 @@ module.exports = function (grunt) {
             }
         }
 
-});
+    });
 
 
-grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-    grunt.task.run([
+    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+        grunt.task.run([
+            'bowerInstall',
+            'injector',
+            'connect:livereload',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+        grunt.task.run(['serve:' + target]);
+    });
+
+    grunt.registerTask('build', [
         'bowerInstall',
-        'connect:livereload',
-        'watch'
+        'injector'
     ]);
-});
 
-grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-});
-
-grunt.registerTask('build', [
-    'bowerInstall',
-    'injector'
-]);
-
-grunt.registerTask('default', [
-    'newer:jshint',
-    'build'
-]);
+    grunt.registerTask('default', [
+        'newer:jshint',
+        'build'
+    ]);
 };
