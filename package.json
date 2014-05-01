@@ -43,7 +43,7 @@
     "grunt-release": "~0.6.0",
     "load-grunt-tasks": "~0.3.0",
     "semver": "~2.2.1",
-    "fs-extra": "@0.8.1"
+    "fs-extra": "~0.8.1"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
