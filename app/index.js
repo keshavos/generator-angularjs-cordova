@@ -38,6 +38,13 @@ var Generator = module.exports = function Generator(args, options) {
     this.humanizedAppName;
     this.capitalizedAppAuthor;
 
+    this.on('end', function () {
+        this.installDependencies({
+            skipInstall: this.options['skip-install'],
+            callback: this._injectDependencies.bind(this)
+        });
+    });
+
     this.pkg = require('../package.json');
 };
 
@@ -238,8 +245,6 @@ Generator.prototype.setupCordovaProject = function(){
     }
 };
 
-
-
 /**
  * Adds platforms as selected by the user
  */
@@ -255,7 +260,6 @@ Generator.prototype.addPlatforms = function(){
 
     addPlatformsToCordova(0, this.platforms, next);
 };
-
 
 /**
  * Adds the cordova plugins
@@ -273,7 +277,6 @@ Generator.prototype.addPlugins = function addPlugins() {
         next();
     }
 };
-
 
 Generator.prototype.copyProjectFiles = function copyProjectFiles(){
     this.copy('Procfile');
@@ -308,7 +311,6 @@ Generator.prototype.promptApplication = function promptApplication(){
     }.bind(this));
 };
 
-
 Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
     var next = this.async();
 
@@ -329,7 +331,7 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
             }, {
                 name: 'appAuthor',
                 message: 'What is your company/author name?',
-                default: 'numero webteam'
+                default: 'Author Name'
             }, {
                 type: 'checkbox',
                 name: 'modules',
@@ -376,7 +378,6 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
         next();
     }
 };
-
 
 /**
  * Removes the basic app that is initialized on cordova app creation
@@ -461,9 +462,9 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
         );
     } else {
         wiredep({
-            directory: 'www/app/bower_components',
+            directory: 'www/app/lib',
             bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-            ignorePath: 'app/',
+            ignorePath: 'www/app/',
             src: 'www/index.html',
             fileTypes: {
                 html: {

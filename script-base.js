@@ -49,12 +49,16 @@ var Generator = module.exports = function Generator() {
   var sourceRoot = '/templates/javascript';
   this.scriptSuffix = '.js';
 
-  if (this.env.options.coffee) {
-    sourceRoot = '/templates/coffeescript';
-    this.scriptSuffix = '.coffee';
-  }
-
   this.sourceRoot(path.join(__dirname, sourceRoot));
+
+    this.on('end', function () {
+        this.installDependencies({
+            skipInstall: this.options['skip-install'],
+            callback: this._injectDependencies.bind(this)
+        });
+
+    });
+
 };
 
 util.inherits(Generator, yeoman.generators.NamedBase);
@@ -107,4 +111,30 @@ Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate,
   if (!skipAdd) {
     this.addScriptToIndex(path.join(targetDirectory, this.name));
   }
+};
+
+Generator.prototype._injectDependencies = function _injectDependencies() {
+    var howToInstall =
+        '\nAfter running `npm install & bower install`, inject your front end dependencies into' +
+        '\nyour HTML by running:' +
+        '\n' +
+        chalk.yellow.bold('\n  grunt bowerInstall');
+
+    if (this.options['skip-install']) {
+        console.log(howToInstall);
+    } else {
+        wiredep({
+            directory: 'www/app/lib',
+            bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
+            ignorePath: 'www/app/',
+            src: 'www/index.html',
+            fileTypes: {
+                html: {
+                    replace: {
+                        css: '<link rel="stylesheet" href="{{filePath}}">'
+                    }
+                }
+            }
+        });
+    }
 };
