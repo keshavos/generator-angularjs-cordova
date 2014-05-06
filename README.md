@@ -1,5 +1,7 @@
 # AngularJS Cordova generator
 
+[![Build Status] (https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
+
 ##Overview
 
 Combining the best features from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators. 

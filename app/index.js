@@ -38,43 +38,6 @@ var Generator = module.exports = function Generator(args, options) {
     this.humanizedAppName;
     this.capitalizedAppAuthor;
 
-
-    /*this.hookFor('angular:common', {
-        args: args
-    });
-
-    this.hookFor('angular:main', {
-        args: args
-    });
-
-    this.hookFor('angular:controller', {
-        args: args
-    });*/
-
-    /*this.on('end', function () {
-        this.installDependencies({
-            skipInstall: this.options['skip-install'],
-            callback: this._injectDependencies.bind(this)
-        });
-
-        var enabledComponents = [];
-
-
-
-        this.invoke('karma:app', {
-            options: {
-                coffee: this.options.coffee,
-                travis: true,
-                'skip-install': this.options['skip-install'],
-                components: [
-                    'angular/angular.js',
-                    'angular-mocks/angular-mocks.js'
-                ].concat(enabledComponents)
-            }
-        });
-
-    });*/
-
     this.pkg = require('../package.json');
 };
 
