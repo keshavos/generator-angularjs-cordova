@@ -96,13 +96,13 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails(){
         },
         {
             name: 'cordovapackagename',
-            message: 'What would you like the package to be? (Reverse domain format. e.g com.package.name)',
+            message: 'App Id? (Reverse domain style. e.g com.package.name)',
             default: 'io.cordova.hellocordova'
         },
         {
             type: 'checkbox',
             name: 'platforms',
-            message: 'What platforms would you like to add support for?',
+            message: 'What platforms would you like to add support for? (Please ensure you have the correctly installed the platform requirements)',
             choices: [
                 {
                     name: 'Android',
@@ -302,7 +302,7 @@ Generator.prototype.promptApplication = function promptApplication(){
         {
             type: 'confirm',
             name: 'angularApp',
-            message: 'Would you like to add a sample AngularJs app?',
+            message: 'Include a sample AngularJs built with bootstrap?',
             default: true
         }
     ], function(props){
@@ -440,16 +440,7 @@ Generator.prototype.parseTemplates = function parseTemplates(){
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-};
-
-Generator.prototype.readIndex = function readIndex() {
-    this.ngRoute = this.env.options.ngRoute;
-    this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
-};
-
-Generator.prototype.createIndexHtml = function createIndexHtml() {
-    this.indexFile = this.indexFile.replace(/&apos;/g, "'");
-    this.write('www/index.html', this.indexFile);
+    this.template('../../templates/common/index.html', 'www/index.html');
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {

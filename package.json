@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "postinstall": "bower install --config.interactive=false"
+    "postinstall": "npm install && bower install --config.interactive=false"
   },
   "keywords": [
     "yeoman-generator", 
