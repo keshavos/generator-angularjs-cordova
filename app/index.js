@@ -442,28 +442,3 @@ Generator.prototype.parseTemplates = function parseTemplates(){
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.template('../../templates/common/index.html', 'www/index.html');
 };
-
-Generator.prototype._injectDependencies = function _injectDependencies() {
-    if (this.options['skip-install']) {
-        console.log(
-                '\nAfter running `npm install & bower install`, inject your front end dependencies into' +
-                '\nyour HTML by running:' +
-                '\n' +
-                '\n  grunt bowerInstall'
-        );
-    } else {
-        wiredep({
-            directory: 'www/app/lib',
-            bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-            ignorePath: 'www/app/',
-            src: 'www/index.html',
-            fileTypes: {
-                html: {
-                    replace: {
-                        css: '<link rel="stylesheet" href="{{filePath}}">'
-                    }
-                }
-            }
-        });
-    }
-};
