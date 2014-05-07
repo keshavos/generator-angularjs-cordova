@@ -12,10 +12,9 @@ var async = require('async');
  * Should create a basic cordova angularjs app with the set default options
  */
 describe('Cordova-AngularJs app', function(){
-
+    this.timeout(15000);
     after(function(){
         temp.cleanup();
-        console.log('temp.cleanup()', temp.dir);
     });
 
     /**
