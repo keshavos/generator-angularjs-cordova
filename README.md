@@ -32,7 +32,7 @@ npm install -g generator-angularjs-cordova
 
 
 
-### Proposed Yeoman Generators for AngularJS
+### Yeoman Generators for AngularJS
 
 * [angularjs-cordova](#application-generator)
 * [angularjs-cordova:angular-config](#angularjs-config-sub-generator)

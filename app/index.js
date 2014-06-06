@@ -38,6 +38,13 @@ var Generator = module.exports = function Generator(args, options) {
     this.humanizedAppName;
     this.capitalizedAppAuthor;
 
+    this.on('end', function () {
+        this.installDependencies({
+            skipInstall: this.options['skip-install'],
+            callback: this._injectDependencies.bind(this)
+        });
+    });
+
     this.pkg = require('../package.json');
 };
 
@@ -89,13 +96,13 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails(){
         },
         {
             name: 'cordovapackagename',
-            message: 'What would you like the package to be? (Reverse domain format. e.g com.package.name)',
+            message: 'App Id? (Reverse domain style. e.g com.package.name)',
             default: 'io.cordova.hellocordova'
         },
         {
             type: 'checkbox',
             name: 'platforms',
-            message: 'What platforms would you like to add support for?',
+            message: 'What platforms would you like to add support for? (Please ensure you have the correctly installed the platform requirements)',
             choices: [
                 {
                     name: 'Android',
@@ -238,8 +245,6 @@ Generator.prototype.setupCordovaProject = function(){
     }
 };
 
-
-
 /**
  * Adds platforms as selected by the user
  */
@@ -255,7 +260,6 @@ Generator.prototype.addPlatforms = function(){
 
     addPlatformsToCordova(0, this.platforms, next);
 };
-
 
 /**
  * Adds the cordova plugins
@@ -273,7 +277,6 @@ Generator.prototype.addPlugins = function addPlugins() {
         next();
     }
 };
-
 
 Generator.prototype.copyProjectFiles = function copyProjectFiles(){
     this.copy('Procfile');
@@ -299,7 +302,7 @@ Generator.prototype.promptApplication = function promptApplication(){
         {
             type: 'confirm',
             name: 'angularApp',
-            message: 'Would you like to add a sample AngularJs app?',
+            message: 'Include a sample AngularJs built with bootstrap?',
             default: true
         }
     ], function(props){
@@ -307,7 +310,6 @@ Generator.prototype.promptApplication = function promptApplication(){
         done();
     }.bind(this));
 };
-
 
 Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
     var next = this.async();
@@ -329,7 +331,7 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
             }, {
                 name: 'appAuthor',
                 message: 'What is your company/author name?',
-                default: 'numero webteam'
+                default: 'Author Name'
             }, {
                 type: 'checkbox',
                 name: 'modules',
@@ -376,7 +378,6 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions(){
         next();
     }
 };
-
 
 /**
  * Removes the basic app that is initialized on cordova app creation
@@ -439,16 +440,7 @@ Generator.prototype.parseTemplates = function parseTemplates(){
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-};
-
-Generator.prototype.readIndex = function readIndex() {
-    this.ngRoute = this.env.options.ngRoute;
-    this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
-};
-
-Generator.prototype.createIndexHtml = function createIndexHtml() {
-    this.indexFile = this.indexFile.replace(/&apos;/g, "'");
-    this.write('www/index.html', this.indexFile);
+    this.template('../../templates/common/index.html', 'www/index.html');
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {
@@ -461,9 +453,9 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
         );
     } else {
         wiredep({
-            directory: 'www/app/bower_components',
+            directory: 'www/app/lib',
             bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-            ignorePath: 'app/',
+            ignorePath: 'www/app/',
             src: 'www/index.html',
             fileTypes: {
                 html: {

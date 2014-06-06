@@ -29,20 +29,8 @@
     <div class="navbar-inner">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isCollapsed = !isCollapsed">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand visible-xs" href="#">Yeoman AngularJs Cordova application</a>
+                <a class="navbar-brand visible-xs" href="#"><%= slugifiedAppName %></a>
             </div>
-            <nav class="hidden-xs">
-                <ul class="nav navbar-nav">
-                    <a href="#" role="button" class="navbar-brand">
-                    </a>
-                </ul>
-            </nav>
         </div>
     </div>
 </header>
@@ -52,25 +40,15 @@
     <header class="bs-header text-center" id="overview">
         <div class="container">
             <h1>
-                Yeoman AngularJs Cordova application
+                AngularJs Cordova application
             </h1>
-
-            <p>AngularJs application running within a cordova app</p>
         </div>
     </header>
 
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <section id="uiview" ui-view>
-
-                    <h3>Dependencies</h3>
-                    <p>
-                        This repository contains a set of <strong>native AngularJS directives</strong> based on
-                        Bootstrap's markup and CSS. As a result no dependency on jQuery or Bootstrap's
-                        JavaScript is required. The <strong>only required dependencies</strong> are:
-                    </p>
-                </section>
+                <section id="uiview" ui-view></section>
             </div>
         </div>
     </div><!-- /.container -->
