@@ -318,7 +318,7 @@ describe('Cordova-AngularJs app', function(){
                 'www/app/modules/core/tests/home.spec.js',
                 'www/app/modules/core/views/home.html',
                 'www/index.html',
-                'gruntfile.js',
+                'Gruntfile.js',
                 'Procfile',
                 'README.md',
                 '.bowerrc',
