@@ -1,9 +1,22 @@
-# AngularJS Cordova generator
-
-[![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
+# AngularJS Cordova generator [![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
 
 
 [![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
+
+
+## Changelog
+
+* 0.1.0
+    * Uprade to cordova 3.5 
+    * Better dependency declarations.
+    * More tests 
+    * Refined documentation/ README
+
+* 0.0.2
+    * Fixes travis file to include bower required for passing tests
+
+* 0.0.1
+    * Minimal Viable Product which works as expected
 
 
 ## Installation
@@ -42,9 +55,7 @@ Once ready, you should be able to use this with
 npm install -g generator-angularjs-cordova
 ```
 
-
-
-### Yeoman Generators for AngularJS
+### Available generators
 
 * [angularjs-cordova](#application-generator)
 * [angularjs-cordova:angular-config](#angularjs-config-sub-generator)
@@ -56,25 +67,6 @@ npm install -g generator-angularjs-cordova
 * [angularjs-cordova:angular-service](#angularjs-service-sub-generator)
 * [angularjs-cordova:angular-test](#angularjs-test-sub-generator)
 * [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
-
-### Proposed Yeoman Generators for Cordova
-~~* [angularjs-cordova:cordova-name](#cordova-app-name)~~ 
-
-~~* [angularjs-cordova:cordova-id](#cordova-app-id)~~
-
-~~* [angularjs-cordova:cordova-platform-add](#cordova-platform-installer)~~
-
-~~* [angularjs-cordova:cordova-platform-remove](#cordova-platform-uninstaller)~~
-
-~~* [angularjs-cordova:cordova-platform-build](#cordova-platform-build)~~
-
-~~* [angularjs-cordova:cordova-platform-](#cordova-platform-build)~~
-
-~~* [angularjs-cordova:cordova-plugin-list](#cordova-plugin-list)~~
-
-~~* [angularjs-cordova:cordova-plugin-add](#cordova-plugin-installer)~~
-
-~~* [angularjs-cordova:cordova-plugin-remove](#cordova-platform-uninstaller)~~
 
 It might be a good idea to use the native cordova commands directly within the project root as this encourages correct usage of cordova commands in other projects that do not use this framework
 
