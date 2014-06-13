@@ -1,13 +1,13 @@
 {
 	"name": "generator-angularjs-cordova",
 	"version": "0.1",
-	"description": "Yeoman generator for creating a AngularJS based cordova application and includes Angular UI and Bootstrap 3!",
+	"description": "Yeoman generator for creating a AngularJS based cordova application and includes Angular UI and Bootstrap 3",
 	"license": "MIT",
 	"homepage": "http://keshavos.github.io/generator-angularjs-cordova",
 	"repository": {
-	"type": "git",
+		"type": "git",
 		"url": "git://github.com/keshavos/generator-angularjs-cordova.git"
-	  },
+	},
 	"preferGlobal": "true",
 	"author": {
 		"name": "Keshav OS",

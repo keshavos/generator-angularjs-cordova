@@ -25,37 +25,53 @@
 npm install -g generator-angularjs-cordova
 ```
 
+## Overview
 
+A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators. 
 
-##Overview
+### Technologies:
 
-Combining the best features from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators. 
+* [Cordova](http://phonegap.com) - for packaging your HTML, CSS and Javascript into deployable mobile apps.
+This generator currently has not been tested for its compatibility with phonegap. It might be added in the future. 
 
-The purpose of this generator is to allow the user to create and extend an AngularJS-phonegap application
+* [AngularJS](http://angularjs.org) - One of the most popular Javascript MVC/MV** frameworks that is available out there
 
-* Uses a [Vertical Module](http://angularjs-cordova.org/docs.html#angularjs-modules) approach to extending AngularJs apps The pros and cons of the [angular-seed](https://github.com/angular/angular-seed) project and hence a modular approach to extending AngularJs apps is mentioned [here](http://angularjs-cordova.org/docs.html#angularjs-modules).
+* [AngularUI](http://angular-ui.github.io/) - Includes Twitter bootstrap 3 and allows for developing responsive pages. It ships with various pre-defined templates.
+
+### Features
+
+* Uses the [Vertical Module approach](http://meanjs.org/docs.html#angularjs-modules) for initializing and extending the angularjs application. 
+The project structure suggested by the Angular team with the [angular-seed](https://github.com/angular/angular-seed) works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project. 
 
 
 ## Getting Started
+
 Before you begin make sure you have the [yo scaffolding tool](http://yeoman.io/generators.html) installed(As it is part of the Yeoman tool set you might have installed it before). To globally install *yo* you will need to use npm:
 
+**Note:** Your user might not have the permissions to install package globally, so use a super user or **sudo**.
 
 ```
 $ npm install -g yo
 ```
 
-
-**Note:** Your user might not have the permissions to install package globally, so use a super user or **sudo**.
-
-
 Once ready, you should be able to use this with 
-
 
 ```
 npm install -g generator-angularjs-cordova
 ```
 
+Create and navigate into a new directory and run the yo command to initialize a new project
+
+```
+mkdir testapp && cd testapp
+yo angularjs-cordova
+```
+
+This presents you with a series of options to initialize and customize your application
+
 ### Available generators
+
+Once setup, you can use any of the following sub-generators for extending your AngularJs application
 
 * [angularjs-cordova](#application-generator)
 * [angularjs-cordova:angular-config](#angularjs-config-sub-generator)
@@ -68,13 +84,13 @@ npm install -g generator-angularjs-cordova
 * [angularjs-cordova:angular-test](#angularjs-test-sub-generator)
 * [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
 
-It might be a good idea to use the native cordova commands directly within the project root as this encourages correct usage of cordova commands in other projects that do not use this framework
+The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead. 
 
 All the available cordova commands can be listed by typing the following in the command line:
 
 `cordova help` 
 
-As per **cordova v3.4.0**, these are the available options
+As per **cordova v3.5.0-0.2.4**, these are the available options
 
 Synopsis
 
