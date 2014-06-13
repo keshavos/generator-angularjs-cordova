@@ -6,4 +6,3 @@ before_install:
   - npm install -g grunt-cli
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-angularjs-cordova' ]; then cd .. && eval "mv $currentfolder generator-angularjs-cordova" && cd generator-angularjs-cordova; fi
-
