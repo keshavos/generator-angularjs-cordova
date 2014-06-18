@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "async": "~0.2.9",
+    "csslint": "^0.10.0",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-conventional-changelog": "~1.1.0",
