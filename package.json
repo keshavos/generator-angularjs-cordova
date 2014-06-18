@@ -22,7 +22,7 @@
 	 	"node": ">=0.10.0"
 	  },
 	  "scripts": {
-		"test": "./node_modules/.bin/mocha --recursive -R xunit test/ > test-reports/test-reports.xml",
+		"test": "./node_modules/.bin/mocha",
 		"postinstall": "bower install --config.interactive=false"
 	  },
 	  "keywords": [
