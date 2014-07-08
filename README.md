@@ -292,7 +292,6 @@ This will create a test file for your controller, and if the sub-generator doesn
 
 **Don't forget!** You are supposed to pass the controller name as an argument.
 
-###
 ## License
 
 MIT

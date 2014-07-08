@@ -38,7 +38,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the partial file', function(){
             var expected = [
-                'www/app/modules/core/config/testconfig.js'
+                'app/modules/core/config/testconfig.js'
             ];
             helpers.assertFiles(expected);
         });
@@ -65,8 +65,8 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create controller and test files', function(){
             var expected = [
-                'www/app/modules/core/controllers/foo.js',
-                'www/app/modules/core/tests/foo.spec.js'
+                'app/modules/core/controllers/foo.js',
+                'app/modules/core/tests/foo.spec.js'
             ];
 
             helpers.assertFiles(expected);
@@ -94,7 +94,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the directive js file', function(){
             var expected = [
-                'www/app/modules/core/directives/testdirective.js'
+                'app/modules/core/directives/testdirective.js'
             ];
             helpers.assertFiles(expected);
         });
@@ -121,7 +121,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the partial file', function(){
             var expected = [
-                'www/app/modules/core/filters/testfilter.js'
+                'app/modules/core/filters/testfilter.js'
             ];
             helpers.assertFiles(expected);
         });
@@ -156,7 +156,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create main module file', function(){
             var expected = [
-                'www/app/modules/testmodule/testmodule.js'
+                'app/modules/testmodule/testmodule.js'
             ];
             helpers.assertFile(expected);
         });
@@ -186,8 +186,8 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the partial file', function(){
             var expected = [
-                'www/app/modules/core/controllers/route.js',
-                'www/app/modules/core/views/route.html'
+                'app/modules/core/controllers/route.js',
+                'app/modules/core/views/route.html'
             ];
             helpers.assertFiles(expected);
         });
@@ -214,7 +214,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the service js file', function(){
             var expected = [
-                'www/app/modules/core/services/testservice.js'
+                'app/modules/core/services/testservice.js'
             ];
             helpers.assertFiles(expected);
         });
@@ -241,8 +241,8 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the test and controller js file', function(){
             var expected = [
-                'www/app/modules/core/controllers/testtest.js',
-                'www/app/modules/core/tests/testtest.spec.js'
+                'app/modules/core/controllers/testtest.js',
+                'app/modules/core/tests/testtest.spec.js'
             ];
             helpers.assertFiles(expected);
         });
@@ -269,7 +269,7 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the test and controller js file', function(){
             var expected = [
-                'www/app/modules/core/views/testview.html'
+                'app/modules/core/views/testview.html'
             ];
             helpers.assertFiles(expected);
         });
@@ -279,7 +279,7 @@ describe('Cordova-AngularJs app', function(){
      * yo angularjs-cordova
      * Creates a basic cordova angularjs app
      * Adds Android platform
-     * Adds Splashscreen plugin  
+     * Adds Splashscreen plugin
      */
     describe('Cordova-AngularJs default app', function(){
         /**
@@ -306,20 +306,20 @@ describe('Cordova-AngularJs app', function(){
             var expected = [
                 // add files you expect to exist here.
                 'config.xml',
-                'www/app/css/demo.css',
-                'www/app/css/rainbow.css',
-                'www/app/img/brand/favicon.ico',
-                'www/app/img/brand/logo.png',
-                'www/app/img/loaders/loader.gif',
-                'www/app/js/application.js',
-                'www/app/js/config.js',
-                'www/app/modules/core/config/routes.js',
-                'www/app/modules/core/controllers/home.js',
-                'www/app/modules/core/core.js',
-                'www/app/modules/core/tests/header.spec.js',
-                'www/app/modules/core/tests/home.spec.js',
-                'www/app/modules/core/views/home.html',
-                'www/index.html',
+                'app/css/demo.css',
+                'app/css/rainbow.css',
+                'app/img/brand/favicon.ico',
+                'app/img/brand/logo.png',
+                'app/img/loaders/loader.gif',
+                'app/js/application.js',
+                'app/js/config.js',
+                'app/modules/core/config/routes.js',
+                'app/modules/core/controllers/home.js',
+                'app/modules/core/core.js',
+                'app/modules/core/tests/header.spec.js',
+                'app/modules/core/tests/home.spec.js',
+                'app/modules/core/views/home.html',
+                'index.html',
                 'Gruntfile.js',
                 'Procfile',
                 'README.md',

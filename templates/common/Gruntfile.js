@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: {
             // configurable paths
-            app: 'www/app'
+            app: 'app'
         },
 
         // Watches files for changes and runs tasks based on the changed files
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                 options: {
                     open: true,
                     base: [
-                        'www/',
+                        'app/',
                         ''
                     ]
                 }
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
         bowerInstall: {
             target: {
                 src: [
-                    'www/index.html'
+                    'app/index.html'
                 ]
             }
         },
