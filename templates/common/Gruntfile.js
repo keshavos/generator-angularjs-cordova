@@ -121,16 +121,16 @@ module.exports = function (grunt) {
             },
             local_dependencies: {
                 files: {
-                    'www/index.html': [
-                        'www/app/js/config.js',
-                        'www/app/js/application.js',
-                        'www/app/modules/*/*.js',
-                        'www/app/modules/*/config/*.js',
-                        'www/app/modules/*/services/*.js',
-                        'www/app/modules/*/directives/*.js',
-                        'www/app/modules/*/filters/*.js',
-                        'www/app/modules/*/controllers/*.js',
-                        'www/app/css/**/*.css'
+                    'app/index.html': [
+                        'app/js/config.js',
+                        'app/js/application.js',
+                        'app/modules/*/*.js',
+                        'app/modules/*/config/*.js',
+                        'app/modules/*/services/*.js',
+                        'app/modules/*/directives/*.js',
+                        'app/modules/*/filters/*.js',
+                        'app/modules/*/controllers/*.js',
+                        'app/css/**/*.css'
                     ]
                 }
             }
