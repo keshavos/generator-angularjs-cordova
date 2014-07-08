@@ -277,7 +277,9 @@ describe('Cordova-AngularJs app', function(){
 
     /**
      * yo angularjs-cordova
-     * Create a basic cordova angularjs app
+     * Creates a basic cordova angularjs app
+     * Adds Android platform
+     * Adds Splashscreen plugin  
      */
     describe('Cordova-AngularJs default app', function(){
         /**
