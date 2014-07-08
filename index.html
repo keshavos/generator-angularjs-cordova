@@ -31,11 +31,39 @@
         <h1>
 <a name="angularjs-cordova-generator" class="anchor" href="#angularjs-cordova-generator"><span class="octicon octicon-link"></span></a>AngularJS Cordova generator</h1>
 
-<p><a href="https://travis-ci.org/keshavos/generator-angularjs-cordova"><img src="https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/keshavos/generator-angularjs-cordova"><img src="https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master" alt="Build Status"></a></p>
 
 <p><a href="https://nodei.co/npm/generator-angularjs-cordova/"><img src="https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true" alt="NPM"></a></p>
 
 <h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<ul>
+<li>
+<p>0.1.4</p>
+
+<ul>
+<li>Uprade to cordova 3.5</li>
+<li>Better dependency declarations.</li>
+<li>More tests</li>
+<li>Refined documentation/ README</li>
+</ul>
+</li>
+<li>
+<p>0.0.2</p>
+
+<ul>
+<li>Fixes travis file to include bower required for passing tests</li>
+</ul>
+</li>
+<li>
+<p>0.0.1</p>
+
+<ul>
+<li>Minimal Viable Product which works as expected</li>
+</ul>
+</li>
+</ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <pre><code>npm install -g generator-angularjs-cordova
@@ -44,29 +72,49 @@
 <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>Combining the best features from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">yeoman-angular framework</a> and the <a href="http://angularjs-cordova.org/">angularjs-cordova</a> generators. </p>
+<p>A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">yeoman-angular framework</a> and the <a href="http://angularjs-cordova.org/">angularjs-cordova</a> generators.</p>
 
-<p>The purpose of this generator is to allow the user to create and extend an AngularJS-phonegap application</p>
+<h3>
+<a name="technologies" class="anchor" href="#technologies"><span class="octicon octicon-link"></span></a>Technologies:</h3>
 
 <ul>
-<li>Uses a <a href="http://angularjs-cordova.org/docs.html#angularjs-modules">Vertical Module</a> approach to extending AngularJs apps The pros and cons of the <a href="https://github.com/angular/angular-seed">angular-seed</a> project and hence a modular approach to extending AngularJs apps is mentioned <a href="http://angularjs-cordova.org/docs.html#angularjs-modules">here</a>.</li>
+<li><p><a href="http://phonegap.com">Cordova</a> - for packaging your HTML, CSS and Javascript into deployable mobile apps.
+This generator currently has not been tested for its compatibility with phonegap. It might be added in the future.</p></li>
+<li><p><a href="http://angularjs.org">AngularJS</a> - One of the most popular Javascript MVC/MV** frameworks that is available out there</p></li>
+<li><p><a href="http://angular-ui.github.io/">AngularUI</a> - Includes Twitter bootstrap 3 and allows for developing responsive pages. It ships with various pre-defined templates.</p></li>
+</ul><h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Uses the <a href="http://meanjs.org/docs.html#angularjs-modules">Vertical Module approach</a> for initializing and extending the angularjs application.
+The project structure suggested by the Angular team with the <a href="https://github.com/angular/angular-seed">angular-seed</a> works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.</li>
 </ul><h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <p>Before you begin make sure you have the <a href="http://yeoman.io/generators.html">yo scaffolding tool</a> installed(As it is part of the Yeoman tool set you might have installed it before). To globally install <em>yo</em> you will need to use npm:</p>
 
+<p><strong>Note:</strong> Your user might not have the permissions to install package globally, so use a super user or <strong>sudo</strong>.</p>
+
 <pre><code>$ npm install -g yo
 </code></pre>
 
-<p><strong>Note:</strong> Your user might not have the permissions to install package globally, so use a super user or <strong>sudo</strong>.</p>
-
-<p>Once ready, you should be able to use this with </p>
+<p>Once ready, you should be able to use this with</p>
 
 <pre><code>npm install -g generator-angularjs-cordova
 </code></pre>
 
+<p>Create and navigate into a new directory and run the yo command to initialize a new project</p>
+
+<pre><code>mkdir testapp &amp;&amp; cd testapp
+yo angularjs-cordova
+</code></pre>
+
+<p>This presents you with a series of options to initialize and customize your application</p>
+
 <h3>
-<a name="yeoman-generators-for-angularjs" class="anchor" href="#yeoman-generators-for-angularjs"><span class="octicon octicon-link"></span></a>Yeoman Generators for AngularJS</h3>
+<a name="available-generators" class="anchor" href="#available-generators"><span class="octicon octicon-link"></span></a>Available generators</h3>
+
+<p>Once setup, you can use any of the following sub-generators for extending your AngularJs application</p>
 
 <ul>
 <li><a href="#application-generator">angularjs-cordova</a></li>
@@ -79,34 +127,13 @@
 <li><a href="#angularjs-service-sub-generator">angularjs-cordova:angular-service</a></li>
 <li><a href="#angularjs-test-sub-generator">angularjs-cordova:angular-test</a></li>
 <li><a href="#angularjs-view-sub-generator">angularjs-cordova:angular-view</a></li>
-</ul><h3>
-<a name="proposed-yeoman-generators-for-cordova" class="anchor" href="#proposed-yeoman-generators-for-cordova"><span class="octicon octicon-link"></span></a>Proposed Yeoman Generators for Cordova</h3>
-
-<p><del>* <a href="#cordova-app-name">angularjs-cordova:cordova-name</a></del> </p>
-
-<p><del>* <a href="#cordova-app-id">angularjs-cordova:cordova-id</a></del></p>
-
-<p><del>* <a href="#cordova-platform-installer">angularjs-cordova:cordova-platform-add</a></del></p>
-
-<p><del>* <a href="#cordova-platform-uninstaller">angularjs-cordova:cordova-platform-remove</a></del></p>
-
-<p><del>* <a href="#cordova-platform-build">angularjs-cordova:cordova-platform-build</a></del></p>
-
-<p><del>* <a href="#cordova-platform-build">angularjs-cordova:cordova-platform-</a></del></p>
-
-<p><del>* <a href="#cordova-plugin-list">angularjs-cordova:cordova-plugin-list</a></del></p>
-
-<p><del>* <a href="#cordova-plugin-installer">angularjs-cordova:cordova-plugin-add</a></del></p>
-
-<p><del>* <a href="#cordova-platform-uninstaller">angularjs-cordova:cordova-plugin-remove</a></del></p>
-
-<p>It might be a good idea to use the native cordova commands directly within the project root as this encourages correct usage of cordova commands in other projects that do not use this framework</p>
+</ul><p>The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.</p>
 
 <p>All the available cordova commands can be listed by typing the following in the command line:</p>
 
-<p><code>cordova help</code> </p>
+<p><code>cordova help</code></p>
 
-<p>As per <strong>cordova v3.4.0</strong>, these are the available options</p>
+<p>As per <strong>cordova v3.5.0-0.2.4</strong>, these are the available options</p>
 
 <p>Synopsis</p>
 
@@ -215,7 +242,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 
 <p>The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module <strong>controllers</strong> folder and a test file in the <strong>tests</strong> folder.</p>
 
-<p><strong>Don't forget!</strong> This time you pass the controller name as an argument. </p>
+<p><strong>Don't forget!</strong> This time you pass the controller name as an argument.</p>
 
 <h2>
 <a name="angularjs-view-sub-generator" class="anchor" href="#angularjs-view-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS View Sub-Generator</h2>
@@ -272,12 +299,12 @@ serve [PORT] .............................. runs a local web server for www/ ass
 
 <p>Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers you'll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:</p>
 
-<pre><code>$ yo angularjs-cordova:angular-test &lt;controller-name&gt; 
+<pre><code>$ yo angularjs-cordova:angular-test &lt;controller-name&gt;
 </code></pre>
 
 <p>This will create a test file for your controller, and if the sub-generator doesn't find the specified controller file, it will create one for you.</p>
 
-<p><strong>Don't forget!</strong> You're suppose to pass the controller name as an argument. </p>
+<p><strong>Don't forget!</strong> You are supposed to pass the controller name as an argument.</p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
