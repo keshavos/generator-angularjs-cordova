@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+	<!-- build:css css/app.css-->
     <!-- bower:css -->
     <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
 
-    <!-- injector:css -->
 
-    <!-- endinjector -->
+    <link rel="stylesheet" href="app/css/common.css" />
+    <link rel="stylesheet" href="app/css/demo.css" />
+    <link rel="stylesheet" href="app/css/rainbow.css" />
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -77,22 +80,19 @@
 <![endif]-->
 
 
+<!-- process:remove:server -->
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<!-- /process -->
+
+<!-- build:js js/app.js -->
 <!-- bower:js -->
-<script src="app/lib/jquery/dist/jquery.js"></script>
-<script src="app/lib/bootstrap/dist/js/bootstrap.js"></script>
-<script src="app/lib/angular/angular.js"></script>
-<script src="app/lib/angular-resource/angular-resource.js"></script>
-<script src="app/lib/angular-mocks/angular-mocks.js"></script>
-<script src="app/lib/angular-cookies/angular-cookies.js"></script>
-<script src="app/lib/angular-animate/angular-animate.js"></script>
-<script src="app/lib/angular-touch/angular-touch.js"></script>
-<script src="app/lib/angular-sanitize/angular-sanitize.js"></script>
-<script src="app/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="app/lib/angular-ui-utils/ui-utils.js"></script>
-<script src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 
-<!-- injector:js -->
-<!-- endinjector -->
+<script src="app/js/config.js"></script>
+<script src="app/js/application.js"></script>
+<script src="app/modules/core/core.js"></script>
+<script src="app/modules/core/config/routes.js"></script>
+<script src="app/modules/core/controllers/home.js"></script>
+<!-- endbuild -->
 </body>
 </html>
