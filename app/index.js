@@ -415,7 +415,7 @@ Generator.prototype.cleanupCordovaApp = function cleanupCordovaApp(){
 };
 
 /**
- * Sets up the AngularJs app within the www/ directory
+ * Sets up the AngularJs app within the app/ directory
  */
 Generator.prototype.setupAngularJsApp = function setupAngularJsApp(){
     var done = this.async();
@@ -426,10 +426,10 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp(){
 
     if(this.angularApp) {
         // Create angularjs app folder
-        this.mkdir('www/app');
+        this.mkdir('app/app');
 
         // Copy app folder modules
-        this.directory('app/', 'www/app');
+        this.directory('app/', 'app/app');
 
         this.template('_karma.conf.js', 'karma.conf.js');
         done();
@@ -437,10 +437,12 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp(){
 };
 
 Generator.prototype.parseTemplates = function parseTemplates(){
+	
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-    this.template('../../templates/common/index.html', 'www/index.html');
+    this.template('../../templates/common/index.html', 'app/index.html');
+	
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {
@@ -453,10 +455,10 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
         );
     } else {
         wiredep({
-            directory: 'www/app/lib',
+            directory: 'app/app/lib',
             bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-            ignorePath: 'www/app/',
-            src: 'www/index.html',
+            ignorePath: 'app/app/',
+            src: 'app/index.html',
             fileTypes: {
                 html: {
                     replace: {

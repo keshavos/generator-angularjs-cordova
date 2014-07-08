@@ -7,6 +7,14 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var config = {
+            // configurable paths
+            app: 'app',
+			tmp: '.tmp',
+			bwc : 'app/app/lib',
+			dist : 'www'
+        };
+
 module.exports = function (grunt) {
 
     // Load grunt tasks automatically
@@ -19,155 +27,256 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         // Project settings
-        yeoman: {
-            // configurable paths
-            app: 'www/app'
-        },
-
-        // Watches files for changes and runs tasks based on the changed files
-        watch: {
+        config: config,	
+	   
+		watch: {
             bower: {
                 files: ['bower.json'],
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['/js/{,*/}*.js', '/modules/{,*/}*.js'],
-                tasks: ['newer:jshint:all'],
+                files: ['<%%= config.app %>/app/js/{,*/}*.js', '<%%= config.app %>/app/modules/{,**/}*.js'],
+                tasks: [],
                 options: {
                     livereload: true
                 }
             },
             styles: {
-                files: ['/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
+                files: ['<%%= config.app %>/app/css/{,*/}*.css'],
+                tasks: ['autoprefixer']
             },
             gruntfile: {
                 files: ['Gruntfile.js']
-            }
-        },
-
-        // The actual grunt server settings
-        connect: {
-            options: {
-                port: 9000,
-                // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
-                livereload: 35729
             },
-            livereload: {
+			livereload: {
                 options: {
-                    open: true,
-                    base: [
-                        'www/',
-                        ''
-                    ]
-                }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    base: [
-                        '.tmp',
-                        'test',
-                        ''
-                    ]
-                }
+                    livereload: true,
+                },
+				tasks: ['processhtml:server'],
+                files: [
+					'<%%= config.app %>/{,**/}*.html',
+                    '<%%= config.app %>/app/css/{,*/}*.css',
+                    '<%%= config.app %>/app/img/{,*/}*'
+                ]
             }
         },
-
-        // Run some tasks in parallel to speed up the build process
-        concurrent: {
-            server: ['copy:styles'],
-            test: ['copy:styles'],
-            dist: ['copy:styles', 'imagemin', 'svgmin']
+		
+		// Empties folders to start fresh
+        clean: {
+			options: { force: true },
+            server: {
+				src:[
+					'<%%= config.tmp %>'
+				]
+			},
+			dist: {
+				src:[
+					'<%%= config.tmp %>'
+				]
+			}
         },
-
-        // Make sure code styles are up to par and there are no obvious mistakes
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            },
-            all: {
-                src: ['Gruntfile.js']
+	
+		 // Add vendor prefixed styles
+		autoprefixer: {
+			options: {
+				browsers: ['last 1 version']
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: '<%%=config.app%>/app/css/',
+					src: '{,*/}*.css',
+					dest: '<%%=config.tmp%>/app/css/'
+				}]
+			}
+		},
+		
+       // Copies remaining files to places other tasks can use
+        copy: {
+            dist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%%= config.app %>',
+                    dest: '<%%= config.dist %>',
+                    src: [
+                        '*.{ico,png,txt}',
+                        '*.html',                       
+                        'app/modules/{,**/}*.html',						
+                    ]
+                },
+                {
+                expand: true,
+                dot: true,
+                cwd: '<%%= config.app %>/app/lib/fontawesome/fonts/',
+                src: ['*.*'],
+                dest: '<%%= config.dist %>/app/fonts'
             }
-        },
-
-        // Automatically inject Bower components into the app
-        bowerInstall: {
-            target: {
-                src: [
-                    'www/index.html'
                 ]
             }
         },
 
-        //Injects all the scripts into the index html file
-        //TODO a bit messy atm. Could be improved !
-        injector: {
+        // Run some tasks in parallel to speed up build process
+         concurrent: {
+            dist: [
+                'copy:dist'
+            ]
+        },		
+		
+		// Automatically inject Bower components into the HTML file
+        bowerInstall: {
+            app: {
+                src: ['<%%= config.app %>/index.html'],
+                //ignorePath: '/',
+            }
+        },
+		
+		// Reads HTML for usemin blocks to enable smart builds that automatically
+        // concat, minify and revision files. Creates configurations in memory so
+        // additional tasks can operate on them
+        useminPrepare: {
             options: {
-                addRootSlash : false,
-                transform : function(filepath, index, length){
-                    filepath = filepath.substr(4,filepath.length);
-                    switch(filepath.substr((~-filepath.lastIndexOf(".") >>> 0) + 2)){
-                        case 'js' : return filepath = '<script src="'+filepath+'"></script>'
-                            break;
-                        case 'css': return filepath = '<link rel="stylesheet" href="'+filepath+'" />';
-                            break;
-                        default: console.log('File extension not supported');
-                            break;
-                    }
-                }
+                dest: '<%%= config.dist %>'
             },
-            local_dependencies: {
-                files: {
-                    'www/index.html': [
-                        'www/app/js/config.js',
-                        'www/app/js/application.js',
-                        'www/app/modules/*/*.js',
-                        'www/app/modules/*/config/*.js',
-                        'www/app/modules/*/services/*.js',
-                        'www/app/modules/*/directives/*.js',
-                        'www/app/modules/*/filters/*.js',
-                        'www/app/modules/*/controllers/*.js',
-                        'www/app/css/**/*.css'
-                    ]
-                }
+            html: '<%%= config.app %>/index.html'
+        },
+
+        // Performs rewrites based on rev and the useminPrepare configuration
+        usemin: {
+            options: {
+                assetsDirs: ['<%%= config.dist %>', '/images']
+            },
+            html: ['<%%= config.dist %>/{,*/}*.html'],
+            css: ['<%%= config.dist %>/styles/{,*/}*.css']
+        },
+
+        // The following *-min tasks produce minified files in the dist folder
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= config.app %>/app/img',
+                    src: '{,*/}*.{gif,jpeg,jpg,png}',
+                    dest: '<%%= config.dist %>/app/img'
+                }]
             }
         },
 
-        // Test settings
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js',
-                singleRun: true
+        svgmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= config.app %>/app/img/',
+                    src: '{,*/}*.svg',
+                    dest: '<%%= config.dist %>/app/img/'
+                }]
+            }
+        },
+
+        htmlmin: {
+            dist: {
+                options: {
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true,
+                    removeCommentsFromCDATA: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%%= config.dist %>',
+                    src: '{,**/}*.html',
+                    dest: '<%%= config.dist %>'
+                }]
+            }
+        },
+
+		// Refer to http://stackoverflow.com/questions/21056767/angular-and-grunt
+        uglify: {
+			options: {
+				report: 'min',
+				mangle: false
+			}
+		},
+        concat: {
+             dist: {}
+        },
+		
+		//Process html files with special comments:
+		processhtml: {
+			options:{
+				commentMarker: 'process',
+				strip: true
+			},
+			server: {
+				files: {
+				'<%%= config.tmp %>/index.html': ['<%%= config.app %>/index.html']
+				}
+			},
+			dist: {
+				files: {
+				'<%%= config.tmp %>/index.html': ['<%%= config.app %>/index.html']
+				}
+			}
+		},
+		
+		// The actual grunt server settings
+        connect: {
+            options: {
+                port: 0,
+                open: true,
+                livereload: 35729,
+                // Change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+            livereload: {
+                options: {
+                    middleware: function(connect) {
+                        return [
+                            connect.static('.tmp'),
+							connect().use('/app/css/', connect.static('./.tmp/css/')),
+                            connect.static(config.app)
+                        ];
+                    }
+                }
+            },
+            dist: {
+                options: {
+                    base: '',
+                    livereload: false
+                }
             }
         }
-
-    });
-
-
-    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-        grunt.task.run([
-            'bowerInstall',
-            'injector',
-            'connect:livereload',
-            'watch'
-        ]);
-    });
-
-    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run(['serve:' + target]);
-    });
-
-    grunt.registerTask('build', [
-        'bowerInstall',
-        'injector'
-    ]);
-
-    grunt.registerTask('default', [
-        'newer:jshint',
-        'build'
+		
+		
+	    });
+	grunt.loadNpmTasks('grunt-processhtml');
+	
+	grunt.registerTask('serve', function (target) {
+		grunt.task.run([
+			'clean:server',
+			'bowerInstall',
+			'autoprefixer',
+			'processhtml:server',
+			'connect:livereload',
+			'watch'
+		]);
+	});
+	
+	grunt.registerTask('build', [
+        'clean:dist',
+		'bowerInstall',
+		'concurrent:dist',
+        'useminPrepare',
+		'concat',
+		'cssmin',
+		'uglify',
+        'usemin',		
+		'imagemin',
+		'svgmin',
+		'htmlmin',
     ]);
 };

@@ -27,7 +27,7 @@ var FilterGenerator = yeoman.generators.NamedBase.extend({
 	},
 
 	renderFilterFile: function() {
-		this.template('_filter.js', 'www/app/modules/' + this.slugifiedModuleName + '/filters/' + this.slugifiedName + '.js')
+		this.template('_filter.js', 'app/app/modules/' + this.slugifiedModuleName + '/filters/' + this.slugifiedName + '.js')
 	}
 });
 

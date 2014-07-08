@@ -75,18 +75,18 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
 		this.mkdir('public/modules/' + this.slugifiedName);
 
 		// Create module sub-folders
-		if (this.addConfigFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/config');
-		if (this.addControllersFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/controllers');
-		if (this.addCSSFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/css');
-		if (this.addDirectivesFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/directives');
-		if (this.addFiltersFolder) this.mkdir('www/app//modules/' + this.slugifiedName + '/filters');
-		if (this.addImagesFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/img');
-		if (this.addServicesFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/services');
-		if (this.addTestsFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/tests');
-		if (this.addViewsFolder) this.mkdir('www/app/modules/' + this.slugifiedName + '/views');
+		if (this.addConfigFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/config');
+		if (this.addControllersFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/controllers');
+		if (this.addCSSFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/css');
+		if (this.addDirectivesFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/directives');
+		if (this.addFiltersFolder) this.mkdir('app/app//modules/' + this.slugifiedName + '/filters');
+		if (this.addImagesFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/img');
+		if (this.addServicesFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/services');
+		if (this.addTestsFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/tests');
+		if (this.addViewsFolder) this.mkdir('app/app/modules/' + this.slugifiedName + '/views');
 
 		// Render angular module definition
-		this.template('_module.js', 'www/app/modules/' + this.slugifiedName + '/' + this.slugifiedName + '.js');
+		this.template('_module.js', 'app/app/modules/' + this.slugifiedName + '/' + this.slugifiedName + '.js');
 	}
 });
 
