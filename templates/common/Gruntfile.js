@@ -1,44 +1,36 @@
-// Generated on 2014-04-29 using generator-angularjs-cordova 0.0.0
 'use strict';
-
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
 
-    // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
-    // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    // Define the configuration for all the tasks
     grunt.initConfig({
 
-        // Project settings
         yeoman: {
-            // configurable paths
-            app: 'app'
+            app: 'app',
+            dist: 'www'
         },
 
-        // Watches files for changes and runs tasks based on the changed files
         watch: {
             bower: {
                 files: ['bower.json'],
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['/js/{,*/}*.js', '/modules/{,*/}*.js'],
+                files: ['<%%= yeoman.app %>/**/*.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: true
                 }
             },
+            jsTest: {
+                files: ['<%%= yeoman.app %>/modules/**/tests/unit/*.js'],
+                tasks: ['newer:jshint:test', 'karma']
+            },
             styles: {
-                files: ['/styles/{,*/}*.css'],
+                files: ['<%%= yeoman.app %>/{,*/}*.css'],
                 tasks: ['newer:copy:styles', 'autoprefixer']
             },
             gruntfile: {
@@ -46,11 +38,9 @@ module.exports = function (grunt) {
             }
         },
 
-        // The actual grunt server settings
         connect: {
             options: {
                 port: 9000,
-                // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost',
                 livereload: 35729
             },
@@ -71,6 +61,11 @@ module.exports = function (grunt) {
                         'test',
                         ''
                     ]
+                }
+            },
+            dist: {
+                options: {
+                  base: '<%%= yeoman.dist %>'
                 }
             }
         },
