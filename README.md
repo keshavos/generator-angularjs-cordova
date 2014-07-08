@@ -1,11 +1,13 @@
-# AngularJS Cordova generator [![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)](https://travis-ci.org/keshavos/generator-angularjs-cordova)
+# AngularJS Cordova generator
+[![Build Status](https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)](https://travis-ci.org/keshavos/generator-angularjs-cordova)
+
 
 [![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
 
 
 ## Changelog
 
-* 0.1.0
+* 0.1.4
     * Uprade to cordova 3.5
     * Better dependency declarations.
     * More tests
