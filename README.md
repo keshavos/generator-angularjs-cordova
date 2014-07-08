@@ -1,4 +1,4 @@
-# AngularJS Cordova generator [![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
+# AngularJS Cordova generator [![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
 
 
 [![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
@@ -7,9 +7,9 @@
 ## Changelog
 
 * 0.1.0
-    * Uprade to cordova 3.5 
+    * Uprade to cordova 3.5
     * Better dependency declarations.
-    * More tests 
+    * More tests
     * Refined documentation/ README
 
 * 0.0.2
@@ -27,12 +27,12 @@ npm install -g generator-angularjs-cordova
 
 ## Overview
 
-A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators. 
+A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators.
 
 ### Technologies:
 
 * [Cordova](http://phonegap.com) - for packaging your HTML, CSS and Javascript into deployable mobile apps.
-This generator currently has not been tested for its compatibility with phonegap. It might be added in the future. 
+This generator currently has not been tested for its compatibility with phonegap. It might be added in the future.
 
 * [AngularJS](http://angularjs.org) - One of the most popular Javascript MVC/MV** frameworks that is available out there
 
@@ -40,8 +40,8 @@ This generator currently has not been tested for its compatibility with phonegap
 
 ### Features
 
-* Uses the [Vertical Module approach](http://meanjs.org/docs.html#angularjs-modules) for initializing and extending the angularjs application. 
-The project structure suggested by the Angular team with the [angular-seed](https://github.com/angular/angular-seed) works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project. 
+* Uses the [Vertical Module approach](http://meanjs.org/docs.html#angularjs-modules) for initializing and extending the angularjs application.
+The project structure suggested by the Angular team with the [angular-seed](https://github.com/angular/angular-seed) works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.
 
 
 ## Getting Started
@@ -54,7 +54,7 @@ Before you begin make sure you have the [yo scaffolding tool](http://yeoman.io/g
 $ npm install -g yo
 ```
 
-Once ready, you should be able to use this with 
+Once ready, you should be able to use this with
 
 ```
 npm install -g generator-angularjs-cordova
@@ -84,11 +84,11 @@ Once setup, you can use any of the following sub-generators for extending your A
 * [angularjs-cordova:angular-test](#angularjs-test-sub-generator)
 * [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
 
-The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead. 
+The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.
 
 All the available cordova commands can be listed by typing the following in the command line:
 
-`cordova help` 
+`cordova help`
 
 As per **cordova v3.5.0-0.2.4**, these are the available options
 
@@ -208,7 +208,7 @@ $ yo angularjs-cordova:angular-controller <controller-name>
 The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module **controllers** folder and a test file in the **tests** folder.
 
 
-**Don't forget!** This time you pass the controller name as an argument. 
+**Don't forget!** This time you pass the controller name as an argument.
 
 
 
@@ -283,15 +283,15 @@ Your MEAN application comes pre-bundled with the Karma test runner and Jasmine t
 
 
 ```
-$ yo angularjs-cordova:angular-test <controller-name> 
+$ yo angularjs-cordova:angular-test <controller-name>
 ```
 
 This will create a test file for your controller, and if the sub-generator doesn't find the specified controller file, it will create one for you.
 
 
-**Don't forget!** You're suppose to pass the controller name as an argument. 
+**Don't forget!** You are supposed to pass the controller name as an argument.
 
-### 
+###
 ## License
 
 MIT

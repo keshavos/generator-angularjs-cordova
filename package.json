@@ -22,8 +22,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "postinstall": "bower install --config.interactive=false"
+    "test": "./node_modules/.bin/mocha"
   },
   "keywords": [
     "yeoman-generator",
