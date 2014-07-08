@@ -1,6 +1,18 @@
 # AngularJS Cordova generator
 
-[![Build Status] (https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
+[![Build Status] (https://api.travis-ci.org/keshavos/generator-angularjs-cordova.svg)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
+
+
+[![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
+
+
+## Installation
+
+```
+npm install -g generator-angularjs-cordova
+```
+
+
 
 ##Overview
 
