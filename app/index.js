@@ -405,7 +405,7 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp() {
 
 Generator.prototype.parseTemplates = function parseTemplates() {
     this.template('../../templates/common/_bower.json', 'bower.json');
-    this.template('../../templates/common/_karma.conf.js', 'karama.conf.js');
+    this.template('../../templates/common/_karma.conf.js', 'karma.conf.js');
     this.template('../../templates/common/_package.json', 'package.json');
     this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 };
