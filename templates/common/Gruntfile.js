@@ -134,7 +134,7 @@ module.exports = function (grunt) {
         // Test settings
         karma: {
             unit: {
-                configFile: 'karma.conf.js',
+                configFile: 'app/tests/unit/karma.conf.js',
                 singleRun: true
             }
         }
@@ -159,6 +159,13 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'bowerInstall',
         'injector'
+    ]);
+
+    /**
+     * Unit tests with karma or e2e tests with protractor
+     */
+    grunt.registerTask('test', [
+
     ]);
 
     grunt.registerTask('default', [

@@ -375,15 +375,15 @@ Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     console.log('5. Copying required files');
     console.log('*****************************************');
 
-    this.copy('Procfile');
-    this.copy('README.md');
+    this.copy('../templates/common/Procfile', 'Procfile');
+    this.copy('../templates/common/README.md', 'README.md');
 
     // Copy project hidden files
-    this.copy('bowerrc', '.bowerrc');
-    this.copy('jshintrc', '.jshintrc');
-    this.copy('gitignore', '.gitignore');
-    this.copy('slugignore', '.slugignore');
-    this.copy('travis.yml', '.travis.yml');
+    this.copy('../templates/common/bowerrc', '.bowerrc');
+    this.copy('../templates/common/jshintrc', '.jshintrc');
+    this.copy('../templates/common/gitignore', '.gitignore');
+    this.copy('../templates/common/slugignore', '.slugignore');
+    this.copy('../templates/common/travis.yml', '.travis.yml');
 
     this.config.save(); //http://yeoman.io/blog/cleanup.html
 };
@@ -402,16 +402,16 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp() {
     this.mkdir('app');
 
     // Copy app folder modules
-    this.directory('app/', 'app/');
+    this.directory('../templates/app/', 'app/');
 
     done();
 };
 
 Generator.prototype.parseTemplates = function parseTemplates() {
-    this.template('../../templates/common/_package.json', 'package.json');
-    this.template('../../templates/common/_bower.json', 'bower.json');
-    this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-    this.template('../../templates/common/index.html', 'app/index.html');
+    this.template('../templates/common/_package.json', 'package.json');
+    this.template('../templates/common/_bower.json', 'bower.json');
+    this.template('../templates/common/Gruntfile.js', 'Gruntfile.js');
+    this.template('../templates/common/index.html', 'app/index.html');
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {
