@@ -66,7 +66,7 @@ describe('Cordova-AngularJs app', function(){
         it('should create controller and test files', function(){
             var expected = [
                 'app/modules/core/controllers/foo.js',
-                'app/modules/core/tests/foo.spec.js'
+                'app/modules/core/tests/unit/foo.spec.js'
             ];
 
             helpers.assertFiles(expected);
