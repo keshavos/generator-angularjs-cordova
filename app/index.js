@@ -288,13 +288,12 @@ Generator.prototype.setupCordovaProject = function() {
 
     try {
         cordova.create(process.cwd(), this.packagename, this.cordovaappname, function() {
-                var cwd = process.cwd();
-                console.log('*****************************************');
-                console.log('1. Cordova project created');
-                console.log('*****************************************');
-                done();
-            }
-        );
+            var cwd = process.cwd();
+            console.log('*****************************************');
+            console.log('1. Cordova project created');
+            console.log('*****************************************');
+            done();
+        });
     } catch (err) {
         console.error('Failed to create cordova project: ' + err);
         process.exit(1);
@@ -375,15 +374,12 @@ Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     console.log('5. Copying required files');
     console.log('*****************************************');
 
-    this.copy('../templates/common/Procfile', 'Procfile');
-    this.copy('../templates/common/README.md', 'README.md');
-
-    // Copy project hidden files
-    this.copy('../templates/common/bowerrc', '.bowerrc');
-    this.copy('../templates/common/jshintrc', '.jshintrc');
-    this.copy('../templates/common/gitignore', '.gitignore');
-    this.copy('../templates/common/slugignore', '.slugignore');
-    this.copy('../templates/common/travis.yml', '.travis.yml');
+    this.copy('../../templates/common/jshintrc', '.jshintrc');
+    this.copy('../../templates/common/bowerrc', '.bowerrc');
+    this.copy('../../templates/common/editorconfig', '.editorconfig');
+    this.copy('../../templates/common/gitignore', '.gitignore');
+    this.copy('../../templates/common/README.md', 'README.md');
+    this.copy('../../templates/common/travis.yml', '.travis.yml');
 
     this.config.save(); //http://yeoman.io/blog/cleanup.html
 };
@@ -402,16 +398,16 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp() {
     this.mkdir('app');
 
     // Copy app folder modules
-    this.directory('../templates/app/', 'app/');
+    this.directory('../../templates/app/', 'app/');
 
     done();
 };
 
 Generator.prototype.parseTemplates = function parseTemplates() {
-    this.template('../templates/common/_package.json', 'package.json');
-    this.template('../templates/common/_bower.json', 'bower.json');
-    this.template('../templates/common/Gruntfile.js', 'Gruntfile.js');
-    this.template('../templates/common/index.html', 'app/index.html');
+    this.template('../../templates/common/_bower.json', 'bower.json');
+    this.template('../../templates/common/_karma.conf.js', 'karama.conf.js');
+    this.template('../../templates/common/_package.json', 'package.json');
+    this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {
@@ -426,7 +422,7 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
         wiredep({
             directory: 'app/lib',
             bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-            ignorePath: 'app/app/',
+            ignorePath: 'app/',
             src: 'app/index.html',
             fileTypes: {
                 html: {
