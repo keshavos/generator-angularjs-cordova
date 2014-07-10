@@ -16,5 +16,10 @@ describe('Controller: <%= classifiedControllerName %>Controller', function () {
     });
   }));
 
+  //Tests
+  it('should..', function(){
+
+  });
+
 
 });
