@@ -7,54 +7,99 @@ var util = require('util'),
 
 var TestGenerator = yeoman.generators.NamedBase.extend({
 
+
+
     /**
-     * Prompt which module the test file needs to belong to
-    */
-    askForModuleName: function() {
+     * Assign all app variables required to generate test files
+     */
+    promptTestTypes: function() {
         var done = this.async();
 
-        var prompts = [{
-            name: 'moduleName',
-            message: 'Which module does this test belongs to?',
-            default: 'core'
-        }];
-
-        this.prompt(prompts, function(props) {
-            this.moduleName = props.moduleName;
-            this.slugifiedModuleName = this._.slugify(this.moduleName);
-
-            this.slugifiedControllerName = this._.slugify(this._.humanize(this.name));
-            this.classifiedControllerName = this._.classify(this.slugifiedControllerName);
-            this.humanizedControllerName = this._.humanize(this.slugifiedControllerName);
-
-            done();
+        this.prompt([{
+          type: 'list',
+          name: 'testType',
+          message: 'Select the type of test file required',
+          choices: [{
+                name: 'unit',
+                value: 'unit',
+                checked: true
+            }, {
+                name: 'e2e',
+                value: 'e2e',
+                checked: false
+          }]
+        }], function(props){
+                if(props.testType=='unit'){
+                    this.renderUnitTestFile();
+                }
+                if(props.testType=='e2e'){
+                    this.renderE2eTestFile();
+                }
         }.bind(this));
     },
 
     /**
-     * If controller file exists we create a test for it otherwise we will first create a controller
-    */
-    renderController: function() {
-        var controllerFilePath = process.cwd() + '/app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js';
-
-
-        if (!fs.existsSync(controllerFilePath)) {
-            this.template('_controller.js', '/app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js')
-        }
-    },
-
-    /**
-     * Render Unit test file
+     * Render Unit test file based on type and name of the file - provided by the user
     */
     renderUnitTestFile: function() {
-        this.template('_tests.spec.js', '/app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedControllerName + '.spec.js')
-    }
+
+        this.prompt([{
+            name: 'moduleName',
+            message: 'Which module does this unit test belong to?',
+            default: 'core'
+        }, {
+            type: 'list',
+            name: 'unitTestType',
+            message: 'What should this unit test target?',
+            choices: [{
+                    name:'Controller',
+                    value: 'controller',
+                    checked: true,
+                }, {
+                    name:'Service',
+                    value: 'service',
+                    checked: false,
+                }, {
+                    name:'Directive',
+                    value: 'directive',
+                    checked: false,
+                }, {
+                    name:'Filter',
+                    value: 'filter',
+                    checked: false,
+                }
+            ]
+        }, {
+            name: 'unitTestName',
+            value: 'unitTestName',
+            message : 'What do you want to call this unit test file?',
+            default: 'hey'
+        }], function(props){
+
+            this.moduleName = props.moduleName;
+            this.slugifiedModuleName = this._.slugify(this.moduleName);
+            this.slugifiedTestFileName = this._.slugify(this._.humanize(props.unitTestName));
+
+            /*console.log('this.moduleName', this.moduleName);
+            console.log('this.slugifiedModuleName', this.slugifiedModuleName);
+            console.log('this.slugifiedTestFileName', this.slugifiedTestFileName);*/
+
+            var templateFileName = '_'+props.unitTestType+'.spec.js';
+            var newFileName = this.slugifiedTestFileName +props.unitTestType+'.spec.js'
+
+            console.log('../../templates/javascript/unit/'+templateFileName, 'app/modules/'+this.slugifiedModuleName+'/tests/unit/'+newFileName);
+
+        }.bind(this));
+
+    },
 
     /**
      * Render e2e test file
     */
     renderE2eTestFile: function() {
-        this.template('_tests.spec.js', '/app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedControllerName + '.spec.js')
+
+        /*this.template('_tests.spec.js', '/app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedControllerName + '.spec.js');*/
+        console.log('renderE2eTestFile called');
     }
 
 });
