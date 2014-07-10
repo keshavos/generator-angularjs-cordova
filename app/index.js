@@ -380,6 +380,7 @@ Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     this.copy('../../templates/common/gitignore', '.gitignore');
     this.copy('../../templates/common/README.md', 'README.md');
     this.copy('../../templates/common/travis.yml', '.travis.yml');
+    this.copy('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 
     this.config.save(); //http://yeoman.io/blog/cleanup.html
 };
@@ -407,7 +408,6 @@ Generator.prototype.parseTemplates = function parseTemplates() {
     this.template('../../templates/common/_bower.json', 'bower.json');
     this.template('../../templates/common/_karma.conf.js', 'karma.conf.js');
     this.template('../../templates/common/_package.json', 'package.json');
-    this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 };
 
 Generator.prototype._injectDependencies = function _injectDependencies() {
