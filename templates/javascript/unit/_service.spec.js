@@ -1,18 +1,17 @@
 'use strict';
 
-describe('Service: <%= cameledName %>', function () {
+describe('Service: <%= slugifiedTestFileName %>Service', function () {
 
-  // load the service's module
-  beforeEach(module('<%= scriptAppName %>'));
+    beforeEach(module('<%= slugifiedModuleName %>'));
 
-  // instantiate service
-  var <%= cameledName %>;
-  beforeEach(inject(function (_<%= cameledName %>_) {
-    <%= cameledName %> = _<%= cameledName %>_;
-  }));
+    var <%= slugifiedTestFileName %>;
 
-  it('should do something', function () {
-    expect(!!<%= cameledName %>).toBe(true);
-  });
+    beforeEach(inject(function (_<%= slugifiedTestFileName %>Service_) {
+        <%= slugifiedTestFileName %>Service = _<%= slugifiedTestFileName %>Service_;
+    }));
+
+    it('should ...', function () {
+
+    });
 
 });

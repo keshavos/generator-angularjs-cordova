@@ -1,20 +1,17 @@
 'use strict';
 
-describe('Directive: <%= cameledName %>', function () {
+describe('Directive: <%= slugifiedTestFileName %>', function () {
 
-  // load the directive's module
-  beforeEach(module('<%= scriptAppName %>'));
+    beforeEach(module('<%= slugifiedModuleName %>'));
 
-  var element,
-    scope;
+    var element,
+        scope;
 
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
+    beforeEach(inject(function ($rootScope) {
+        scope = $rootScope.$new();
+    }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<<%= _.dasherize(name) %>></<%= _.dasherize(name) %>>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the <%= cameledName %> directive');
-  }));
+    it('should ...', inject(function ($compile) {
+
+    }));
 });
