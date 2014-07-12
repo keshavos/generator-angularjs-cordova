@@ -7,8 +7,19 @@
 
 ## Changelog
 
+* 0.2.0
+    * Move development app/ to root directory
+    ** Add grunt tasks to perform build tasks which copies only required source to www/ for build
+    ** Add grunt tasks
+    *** `grunt serve` serves the development app
+    *** `grunt build` build related tasks and moves source to www/
+    *** `grunt karma` runs karma tests
+    *** `grunt protractor` runs protractor e2e tests
+    **** Requires webdriver to be started, app running
+
+
 * 0.1.4
-    * Uprade to cordova 3.5
+    * Upgrade to cordova 3.5
     * Better dependency declarations.
     * More tests
     * Refined documentation/ README
