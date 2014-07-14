@@ -18,346 +18,6 @@ describe('generator-angularjs: ', function(){
     });
 
     /**
-     * yo angularjs-cordova:angular-config
-     * Config sub-generator
-     */
-    describe('Config sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-config',
-                'foo',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the config file was successfully created
-         */
-        it('should create the partial file', function(){
-            var expected = [
-                'app/modules/core/config/foo.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-controller
-     * Controller sub-generator
-     */
-    describe('Controller sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-controller',
-                'foo',
-                this,{
-                    'moduleName':'core'
-                }, done);
-        });
-
-        /**
-         * Test the controller and unit test file were successfully created
-         */
-        it('should create controller and test files', function(){
-            var expected = [
-                'app/modules/core/controllers/foo.js',
-                'app/modules/core/tests/unit/foocontroller.spec.js'
-            ];
-
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-directive
-     * Directive sub-generator
-     */
-    describe('Directive sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-directive',
-                'foo',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the directive and unit test file were successfully created
-         */
-        it('should create the directive and unit test files', function(){
-            var expected = [
-                'app/modules/core/directives/foo.js',
-                'app/modules/core/tests/unit/foodirective.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-filter
-     * Filter sub-generator
-     */
-    describe('Filter sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-filter',
-                'foo',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the filter and unit test file were successfully created
-         */
-        it('should create the filter and unit test files', function(){
-            var expected = [
-                'app/modules/core/filters/foo.js',
-                'app/modules/core/tests/unit/foofilter.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-module
-     * Module sub-generator
-     */
-    describe('Module sub-generator', function(){
-        /**
-         Run the sub-generator to generate the necessary files before executing any tests on it
-        */
-        before(function(done){
-            runGenerator('angular-module',
-                'foo',
-                this,{
-                    'config': true,
-                    'controllers': true,
-                    'css': true,
-                    'directives':true,
-                    'filters':true,
-                    'img':true,
-                    'services':true,
-                    'tests':true,
-                    'views':true
-                }, done);
-        });
-
-        /**
-         * Check if the folders were successfully created
-         */
-        it('should create main module file', function(){
-            var expected = [
-                'app/modules/foo/foo.js'
-            ];
-            helpers.assertFile(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-route
-     * Route sub-generator
-     */
-    describe('Route sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-route',
-                'foo',
-                this,{
-                    'moduleName': 'core',
-                    'routePath': 'foo',
-                    'viewName':'foo',
-                    'controllerName':'foo'
-                }, done);
-        });
-
-        /**
-         * Check if the partial, controller and controller unit test files were successfully created
-         */
-        it('should create the partial, controller and controller unit test files', function(){
-            var expected = [
-                'app/modules/core/controllers/foo.js',
-                'app/modules/core/tests/unit/foocontroller.spec.js',
-                'app/modules/core/views/foo.html',
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-service
-     * Service sub-generator
-     */
-    describe('Service sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-service',
-                'foo',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the service was successfully created
-         */
-        it('should create the service js file', function(){
-            var expected = [
-                'app/modules/core/services/foo.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-test
-     * Test sub-generator
-     */
-    describe('Test - CONTROLLER UNIT TEST - sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-test',
-                    'foounit',
-                    this,{
-                        'moduleName': 'core',
-                        'testType': 'unitTest',
-                        'unitTestType' : 'Controller'
-                    }, done);
-        });
-
-        it('should generate a unit test file for a controller', function(){
-            var expected = [
-                'app/modules/core/tests/unit/foounitcontroller.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-test
-     * Test generation of service unit test file from the angular-test sub-generator
-     */
-    describe('Test - SERVICE UNIT TEST - sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-test',
-                    'foounit',
-                    this,{
-                        'moduleName': 'core',
-                        'testType': 'unitTest',
-                        'unitTestType' : 'Service'
-                    }, done);
-        });
-
-        it('should generate a unit test file for a service', function(){
-            var expected = [
-                'app/modules/core/tests/unit/foounitservice.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-test
-     * Test generation of directive unit test file from the angular-test sub-generator
-     */
-    describe('Test - DIRECTIVE UNIT TEST - sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-test',
-                    'foounit',
-                    this,{
-                        'moduleName': 'core',
-                        'testType': 'unitTest',
-                        'unitTestType' : 'Directive'
-                    }, done);
-        });
-
-        it('should generate a unit test file for a directive', function(){
-            var expected = [
-                'app/modules/core/tests/unit/foounitdirective.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-test
-     * Test generation of filter unit test file from the angular-test sub-generator
-     */
-    describe('Test - FILTER UNIT TEST - sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-test',
-                    'foounit',
-                    this,{
-                        'moduleName': 'core',
-                        'testType': 'unitTest',
-                        'unitTestType' : 'Filter'
-                    }, done);
-        });
-
-        it('should generate a unit test file for a filter', function(){
-            var expected = [
-                'app/modules/core/tests/unit/foounitfilter.spec.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-view
-     * View sub-generator
-     */
-    describe('View sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-view',
-                'foo',
-                this,{
-                    'moduleName': 'core',
-                    'controllerName': true,
-                    'addRoute' : true,
-                    'routePath': 'foo'
-                }, done);
-        });
-
-        /**
-         * Check if the partial was successfully created
-         */
-        it('should create the test and controller js file', function(){
-            var expected = [
-                'app/modules/core/views/foo.html'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
      * yo angularjs-cordova
      * Creates a basic cordova angularjs app
      * Adds Android platform
@@ -411,11 +71,377 @@ describe('generator-angularjs: ', function(){
                 'app/modules/core/views/home.html'
             ];
 
-            helpers.assertFiles(expected);
+            assert.file(expected);
         });
 
     });
 
+    /**
+     * yo angularjs-cordova:angular-module
+     * Module sub-generator
+     */
+    describe('angular-module sub-generator', function(){
+        /**
+         Run the sub-generator to generate the necessary files before executing any tests on it
+        */
+        before(function(done){
+            runGenerator('angular-module',
+                'foo',
+                this,{
+                    'config': true,
+                    'controllers': true,
+                    'css': true,
+                    'directives':true,
+                    'filters':true,
+                    'img':true,
+                    'services':true,
+                    'tests':true,
+                    'views':true
+                }, done);
+        });
+
+        /**
+         * Check if the folders were successfully created
+         */
+        it('should create main module file', function(){
+            var expected = [
+                'app/modules/foo/foo.js'
+            ];
+            helpers.assertFile(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-config
+     * Config sub-generator
+     */
+    describe('angular-config sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-config',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the config file was successfully created
+         */
+        it('should create the partial file', function(){
+            var expected = [
+                'app/modules/core/config/foo.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-controller
+     * Controller sub-generator
+     */
+    describe('angular-controller sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-controller',
+                'foo',
+                this,{
+                    'moduleName':'core'
+                }, done);
+        });
+
+        /**
+         * Test the controller and unit test file were successfully created
+         */
+        it('should create controller and test files', function(){
+            var expected = [
+                'app/modules/core/controllers/foo.js',
+                'app/modules/core/tests/unit/foocontroller.spec.js'
+            ];
+
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-directive
+     * Directive sub-generator
+     */
+    describe('angular-directive sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-directive',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the directive and unit test file were successfully created
+         */
+        it('should create the directive and unit test files', function(){
+            var expected = [
+                'app/modules/core/directives/foo.js',
+                'app/modules/core/tests/unit/foodirective.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-filter
+     * Filter sub-generator
+     */
+    describe('angular-filter sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-filter',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the filter and unit test file were successfully created
+         */
+        it('should create the filter and unit test files', function(){
+            var expected = [
+                'app/modules/core/filters/foo.js',
+                'app/modules/core/tests/unit/foofilter.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-route
+     * Route sub-generator
+     */
+    describe('angular-route sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-route',
+                'foo',
+                this,{
+                    'moduleName': 'core',
+                    'routePath': 'foo',
+                    'viewName':'foo',
+                    'controllerName':'foo'
+                }, done);
+        });
+
+        /**
+         * Check if the partial, controller and controller unit test files were successfully created
+         */
+        it('should create the partial, controller and controller unit test files', function(){
+            var expected = [
+                'app/modules/core/controllers/foo.js',
+                'app/modules/core/tests/unit/foocontroller.spec.js',
+                'app/modules/core/views/foo.html',
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-service
+     * Service sub-generator
+     */
+    describe('angular-service sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-service',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the service was successfully created
+         */
+        it('should create the service js file', function(){
+            var expected = [
+                'app/modules/core/services/foo.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test sub-generator
+     */
+    describe('angular-test: (unitTest - controller)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Controller'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a controller', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitcontroller.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of service unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - services)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Service'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a service', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitservice.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of directive unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - directives)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Directive'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a directive', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitdirective.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of filter unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - filters)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Filter'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a filter', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitfilter.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * angularjs-cordova: angular-test (e2e test option)
+     */
+    describe('angular-test: (e2e test option)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        beforeEach(function(done){
+            runGenerator('angular-test',
+                'foo',
+                this,{
+                    'moduleName': 'core',
+                    'testType': 'e2eTest',
+                    'e2eTestName': 'foo'
+                }, done);
+        });
+
+        it('should generate e2e test folder which contains page object and test file', function(){
+            var expected = [
+                'app/modules/core/tests/e2e/foo/foo.po.js',
+                'app/modules/core/tests/e2e/foo/foo.spec.js'
+            ];
+            assert.file(expected);
+        });
+
+    });
+
+    /**
+     * yo angularjs-cordova:angular-view
+     * View sub-generator
+     */
+    describe('View sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-view',
+                'foo',
+                this,{
+                    'moduleName': 'core',
+                    'controllerName': true,
+                    'addRoute' : true,
+                    'routePath': 'foo'
+                }, done);
+        });
+
+        /**
+         * Check if the partial was successfully created
+         */
+        it('should create the test and controller js file', function(){
+            var expected = [
+                'app/modules/core/views/foo.html'
+            ];
+            assert.file(expected);
+        });
+    });
 });
 
 //Extending the yeoman helper method
