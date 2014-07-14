@@ -8,7 +8,7 @@ angular.module('<%= slugifiedModuleName %>').config(['$stateProvider',
 		state('<%= slugifiedName %>', {
 			url: '/<%= slugifiedRoutePath %>',
 			templateUrl: 'app/modules/<%= slugifiedModuleName %>/views/<%= slugifiedName %>.html',
-            controller: '<%= classfiedControllerName %>Controller'
+            controller: '<%= classifiedControllerName %>Controller'
 		});
 	}
 ]);

@@ -84,6 +84,11 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
     renderRouteViewController: function() {
         this.template('../../templates/javascript/_controller.js', 'app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js')
         this.template('../../templates/javascript/_view.html', 'app/modules/' + this.slugifiedModuleName + '/views/' + this.slugifiedViewName + '.html')
+    },
+
+    renderControllerUnitTestFile : function(){
+        this.slugifiedTestFileName = this.slugifiedControllerName;
+        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedTestFileName + 'controller.spec.js');
     }
 });
 

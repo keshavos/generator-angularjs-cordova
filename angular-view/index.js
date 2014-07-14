@@ -105,7 +105,7 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
     },
 
     renderViewFile: function() {
-        this.template('_view.html', 'www/app/modules/' + this.slugifiedModuleName + '/views/' + this.slugifiedName + '.html')
+        this.template('_view.html', 'app/modules/' + this.slugifiedModuleName + '/views/' + this.slugifiedName + '.html')
     }
 });
 
