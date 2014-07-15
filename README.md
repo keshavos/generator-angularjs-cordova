@@ -7,8 +7,23 @@
 
 ## Changelog
 
+* 0.2.0
+    * Updated README
+    * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
+    * Remove option to use the cordova template app
+    * `angular-test` sub-generator prompts to generate test template for unit (targeting controller, service, directive or filter) or end-to-end test
+    * Add grunt tasks to perform build tasks which copies only required source to `www/` for build
+    * Add grunt tasks
+        * `grunt serve` serves the development app on port 9000
+        * `grunt build` performs build related tasks and moves required source to `www/`
+        * `grunt karma` runs karma tests
+        * `protractor protractor-desktop-config.js` runs protractor e2e tests
+            * Requires webdriver to be started, app running
+            * Requires app to be running on `http://127.0.0.1:9000/`
+    * Pre-configured protractor config and working e2e example of default app
+
 * 0.1.4
-    * Uprade to cordova 3.5
+    * Upgrade to cordova 3.5
     * Better dependency declarations.
     * More tests
     * Refined documentation/ README
@@ -28,7 +43,8 @@ npm install -g generator-angularjs-cordova
 
 ## Overview
 
-A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators.
+A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [angular generator](https://github.com/yeoman/generator-angular) [angular-cordova](https://github.com/wangshijun/generator-angular-cordova). The project scaffolds an AngularJs application as described and implemented with [MEAN stack](http://meanjs.org/docs.html#angularjs-modules).
+This generator is ideal for projects where a tool is required to generate and scaffold a project based on angular and cordova. If you like pre-defined templates such as ionic, there are dedicated generators which do the job.
 
 ### Technologies:
 
@@ -69,6 +85,33 @@ yo angularjs-cordova
 ```
 
 This presents you with a series of options to initialize and customize your application
+
+Once this is done, run
+```
+grunt serve
+```
+to run the app on your browser
+
+Use
+```
+grunt build
+```
+which performs various build related tasks and copies it on to the `www/` folder where you can use the cordova commands to build/ deploy the app to emulator/ devices
+ - concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.
+ - Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them
+ - You can further customize the build tasks by suitably editing the Gruntfile
+
+###Tests (New)
+
+To run the e2e protractor tests which come shipped with the sample app, run
+
+```
+webdriver-manager update
+webdriver-manager start         ###this should start the webdriver
+grunt serve                     ###this will serve your app on http://127.0.0.1:9000/
+protractor protractor-desktop-config.js   ###this will run the protractor tests
+```
+
 
 ### Available generators
 
@@ -156,7 +199,7 @@ Command-line Flags/Options
 
 ## Application Generator
 
-The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder.
+The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder(`app/`).
 
 
 ```
@@ -164,8 +207,6 @@ $ yo angularjs-cordova
 ```
 
 The generator will ask you a few questions about your new application and will generate it for you.
-
-
 
 Now, the application generator does a great job scaffolding a whole application, but daily work requires us to repeat a lot of structured code. For this purpose we provided you with some sub-generators to help you speed up your development.
 
@@ -280,19 +321,16 @@ The sub-generator will ask you for the module name under which you would like to
 
 ## AngularJS Test Sub-Generator
 
-Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers you'll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:
+The test generator generates unit and e2e test templates for you.
 
 
 ```
-$ yo angularjs-cordova:angular-test <controller-name>
+$ yo angularjs-cordova:angular-test <name>
 ```
 
-This will create a test file for your controller, and if the sub-generator doesn't find the specified controller file, it will create one for you.
+This will prompt the user with the option to either create a unit test template or an e2e test template for the chosen module and file type.
 
 
-**Don't forget!** You are supposed to pass the controller name as an argument.
-
-###
 ## License
 
 MIT

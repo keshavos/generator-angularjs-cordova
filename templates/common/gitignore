@@ -1,5 +1,15 @@
+.DS_Store
+*.log
 node_modules
-dist
+dist/
 .tmp
 .sass-cache
 app/bower_components
+.idea/
+
+www/
+##########Platforms##########
+
+
+##########iOS##########
+platforms/ios/cordova/console.log

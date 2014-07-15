@@ -11,135 +11,84 @@ var async = require('async');
 /**
  * Should create a basic cordova angularjs app with the set default options
  */
-describe('Cordova-AngularJs app', function(){
+describe('generator-angularjs: ', function(){
     this.timeout(15000);
     after(function(){
         temp.cleanup();
     });
 
     /**
-     * yo angularjs-cordova:angular-config
-     * Config sub-generator
+     * yo angularjs-cordova
+     * Creates a basic cordova angularjs app
+     * Adds Android platform
+     * Adds Splashscreen plugin
      */
-    describe('Cordova-AngularJs - Config sub-generator', function(){
+    describe('Cordova-AngularJs default app', function(){
         /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
+         * Run the main generator to generate the necessary files before executing any tests on it
          */
         before(function(done){
-            runGenerator('angular-config',
-                'testconfig',
-                this,{
-                    'moduleName': 'core'
-                }, done);
+            runGenerator('app',
+                '',
+                this, {
+                'cordovaappname': 'HelloWorld',
+                'cordovapackagename': 'com.angularjscordova.test',
+                'platforms': ['Android'],
+                'plugins': ['Splashscreen'],
+                'angularjsName': 'AngularJsApplication',
+                'appDescription': 'AppDescription',
+                'appKeywords': 'Hello World',
+                'appAuthor': 'Yeoman',
+                'modules': ['ngCookies', 'ngAnimate', 'ngTouch', 'ngSanitize']
+            }, done);
         });
 
-        /**
-         * Check if the config file was successfully created
-         */
-        it('should create the partial file', function(){
+        it('should create all the default files', function(){
             var expected = [
-                'www/app/modules/core/config/testconfig.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-controller
-     * Controller sub-generator
-     */
-    describe('Cordova-AngularJs - Controller sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-controller',
-                'foo',
-                this,{
-                    'moduleName':'core'
-                }, done);
-        });
-
-        /**
-         * Test the controller and the test file were created successfully
-         */
-        it('should create controller and test files', function(){
-            var expected = [
-                'www/app/modules/core/controllers/foo.js',
-                'www/app/modules/core/tests/foo.spec.js'
+                '.jshintrc',
+                '.bowerrc',
+                '.editorconfig',
+                '.gitignore',
+                'README.md',
+                '.travis.yml',
+                'Gruntfile.js',
+                'bower.json',
+                'karma.conf.js',
+                'package.json',
+                'protractor-desktop-config.js.js',
+                'app/css/customcordova.css',
+                'app/css/demo.css',
+                'app/img/loaders/loader.gif',
+                'app/index.html',
+                'app/js/application.js',
+                'app/js/config.js',
+                'app/modules/core/config/routes.js',
+                'app/modules/core/controllers/home.js',
+                'app/modules/core/core.js',
+                'app/modules/core/tests/e2e/home/home.po.js',
+                'app/modules/core/tests/e2e/home/home.spec.js',
+                'app/modules/core/tests/unit/home.spec.js',
+                'app/modules/core/views/home.html'
             ];
 
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-directive
-     * Directive sub-generator
-     */
-    describe('Cordova-AngularJs - Directive sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-directive',
-                'testdirective',
-                this,{
-                    'moduleName': 'core'
-                }, done);
+            assert.file(expected);
         });
 
-        /**
-         * Check if the directive file was successfully created
-         */
-        it('should create the directive js file', function(){
-            var expected = [
-                'www/app/modules/core/directives/testdirective.js'
-            ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-filter
-     * Filter sub-generator
-     */
-    describe('Cordova-AngularJs - Filter sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-filter',
-                'testfilter',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the filter js file was successfully created
-         */
-        it('should create the partial file', function(){
-            var expected = [
-                'www/app/modules/core/filters/testfilter.js'
-            ];
-            helpers.assertFiles(expected);
-        });
     });
 
     /**
      * yo angularjs-cordova:angular-module
      * Module sub-generator
      */
-    describe('Cordova-AngularJs - Module sub-generator', function(){
+    describe('angular-module sub-generator', function(){
         /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
+         Run the sub-generator to generate the necessary files before executing any tests on it
+        */
         before(function(done){
             runGenerator('angular-module',
-                'testmodule',
+                'foo',
                 this,{
-                    'name': 'testmodule',
+                    'config': true,
                     'controllers': true,
                     'css': true,
                     'directives':true,
@@ -156,9 +105,121 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create main module file', function(){
             var expected = [
-                'www/app/modules/testmodule/testmodule.js'
+                'app/modules/foo/foo.js'
             ];
             helpers.assertFile(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-config
+     * Config sub-generator
+     */
+    describe('angular-config sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-config',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the config file was successfully created
+         */
+        it('should create the partial file', function(){
+            var expected = [
+                'app/modules/core/config/foo.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-controller
+     * Controller sub-generator
+     */
+    describe('angular-controller sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-controller',
+                'foo',
+                this,{
+                    'moduleName':'core'
+                }, done);
+        });
+
+        /**
+         * Test the controller and unit test file were successfully created
+         */
+        it('should create controller and test files', function(){
+            var expected = [
+                'app/modules/core/controllers/foo.js',
+                'app/modules/core/tests/unit/foocontroller.spec.js'
+            ];
+
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-directive
+     * Directive sub-generator
+     */
+    describe('angular-directive sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-directive',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the directive and unit test file were successfully created
+         */
+        it('should create the directive and unit test files', function(){
+            var expected = [
+                'app/modules/core/directives/foo.js',
+                'app/modules/core/tests/unit/foodirective.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-filter
+     * Filter sub-generator
+     */
+    describe('angular-filter sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-filter',
+                'foo',
+                this,{
+                    'moduleName': 'core'
+                }, done);
+        });
+
+        /**
+         * Check if the filter and unit test file were successfully created
+         */
+        it('should create the filter and unit test files', function(){
+            var expected = [
+                'app/modules/core/filters/foo.js',
+                'app/modules/core/tests/unit/foofilter.spec.js'
+            ];
+            assert.file(expected);
         });
     });
 
@@ -166,30 +227,31 @@ describe('Cordova-AngularJs app', function(){
      * yo angularjs-cordova:angular-route
      * Route sub-generator
      */
-    describe('Cordova-AngularJs - Route sub-generator', function(){
+    describe('angular-route sub-generator', function(){
         /**
          * Run the sub-generator to generate the necessary files before executing any tests on it
          */
         before(function(done){
             runGenerator('angular-route',
-                'route',
+                'foo',
                 this,{
                     'moduleName': 'core',
-                    'routePath': 'route',
-                    'viewName':'route',
-                    'controllerName':'route'
+                    'routePath': 'foo',
+                    'viewName':'foo',
+                    'controllerName':'foo'
                 }, done);
         });
 
         /**
-         * Check if the .js and the partial was successfully created
+         * Check if the partial, controller and controller unit test files were successfully created
          */
-        it('should create the partial file', function(){
+        it('should create the partial, controller and controller unit test files', function(){
             var expected = [
-                'www/app/modules/core/controllers/route.js',
-                'www/app/modules/core/views/route.html'
+                'app/modules/core/controllers/foo.js',
+                'app/modules/core/tests/unit/foocontroller.spec.js',
+                'app/modules/core/views/foo.html',
             ];
-            helpers.assertFiles(expected);
+            assert.file(expected);
         });
     });
 
@@ -197,54 +259,26 @@ describe('Cordova-AngularJs app', function(){
      * yo angularjs-cordova:angular-service
      * Service sub-generator
      */
-    describe('Cordova-AngularJs - Service sub-generator', function(){
+    describe('angular-service sub-generator', function(){
         /**
          * Run the sub-generator to generate the necessary files before executing any tests on it
          */
         before(function(done){
             runGenerator('angular-service',
-                'testservice',
+                'foo',
                 this,{
                     'moduleName': 'core'
                 }, done);
         });
 
         /**
-         * Check if the .js and the partial was successfully created
+         * Check if the service was successfully created
          */
         it('should create the service js file', function(){
             var expected = [
-                'www/app/modules/core/services/testservice.js'
+                'app/modules/core/services/foo.js'
             ];
-            helpers.assertFiles(expected);
-        });
-    });
-
-    /**
-     * yo angularjs-cordova:angular-test
-     * Test sub-generator
-     */
-    describe('Cordova-AngularJs - Test sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-test',
-                'testtest',
-                this,{
-                    'moduleName': 'core'
-                }, done);
-        });
-
-        /**
-         * Check if the .js and the partial was successfully created
-         */
-        it('should create the test and controller js file', function(){
-            var expected = [
-                'www/app/modules/core/controllers/testtest.js',
-                'www/app/modules/core/tests/testtest.spec.js'
-            ];
-            helpers.assertFiles(expected);
+            assert.file(expected);
         });
     });
 
@@ -252,15 +286,18 @@ describe('Cordova-AngularJs app', function(){
      * yo angularjs-cordova:angular-view
      * View sub-generator
      */
-    describe('Cordova-AngularJs - View sub-generator', function(){
+    describe('angular-view sub-generator', function(){
         /**
          * Run the sub-generator to generate the necessary files before executing any tests on it
          */
         before(function(done){
             runGenerator('angular-view',
-                'testview',
+                'foo',
                 this,{
-                    'moduleName': 'core'
+                    'moduleName': 'core',
+                    'controllerName': true,
+                    'addRoute' : true,
+                    'routePath': 'foo'
                 }, done);
         });
 
@@ -269,71 +306,138 @@ describe('Cordova-AngularJs app', function(){
          */
         it('should create the test and controller js file', function(){
             var expected = [
-                'www/app/modules/core/views/testview.html'
+                'app/modules/core/views/foo.html'
             ];
-            helpers.assertFiles(expected);
+            assert.file(expected);
         });
     });
 
     /**
-     * yo angularjs-cordova
-     * Creates a basic cordova angularjs app
-     * Adds Android platform
-     * Adds Splashscreen plugin  
+     * yo angularjs-cordova:angular-test
+     * Test sub-generator
      */
-    describe('Cordova-AngularJs default app', function(){
+    describe('angular-test: (unitTest - controller)', function(){
         /**
-         * Run the main generator to generate the necessary files before executing any tests on it
+         * Run the sub-generator to generate the necessary files before executing any tests on it
          */
         before(function(done){
-            runGenerator('app',
-                '',
-                this, {
-                'cordovaappname': 'HelloWorld',
-                'cordovapackagename': 'com.angularjscordova.test',
-                'platforms': ['Android'],
-                'plugins': ['Splashscreen'],
-                'angularApp': true,
-                'angularjsName': 'ngCordova',
-                'appDescription': 'AppDescription',
-                'appKeywords': 'Hello World',
-                'appAuthor': 'Yeoman',
-                'modules': ['ngCookies']
-            }, done);
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Controller'
+                    }, done);
         });
 
-        it('should create all the default files', function(){
+        it('should generate a unit test file for a controller', function(){
             var expected = [
-                // add files you expect to exist here.
-                'config.xml',
-                'www/app/css/demo.css',
-                'www/app/css/rainbow.css',
-                'www/app/img/brand/favicon.ico',
-                'www/app/img/brand/logo.png',
-                'www/app/img/loaders/loader.gif',
-                'www/app/js/application.js',
-                'www/app/js/config.js',
-                'www/app/modules/core/config/routes.js',
-                'www/app/modules/core/controllers/home.js',
-                'www/app/modules/core/core.js',
-                'www/app/modules/core/tests/header.spec.js',
-                'www/app/modules/core/tests/home.spec.js',
-                'www/app/modules/core/views/home.html',
-                'www/index.html',
-                'Gruntfile.js',
-                'Procfile',
-                'README.md',
-                '.bowerrc',
-                '.jshintrc',
-                '.gitignore',
-                '.slugignore',
-                '.travis.yml',
-                'package.json',
-                'bower.json',
-                'karma.conf.js'
+                'app/modules/core/tests/unit/foounitcontroller.spec.js'
             ];
+            assert.file(expected);
+        });
+    });
 
-            helpers.assertFiles(expected);
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of service unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - services)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Service'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a service', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitservice.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of directive unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - directives)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Directive'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a directive', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitdirective.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * yo angularjs-cordova:angular-test
+     * Test generation of filter unit test file from the angular-test sub-generator
+     */
+    describe('angular-test: (unitTest - filters)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-test',
+                    'foounit',
+                    this,{
+                        'moduleName': 'core',
+                        'testType': 'unitTest',
+                        'unitTestType' : 'Filter'
+                    }, done);
+        });
+
+        it('should generate a unit test file for a filter', function(){
+            var expected = [
+                'app/modules/core/tests/unit/foounitfilter.spec.js'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
+     * angularjs-cordova: angular-test (e2e test option)
+     */
+    describe('angular-test: (e2e test option)', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        beforeEach(function(done){
+            runGenerator('angular-test',
+                'foo',
+                this,{
+                    'moduleName': 'core',
+                    'testType': 'e2eTest'
+                }, done);
+        });
+
+        it('should generate e2e test folder which contains page object and test file', function(){
+            var expected = [
+                'app/modules/core/tests/e2e/foo/foo.po.js',
+                'app/modules/core/tests/e2e/foo/foo.spec.js'
+            ];
+            assert.file(expected);
         });
 
     });

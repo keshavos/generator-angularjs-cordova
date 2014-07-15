@@ -1,42 +1,97 @@
 'use strict';
 
 var util = require('util'),
-	fs = require('fs'),
-	yeoman = require('yeoman-generator');
+    fs = require('fs'),
+    yeoman = require('yeoman-generator');
 
 
 var TestGenerator = yeoman.generators.NamedBase.extend({
-	askForModuleName: function() {
-		var done = this.async();
 
-		var prompts = [{
-			name: 'moduleName',
-			message: 'Which module does this test belongs to?',
-			default: 'core'
-		}];
+    /**
+     * Assign all app variables required to generate test files
+     */
+    askForModuleName: function() {
+        var done = this.async();
 
-		this.prompt(prompts, function(props) {
-			this.moduleName = props.moduleName;
-			this.slugifiedModuleName = this._.slugify(this.moduleName);
+        var prompts = [{
+            name: 'moduleName',
+            message: 'Which module does this test belongs to?',
+            default: 'core'
+        }];
 
-			this.slugifiedControllerName = this._.slugify(this._.humanize(this.name));
-			this.classifiedControllerName = this._.classify(this.slugifiedControllerName);
-			this.humanizedControllerName = this._.humanize(this.slugifiedControllerName);
+        this.prompt(prompts, function(props) {
+            this.moduleName = props.moduleName;
+            this.slugifiedModuleName = this._.slugify(this.moduleName);
+            done();
+        }.bind(this));
+    },
 
-			done();
-		}.bind(this));
-	},
+    /**
+     * Prompt for either unit or e2e test
+     */
+    promptModuleType: function() {
+        var done = this.async();
 
-	renderTestFile: function() {
-		var controllerFilePath = process.cwd() + '/www/app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js';
-		
-		// If controller file exists we create a test for it otherwise we will first create a controller
-		if (!fs.existsSync(controllerFilePath)) {
-			this.template('_controller.js', 'www/app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js')
-		}
+        this.prompt([{
+            type: 'list',
+            name: 'testType',
+            message: 'Type of test file to generate',
+            choices: [{
+                name: 'unitTest',
+                value: 'unitTest',
+                message: 'Unit Test'
+            }, {
+                name: 'e2eTest',
+                value: 'e2eTest',
+                message: 'e2e Test'
+            }]
+        }, {
+            when: function(props) {
+                if (props.testType == 'unitTest') {
+                    return props;
+                }
+            },
+            type: 'list',
+            name: 'unitTestType',
+            message: 'What should this unit test target?',
+            choices: [{
+                name: 'Controller',
+                value: 'controller',
+                checked: true,
+            }, {
+                name: 'Service',
+                value: 'service',
+                checked: false,
+            }, {
+                name: 'Directive',
+                value: 'directive',
+                checked: false,
+            }, {
+                name: 'Filter',
+                value: 'filter',
+                checked: false,
+            }]
+        }], function(props) {
 
-		this.template('_tests.spec.js', 'www/app/modules/' + this.slugifiedModuleName + '/tests/' + this.slugifiedControllerName + '.spec.js')
-	}
+            this.slugifiedTestFileName = this._.slugify(this._.humanize(this.name));
+
+            if (props.testType == 'unitTest') {
+
+                this.template('../../templates/javascript/unit/_' + props.unitTestType + '.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedTestFileName + props.unitTestType + '.spec.js');
+
+            } else if (props.testType == 'e2eTest') {
+
+                this.slugifiedE2eFolder = this._.slugify(this._.humanize(this.name));
+
+                this.mkdir('app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder);
+                this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder + '/'+this.slugifiedE2eFolder+'.po.js');
+                this.template('../../templates/javascript/e2e/pageSpec.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder + '/'+this.slugifiedE2eFolder+'.spec.js');
+            }
+
+            done();
+        }.bind(this));
+    }
+
 });
 
 module.exports = TestGenerator;
