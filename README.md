@@ -9,18 +9,18 @@
 
 * 0.2.0
     * Updated README
-    * Move development app/ to root directory. The source files are copied to www/
-    * Add grunt tasks to perform build tasks which copies only required source to www/ for build
+    * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
+    * Remove option to use the cordova template app
+    * `angular-test` sub-generator prompts to generate test template for unit (targeting controller, service, directive or filter) or end-to-end test
+    * Add grunt tasks to perform build tasks which copies only required source to `www/` for build
     * Add grunt tasks
-        *  `grunt serve` serves the development app on port 9000
-        * `grunt build` performs build related tasks and moves required source to www/
+        * `grunt serve` serves the development app on port 9000
+        * `grunt build` performs build related tasks and moves required source to `www/`
         * `grunt karma` runs karma tests
         * `protractor protractor-desktop-config.js` runs protractor e2e tests
             * Requires webdriver to be started, app running
             * Requires app to be running on `http://127.0.0.1:9000/`
-    * Adds end to end template file test generation with the angular-test sub-generator
-    * Pre-configured protractor config and working example of default app
-
+    * Pre-configured protractor config and working e2e example of default app
 
 * 0.1.4
     * Upgrade to cordova 3.5
