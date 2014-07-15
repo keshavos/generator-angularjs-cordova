@@ -71,16 +71,6 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
                 value: 'filter',
                 checked: false,
             }]
-        }, {
-            when: function(props) {
-                if (props.testType == 'e2eTest') {
-                    return props;
-                }
-            },
-            name: 'e2eTestName',
-            value: 'e2eTestName',
-            message: 'What is the name of the PageObject & test file you would like to generate?',
-            default: 'default'
         }], function(props) {
 
             this.slugifiedTestFileName = this._.slugify(this._.humanize(this.name));
@@ -91,7 +81,7 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
 
             } else if (props.testType == 'e2eTest') {
 
-                this.slugifiedE2eFolder = this._.slugify(this._.humanize(props.e2eTestName));
+                this.slugifiedE2eFolder = this._.slugify(this._.humanize(this.name));
 
                 this.mkdir('app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder);
                 this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder + '/'+this.slugifiedE2eFolder+'.po.js');

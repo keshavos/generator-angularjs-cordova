@@ -7,7 +7,7 @@ describe('<%= slugifiedE2eFolder %> page tests',function(){
      * Before each function, load the page
      */
     beforeEach(function() {
-      browser.get('http://127.0.0.1:9000/#!/<%= slugifiedE2eFolder %>');
+      <%= slugifiedE2eFolder %>Page.goTo<%= slugifiedE2eFolder %>();
     });
 
     /**

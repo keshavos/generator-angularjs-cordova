@@ -428,8 +428,7 @@ describe('generator-angularjs: ', function(){
                 'foo',
                 this,{
                     'moduleName': 'core',
-                    'testType': 'e2eTest',
-                    'e2eTestName': 'foo'
+                    'testType': 'e2eTest'
                 }, done);
         });
 
