@@ -27,7 +27,7 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
     },
 
     renderServiceFile: function() {
-        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js')
+        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js');
     }
 });
 

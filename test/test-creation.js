@@ -283,6 +283,36 @@ describe('generator-angularjs: ', function(){
     });
 
     /**
+     * yo angularjs-cordova:angular-view
+     * View sub-generator
+     */
+    describe('angular-view sub-generator', function(){
+        /**
+         * Run the sub-generator to generate the necessary files before executing any tests on it
+         */
+        before(function(done){
+            runGenerator('angular-view',
+                'foo',
+                this,{
+                    'moduleName': 'core',
+                    'controllerName': true,
+                    'addRoute' : true,
+                    'routePath': 'foo'
+                }, done);
+        });
+
+        /**
+         * Check if the partial was successfully created
+         */
+        it('should create the test and controller js file', function(){
+            var expected = [
+                'app/modules/core/views/foo.html'
+            ];
+            assert.file(expected);
+        });
+    });
+
+    /**
      * yo angularjs-cordova:angular-test
      * Test sub-generator
      */
@@ -413,35 +443,6 @@ describe('generator-angularjs: ', function(){
 
     });
 
-    /**
-     * yo angularjs-cordova:angular-view
-     * View sub-generator
-     */
-    describe('View sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-view',
-                'foo',
-                this,{
-                    'moduleName': 'core',
-                    'controllerName': true,
-                    'addRoute' : true,
-                    'routePath': 'foo'
-                }, done);
-        });
-
-        /**
-         * Check if the partial was successfully created
-         */
-        it('should create the test and controller js file', function(){
-            var expected = [
-                'app/modules/core/views/foo.html'
-            ];
-            assert.file(expected);
-        });
-    });
 });
 
 //Extending the yeoman helper method
