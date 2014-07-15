@@ -7,7 +7,7 @@
 
 ## Changelog
 
-* 0.2.0
+* 0.2.1
     * Updated README
     * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
     * Remove option to use the cordova template app

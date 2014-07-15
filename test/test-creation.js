@@ -33,7 +33,7 @@ describe('generator-angularjs: ', function(){
                 this, {
                 'cordovaappname': 'HelloWorld',
                 'cordovapackagename': 'com.angularjscordova.test',
-                'platforms': ['Android'],
+                'platforms': ['android'],
                 'plugins': ['Splashscreen'],
                 'angularjsName': 'AngularJsApplication',
                 'appDescription': 'AppDescription',
@@ -326,7 +326,7 @@ describe('generator-angularjs: ', function(){
                     this,{
                         'moduleName': 'core',
                         'testType': 'unitTest',
-                        'unitTestType' : 'Controller'
+                        'unitTestType' : 'controller'
                     }, done);
         });
 
@@ -352,7 +352,7 @@ describe('generator-angularjs: ', function(){
                     this,{
                         'moduleName': 'core',
                         'testType': 'unitTest',
-                        'unitTestType' : 'Service'
+                        'unitTestType' : 'service'
                     }, done);
         });
 
@@ -378,7 +378,7 @@ describe('generator-angularjs: ', function(){
                     this,{
                         'moduleName': 'core',
                         'testType': 'unitTest',
-                        'unitTestType' : 'Directive'
+                        'unitTestType' : 'directive'
                     }, done);
         });
 
@@ -404,7 +404,7 @@ describe('generator-angularjs: ', function(){
                     this,{
                         'moduleName': 'core',
                         'testType': 'unitTest',
-                        'unitTestType' : 'Filter'
+                        'unitTestType' : 'filter'
                     }, done);
         });
 
