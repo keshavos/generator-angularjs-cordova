@@ -40,10 +40,44 @@
 
 <ul>
 <li>
+<p>0.2.1</p>
+
+<ul>
+<li>Updated README</li>
+<li>Development folder is now <code>app/</code> in the root folder. The source files are copied to <code>www/</code> with grunt tasks</li>
+<li>Remove option to use the cordova template app</li>
+<li>
+<code>angular-test</code> sub-generator prompts to generate test template for unit (targeting controller, service, directive or filter) or end-to-end test</li>
+<li>Add grunt tasks to perform build tasks which copies only required source to <code>www/</code> for build</li>
+<li>Add grunt tasks
+
+<ul>
+<li>
+<code>grunt serve</code> serves the development app on port 9000</li>
+<li>
+<code>grunt build</code> performs build related tasks and moves required source to <code>www/</code>
+</li>
+<li>
+<code>grunt karma</code> runs karma tests</li>
+<li>
+<code>protractor protractor-desktop-config.js</code> runs protractor e2e tests
+
+<ul>
+<li>Requires webdriver to be started, app running</li>
+<li>Requires app to be running on <code>http://127.0.0.1:9000/</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pre-configured protractor config and working e2e example of default app</li>
+</ul>
+</li>
+<li>
 <p>0.1.4</p>
 
 <ul>
-<li>Uprade to cordova 3.5</li>
+<li>Upgrade to cordova 3.5</li>
 <li>Better dependency declarations.</li>
 <li>More tests</li>
 <li>Refined documentation/ README</li>
@@ -72,7 +106,8 @@
 <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">yeoman-angular framework</a> and the <a href="http://angularjs-cordova.org/">angularjs-cordova</a> generators.</p>
+<p>A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">angular generator</a> <a href="https://github.com/wangshijun/generator-angular-cordova">angular-cordova</a>. The project scaffolds an AngularJs application as described and implemented with <a href="http://meanjs.org/docs.html#angularjs-modules">MEAN stack</a>.
+This generator is ideal for projects where a tool is required to generate and scaffold a project based on angular and cordova. If you like pre-defined templates such as ionic, there are dedicated generators which do the job.</p>
 
 <h3>
 <a name="technologies" class="anchor" href="#technologies"><span class="octicon octicon-link"></span></a>Technologies:</h3>
@@ -110,6 +145,35 @@ yo angularjs-cordova
 </code></pre>
 
 <p>This presents you with a series of options to initialize and customize your application</p>
+
+<p>Once this is done, run</p>
+
+<pre><code>grunt serve
+</code></pre>
+
+<p>to run the app on your browser</p>
+
+<p>Use</p>
+
+<pre><code>grunt build
+</code></pre>
+
+<p>which performs various build related tasks and copies it on to the <code>www/</code> folder where you can use the cordova commands to build/ deploy the app to emulator/ devices</p>
+
+<ul>
+<li>concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.</li>
+<li>Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them</li>
+<li>You can further customize the build tasks by suitably editing the Gruntfile</li>
+</ul><h3>
+<a name="tests-new" class="anchor" href="#tests-new"><span class="octicon octicon-link"></span></a>Tests (New)</h3>
+
+<p>To run the e2e protractor tests which come shipped with the sample app, run</p>
+
+<pre><code>webdriver-manager update
+webdriver-manager start         ###this should start the webdriver
+grunt serve                     ###this will serve your app on http://127.0.0.1:9000/
+protractor protractor-desktop-config.js   ###this will run the protractor tests
+</code></pre>
 
 <h3>
 <a name="available-generators" class="anchor" href="#available-generators"><span class="octicon octicon-link"></span></a>Available generators</h3>
@@ -203,7 +267,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <h2>
 <a name="application-generator" class="anchor" href="#application-generator"><span class="octicon octicon-link"></span></a>Application Generator</h2>
 
-<p>The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder.</p>
+<p>The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder(<code>app/</code>).</p>
 
 <pre><code>$ yo angularjs-cordova
 </code></pre>
@@ -297,14 +361,12 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <h2>
 <a name="angularjs-test-sub-generator" class="anchor" href="#angularjs-test-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Test Sub-Generator</h2>
 
-<p>Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers you'll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:</p>
+<p>The test generator generates unit and e2e test templates for you.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-test &lt;controller-name&gt;
+<pre><code>$ yo angularjs-cordova:angular-test &lt;name&gt;
 </code></pre>
 
-<p>This will create a test file for your controller, and if the sub-generator doesn't find the specified controller file, it will create one for you.</p>
-
-<p><strong>Don't forget!</strong> You are supposed to pass the controller name as an argument.</p>
+<p>This will prompt the user with the option to either create a unit test template or an e2e test template for the chosen module and file type.</p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
