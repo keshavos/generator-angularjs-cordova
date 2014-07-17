@@ -6,13 +6,29 @@ var util = require('util'),
 
 var ViewGenerator = yeoman.generators.NamedBase.extend({
     askForModuleName: function() {
+        var modulesFolder = process.cwd() + '/app/modules/';
         var done = this.async();
 
         var prompts = [{
+            type: 'list',
             name: 'moduleName',
             message: 'Which module does this view belongs to?',
-            default: 'core'
+            default: 'core',
+            choices: []
         }];
+
+        if (fs.existsSync(modulesFolder)){
+            fs.readdirSync(modulesFolder).forEach(function(folder) {
+                var stat = fs.statSync(modulesFolder + '/' + folder);
+
+                if (stat.isDirectory()) {
+                    prompts[0].choices.push({
+                        value: folder,
+                        name: folder
+                    });
+                }
+            });
+        }
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;

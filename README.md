@@ -7,6 +7,18 @@
 
 ## Changelog
 
+* 0.2.2
+    * Replace module name input with list of available modules
+        * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
+        * eg `yo angularjs-cordova:angular-filter foo` will now produce the following prompt:
+        ```
+        [?] Which module does this filter belongs to? (Use arrow keys)
+        > core
+          test1
+          test2
+          test3
+        ```
+
 * 0.2.1
     * Updated README
     * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
