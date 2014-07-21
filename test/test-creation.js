@@ -434,8 +434,8 @@ describe('generator-angularjs: ', function(){
 
         it('should generate e2e test folder which contains page object and test file', function(){
             var expected = [
-                'app/modules/core/tests/e2e/foo/foo.po.js',
-                'app/modules/core/tests/e2e/foo/foo.spec.js'
+                'app/modules/core/tests/e2e/foo.po.js',
+                'app/modules/core/tests/e2e/foo.spec.js'
             ];
             assert.file(expected);
         });

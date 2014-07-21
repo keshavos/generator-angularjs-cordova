@@ -99,9 +99,8 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
 
                 this.slugifiedE2eFolder = this._.slugify(this._.humanize(this.name));
 
-                this.mkdir('app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder);
-                this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder + '/'+this.slugifiedE2eFolder+'.po.js');
-                this.template('../../templates/javascript/e2e/pageSpec.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + this.slugifiedE2eFolder + '/'+this.slugifiedE2eFolder+'.spec.js');
+                this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/'+this.slugifiedE2eFolder+'.po.js');
+                this.template('../../templates/javascript/e2e/pageSpec.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/'+this.slugifiedE2eFolder+'.spec.js');
             }
 
             done();
