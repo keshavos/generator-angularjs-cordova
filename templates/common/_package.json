@@ -63,6 +63,7 @@
         "webdriver-manager": "0.0.4",
         "jasminewd": "~1.0.1",
         "jasmine-reporters": "~0.4.1",
-        "karma-junit-reporter": "~0.2.2"
+        "karma-junit-reporter": "~0.2.2",
+        "grunt-ngdocs": "^0.2.2"
     }
 }
