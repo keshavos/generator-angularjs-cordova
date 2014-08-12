@@ -9,7 +9,10 @@
 
 * 0.2.3
     * Add ability to generate documentation from angular code through `grunt-ngdocs` plugin. Update the sample app to include sample. This will generate documentation during the build process (`grunt build`)
+    * Add option to prompt user to add type of service
+        ```
 
+        ```
 
 * 0.2.2
     * Replace module name input with list of available modules

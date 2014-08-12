@@ -43,9 +43,44 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
         }.bind(this));
     },
 
-    renderServiceFile: function() {
-        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js');
+    //Prompt for the type of angular service to add
+    promptServiceType : function(){
+        var done = this.async();
+
+        this.prompt([{
+            type: 'list',
+            name: 'serviceType',
+            message: 'Type of service to add',
+            choices: [{
+                name: 'service',
+                value: 'Service',
+                message: 'Service'
+            },
+            {
+                name: 'provider',
+                value: 'provider',
+                message: 'provider'
+            },
+            {
+                name: 'factory',
+                value: 'factory',
+                message: 'factory'
+            },
+            {
+                name: 'value',
+                value: 'value',
+                message: 'value'
+            }]
+        }], function(props){
+
+        });
     }
+
+    /*,renderServiceFile: function() {
+        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js');
+    }*/
 });
+
+
 
 module.exports = ServiceGenerator;
