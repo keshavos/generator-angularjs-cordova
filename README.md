@@ -8,17 +8,9 @@
 ## Changelog
 
 * 0.2.3
-    * Add option to prompt user to add type of service. `yo angularjs-cordova:angular-service foo`
-        ```
-        [?] Which module does this service belongs to? core
-        [?] Type of service to add: (Use arrow keys)
-        > service
-        provider
-        factory
-        value
-        ```
-    * Add ability to generate documentation from angular code through `grunt-ngdocs` plugin. Docs can be viewed at http://122.0.0.1:/9000/docs. Documentation is stripped from the production code during the grunt build process.
-    * Update the sample app to include sample format for angularjs documentation. This will generate documentation during the build process (`grunt build`)
+    * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
+    * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
+    * [Introduce styleguide/convention for AngularJs code [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
 
 * 0.2.2
     * Replace module name input with list of available modules
