@@ -10,7 +10,7 @@
 * 0.2.3
     * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
-    * [Introduce styleguide/convention for AngularJs code [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
+    * Introduce styleguide/convention for AngularJs code [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
 
 * 0.2.2
     * Replace module name input with list of available modules
