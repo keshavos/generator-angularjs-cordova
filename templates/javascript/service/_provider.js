@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .provider('<%= cameledName %>', function () {
+angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', function () {
 
     // Private variables
     var salutation = 'Hello';

@@ -1,4 +1,3 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .value('<%= cameledName %>', 42);
+angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', 42);

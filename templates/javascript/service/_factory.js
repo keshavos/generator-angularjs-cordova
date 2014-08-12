@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .factory('<%= cameledName %>', function () {
+angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', function () {
     // Service logic
     // ...
 

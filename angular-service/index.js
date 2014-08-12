@@ -53,8 +53,8 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
             message: 'Type of service to add',
             choices: [{
                 name: 'service',
-                value: 'Service',
-                message: 'Service'
+                value: 'service',
+                message: 'service'
             },
             {
                 name: 'provider',
@@ -72,13 +72,26 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
                 message: 'value'
             }]
         }], function(props){
+            switch(props.serviceType){
+                case 'service':
+                    this.template('../../templates/javascript/service/_service.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
 
-        });
+                case 'provider':
+                    this.template('../../templates/javascript/service/_provider.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'factory':
+                    this.template('../../templates/javascript/service/_factory.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'value':
+                    this.template('../../templates/javascript/service/_value.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+            }
+            done();
+        }.bind(this));
     }
-
-    /*,renderServiceFile: function() {
-        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js');
-    }*/
 });
 
 
