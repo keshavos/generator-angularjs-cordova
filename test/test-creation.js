@@ -336,6 +336,25 @@ describe('generator-angularjs: ', function(){
                 assert.file(expected);
             });
         });
+
+        describe('angular-service: constant', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'cons',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'constant'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service constant js file', function() {
+                var expected = [
+                    'app/modules/core/services/cons.js'
+                ];
+                assert.file(expected);
+            });
+        });
     });
 
     /**

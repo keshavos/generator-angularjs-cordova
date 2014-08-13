@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', function () {
-    // Service logic
-    // ...
+angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>',
 
-    var meaningOfLife = 42;
+    function() {
+        // <%= classifiedName %> factory logic
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+        return {
+            method1 : function() {
+                return true;
+            },
+
+            method2 : function(){
+                return false
+            }
+        };
+    });

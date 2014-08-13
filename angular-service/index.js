@@ -70,6 +70,11 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
                 name: 'value',
                 value: 'value',
                 message: 'value'
+            },
+            {
+                name: 'constant',
+                value: 'constant',
+                message: 'constant'
             }]
         }], function(props){
             switch(props.serviceType){
@@ -88,12 +93,18 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
                 case 'value':
                     this.template('../../templates/javascript/service/_value.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
                     break;
+
+                case 'constant':
+                    this.template('../../templates/javascript/service/_constant.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                default:
+
+                    break;
             }
             done();
         }.bind(this));
     }
 });
-
-
 
 module.exports = ServiceGenerator;

@@ -1,14 +1,17 @@
 'use strict';
 
-angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', [
+angular.module('<%= slugifiedModuleName %>').service('<%= classifiedName %>', [
 
     function() {
         // <%= classifiedName %> service logic
 
-        return {
-            someMethod: function() {
-                return true;
-            }
+        method1 = function() {
+            return true;
         };
+
+        method2 = function() {
+            return false;
+        };
+
     }
 ]);

@@ -1,24 +1,20 @@
 'use strict';
 
-angular.module('<%= slugifiedModuleName %>').factory('<%= classifiedName %>', function () {
+angular.module('<%= slugifiedModuleName %>').provider('<%= classifiedName %>', function () {
 
-    // Private variables
-    var salutation = 'Hello';
+    this.name = 'Default';
 
-    // Private constructor
-    function Greeter() {
-      this.greet = function () {
-        return salutation;
-      };
-    }
-
-    // Public API for configuration
-    this.setSalutation = function (s) {
-      salutation = s;
+    this.$get = function() {
+        var self = this;
+        return {
+            sayHello: function() {
+                return "Hello, " + self.name + "!"
+            }
+        }
     };
 
-    // Method for instantiating
-    this.$get = function () {
-      return new Greeter();
+    this.setName = function(name) {
+        this.name = name;
     };
-  });
+
+});
