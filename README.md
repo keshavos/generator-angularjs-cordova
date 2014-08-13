@@ -1,5 +1,4 @@
-ace module name input with list of available modules
-        * # AngularJS Cordova generator
+# AngularJS Cordova generator
 [![Build Status](https://travis-ci.org/keshavos/generator-angularjs-cordova.svg)](https://travis-ci.org/keshavos/generator-angularjs-cordova)
 
 
