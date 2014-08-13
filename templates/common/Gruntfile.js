@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
             js: {
                 files: ['<%= yeoman.app %>/modules/*/*.js', '<%= yeoman.app %>/modules/*/config/*.js', '<%= yeoman.app %>/modules/*/controllers/*.js', '<%= yeoman.app %>/modules/*/services/*.js', '<%= yeoman.app %>/modules/*/directives/*.js', '<%= yeoman.app %>/modules/*/filters/*.js'],
-                tasks: ['newer:jshint:all'],
+                tasks: ['newer:jshint:all', 'ngdocs'],
                 options: {
                     livereload: true
                 }
@@ -84,6 +84,11 @@ module.exports = function(grunt) {
                 options: {
                     base: ['<%= yeoman.dist %>']
                 }
+            },
+            docs: {
+                options: {
+                    base: ['docs/']
+                }
             }
         },
 
@@ -114,6 +119,14 @@ module.exports = function(grunt) {
                     ]
                 }]
             },
+            docs: {
+                files: [{
+                    dot: true,
+                    src: [
+                        'docs/'
+                    ]
+                }]
+            },
             server: '.tmp'
         },
 
@@ -129,6 +142,51 @@ module.exports = function(grunt) {
                     dest: '.tmp/styles/'
                 }]
             }
+        },
+
+        /**
+         * Generate AngularJs Documentation
+        */
+        ngdocs : {
+            options: {
+                dest: 'docs',
+                scripts: [
+                    'app/lib/jquery/dist/jquery.js',
+                    'app/lib/bootstrap/dist/js/bootstrap.js',
+                    'app/lib/angular/angular.js',
+                    'app/lib/angular-resource/angular-resource.js',
+                    'app/lib/angular-mocks/angular-mocks.js',
+                    'app/lib/angular-cookies/angular-cookies.js',
+                    'app/lib/angular-sanitize/angular-sanitize.js',
+                    'app/lib/angular-animate/angular-animate.js',
+                    'app/lib/angular-touch/angular-touch.js',
+                    'app/lib/angular-bootstrap/ui-bootstrap.js',
+                    'app/lib/angular-ui-utils/ui-utils.js',
+                    'app/lib/angular-ui-router/release/angular-ui-router.js'
+                ],
+                html5Mode: false,
+                startPage: '/api',
+                title: "App Documentation",
+                titleLink: "/api",
+                bestMatch: true
+            },
+            api: {
+                src: ['app/js/*.js', 'app/modules/**/*.js'],
+                title: 'App Documentation'
+            }
+        },
+
+        /**
+        * Strip comments from the distribution code
+        */
+        comments: {
+            dist: {
+                options: {
+                    singleline: true,
+                    multiline: true
+                },
+                src: [ 'www/scripts/custom.js']
+            },
         },
 
         //Injects all the scripts into the index html file
@@ -376,9 +434,17 @@ module.exports = function(grunt) {
         'karma'
     ]);
 
+    grunt.registerTask('docs', [
+        'clean:docs',
+        'ngdocs',
+        'connect:docs:keepalive',
+        'watch'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         'bowerInstall',
+        'ngdocs',
         'injector',
         'useminPrepare',
         'concurrent:dist',
@@ -390,7 +456,8 @@ module.exports = function(grunt) {
         'cssmin',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'comments:dist'
     ]);
 
     grunt.registerTask('default', [

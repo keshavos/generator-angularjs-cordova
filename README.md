@@ -1,4 +1,5 @@
-# AngularJS Cordova generator
+ace module name input with list of available modules
+        * # AngularJS Cordova generator
 [![Build Status](https://travis-ci.org/keshavos/generator-angularjs-cordova.svg)](https://travis-ci.org/keshavos/generator-angularjs-cordova)
 
 
@@ -9,10 +10,11 @@
 
 * 0.2.3
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
+    * Support for generating angular documentation [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
 
 * 0.2.2
     * Replace module name input with list of available modules
-        * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
+    * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
         * eg `yo angularjs-cordova:angular-filter foo` will now produce the following prompt:
         ```
         [?] Which module does this filter belongs to? (Use arrow keys)
