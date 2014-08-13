@@ -51,7 +51,7 @@
     "load-grunt-tasks": "~0.3.0",
     "mocha": "*",
     "semver": "~2.2.1",
-    "temp": "~0.6.0",
+    "temp": "~0.8.1",
     "underscore.string": "~2.3.1",
     "xunit-file": "0.0.5"
   },
