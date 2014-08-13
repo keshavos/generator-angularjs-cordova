@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * @ngdoc directive
+ * @name <%= slugifiedModuleName %>.Directives.<%= camelizedName %>
+ * @description <%= camelizedName %> directive
+ */
 angular.module('<%= slugifiedModuleName %>').directive('<%= camelizedName %>', [
 
     function() {
