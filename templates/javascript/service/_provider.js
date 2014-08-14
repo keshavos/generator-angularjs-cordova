@@ -30,16 +30,16 @@ angular
                     sayHello: function() {
                         return "Hello, " + self.name + "!"
                     }
-                };
-
-                /**
-                 * @ngdoc function
-                 * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>#setName
-                 * @methodOf <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
-                 * @return {string} Returns the name property
-                 */
-                this.setName = function(name) {
-                    this.name = name;
-                };
             };
+
+            /**
+             * @ngdoc function
+             * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>#setName
+             * @methodOf <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
+             * @return {string} Returns the name property
+             */
+            this.setName = function(name) {
+                this.name = name;
+            };
+        };
     });
