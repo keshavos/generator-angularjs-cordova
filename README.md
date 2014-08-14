@@ -10,7 +10,7 @@
 * 0.2.3
     * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
-    * Introduce styleguide/convention for AngularJs code [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
+    * Code format of templates and sample app [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
     * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
 
 * 0.2.2
@@ -293,7 +293,7 @@ The AngularJS service sub-generator will create a new AngularJS service in the s
 $ yo angularjs-cordova:angular-service <service-name>
 ```
 
-The sub-generator will ask you for the module name under which you would like to create your new service, and will create a new AngularJS service file in that module's **services** folder.
+The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.
 
 
 

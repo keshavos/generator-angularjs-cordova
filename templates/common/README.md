@@ -1,38 +1,138 @@
 # AngularJS Cordova generator
-
-[![Build Status] (https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master)] (https://travis-ci.org/keshavos/generator-angularjs-cordova)
-
-##Overview
-
-Combining the best features from the already available yeoman generators such as [yeoman-angular framework](https://github.com/yeoman/generator-angular) and the [angularjs-cordova](http://angularjs-cordova.org/) generators. 
-
-The purpose of this generator is to allow the user to create and extend an AngularJS-phonegap application
-
-* Uses a [Vertical Module](http://angularjs-cordova.org/docs.html#angularjs-modules) approach to extending AngularJs apps The pros and cons of the [angular-seed](https://github.com/angular/angular-seed) project and hence a modular approach to extending AngularJs apps is mentioned [here](http://angularjs-cordova.org/docs.html#angularjs-modules).
+[![Build Status](https://travis-ci.org/keshavos/generator-angularjs-cordova.svg)](https://travis-ci.org/keshavos/generator-angularjs-cordova)
 
 
-## Getting Started
-Before you begin make sure you have the [yo scaffolding tool](http://yeoman.io/generators.html) installed(As it is part of the Yeoman tool set you might have installed it before). To globally install *yo* you will need to use npm:
+[![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
 
 
-```
-$ npm install -g yo
-```
+## Changelog
+
+* 0.2.3
+    * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
+    * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
+    * Code format of templates and sample app [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
+    * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
+
+* 0.2.2
+    * Replace module name input with list of available modules
+    * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
+        * eg `yo angularjs-cordova:angular-filter foo` will now produce the following prompt:
+        ```
+        [?] Which module does this filter belongs to? (Use arrow keys)
+        > core
+          test1
+          test2
+          test3
+        ```
+* 0.2.1
+    * Updated README
+    * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
+    * Remove option to use the cordova template app
+    * `angular-test` sub-generator prompts to generate test template for unit (targeting controller, service, directive or filter) or end-to-end test
+    * Add grunt tasks to perform build tasks which copies only required source to `www/` for build
+    * Add grunt tasks
+        * `grunt serve` serves the development app on port 9000
+        * `grunt build` performs build related tasks and moves required source to `www/`
+        * `grunt karma` runs karma tests
+        * `protractor protractor-desktop-config.js` runs protractor e2e tests
+            * Requires webdriver to be started, app running
+            * Requires app to be running on `http://127.0.0.1:9000/`
+    * Pre-configured protractor config and working e2e example of default app
+
+* 0.1.4
+    * Upgrade to cordova 3.5
+    * Better dependency declarations.
+    * More tests
+    * Refined documentation/ README
+
+* 0.0.2
+    * Fixes travis file to include bower required for passing tests
+
+* 0.0.1
+    * Minimal Viable Product which works as expected
 
 
-**Note:** Your user might not have the permissions to install package globally, so use a super user or **sudo**.
-
-
-Once ready, you should be able to use this with 
-
+## Installation
 
 ```
 npm install -g generator-angularjs-cordova
 ```
 
+## Overview
+
+A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [angular generator](https://github.com/yeoman/generator-angular) [angular-cordova](https://github.com/wangshijun/generator-angular-cordova). The project scaffolds an AngularJs application as described and implemented with [MEAN stack](http://meanjs.org/docs.html#angularjs-modules).
+This generator is ideal for projects where a tool is required to generate and scaffold a project based on angular and cordova. If you like pre-defined templates such as ionic, there are dedicated generators which do the job.
+
+### Technologies:
+
+* [Cordova](http://phonegap.com) - for packaging your HTML, CSS and Javascript into deployable mobile apps.
+This generator currently has not been tested for its compatibility with phonegap. It might be added in the future.
+
+* [AngularJS](http://angularjs.org) - One of the most popular Javascript MVC/MV** frameworks that is available out there
+
+* [AngularUI](http://angular-ui.github.io/) - Includes Twitter bootstrap 3 and allows for developing responsive pages. It ships with various pre-defined templates.
+
+### Features
+
+* Uses the [Vertical Module approach](http://meanjs.org/docs.html#angularjs-modules) for initializing and extending the angularjs application.
+The project structure suggested by the Angular team with the [angular-seed](https://github.com/angular/angular-seed) works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.
 
 
-### Yeoman Generators for AngularJS
+## Getting Started
+
+Before you begin make sure you have the [yo scaffolding tool](http://yeoman.io/generators.html) installed(As it is part of the Yeoman tool set you might have installed it before). To globally install *yo* you will need to use npm:
+
+**Note:** Your user might not have the permissions to install package globally, so use a super user or **sudo**.
+
+```
+$ npm install -g yo
+```
+
+Once ready, you should be able to use this with
+
+```
+npm install -g generator-angularjs-cordova
+```
+
+Create and navigate into a new directory and run the yo command to initialize a new project
+
+```
+mkdir testapp && cd testapp
+yo angularjs-cordova
+```
+
+This presents you with a series of options to initialize and customize your application
+
+Once this is done, run
+```
+grunt serve
+```
+to run the app on your browser
+
+Use
+```
+grunt build
+```
+which performs various build related tasks and copies it on to the `www/` folder where you can use the cordova commands to build/ deploy the app to emulator/ devices
+ - concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.
+ - Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them
+ - You can further customize the build tasks by suitably editing the Gruntfile
+
+###Tests (New)
+
+To run the e2e protractor tests which come shipped with the sample app, run
+
+```
+webdriver-manager update
+webdriver-manager start         ###this should start the webdriver
+grunt serve                     ###this will serve your app on http://127.0.0.1:9000/
+protractor protractor-desktop-config.js   ###this will run the protractor tests
+```
+
+
+### Available generators
+
+Once setup, you can use any of the following sub-generators for extending your AngularJs application
 
 * [angularjs-cordova](#application-generator)
 * [angularjs-cordova:angular-config](#angularjs-config-sub-generator)
@@ -45,32 +145,13 @@ npm install -g generator-angularjs-cordova
 * [angularjs-cordova:angular-test](#angularjs-test-sub-generator)
 * [angularjs-cordova:angular-view](#angularjs-view-sub-generator)
 
-### Proposed Yeoman Generators for Cordova
-~~* [angularjs-cordova:cordova-name](#cordova-app-name)~~ 
-
-~~* [angularjs-cordova:cordova-id](#cordova-app-id)~~
-
-~~* [angularjs-cordova:cordova-platform-add](#cordova-platform-installer)~~
-
-~~* [angularjs-cordova:cordova-platform-remove](#cordova-platform-uninstaller)~~
-
-~~* [angularjs-cordova:cordova-platform-build](#cordova-platform-build)~~
-
-~~* [angularjs-cordova:cordova-platform-](#cordova-platform-build)~~
-
-~~* [angularjs-cordova:cordova-plugin-list](#cordova-plugin-list)~~
-
-~~* [angularjs-cordova:cordova-plugin-add](#cordova-plugin-installer)~~
-
-~~* [angularjs-cordova:cordova-plugin-remove](#cordova-platform-uninstaller)~~
-
-It might be a good idea to use the native cordova commands directly within the project root as this encourages correct usage of cordova commands in other projects that do not use this framework
+The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.
 
 All the available cordova commands can be listed by typing the following in the command line:
 
-`cordova help` 
+`cordova help`
 
-As per **cordova v3.4.0**, these are the available options
+As per **cordova v3.5.0-0.2.4**, these are the available options
 
 Synopsis
 
@@ -135,7 +216,7 @@ Command-line Flags/Options
 
 ## Application Generator
 
-The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder.
+The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder(`app/`).
 
 
 ```
@@ -143,8 +224,6 @@ $ yo angularjs-cordova
 ```
 
 The generator will ask you a few questions about your new application and will generate it for you.
-
-
 
 Now, the application generator does a great job scaffolding a whole application, but daily work requires us to repeat a lot of structured code. For this purpose we provided you with some sub-generators to help you speed up your development.
 
@@ -188,7 +267,7 @@ $ yo angularjs-cordova:angular-controller <controller-name>
 The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module **controllers** folder and a test file in the **tests** folder.
 
 
-**Don't forget!** This time you pass the controller name as an argument. 
+**Don't forget!** This time you pass the controller name as an argument.
 
 
 
@@ -214,7 +293,7 @@ The AngularJS service sub-generator will create a new AngularJS service in the s
 $ yo angularjs-cordova:angular-service <service-name>
 ```
 
-The sub-generator will ask you for the module name under which you would like to create your new service, and will create a new AngularJS service file in that module's **services** folder.
+The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.
 
 
 
@@ -259,19 +338,16 @@ The sub-generator will ask you for the module name under which you would like to
 
 ## AngularJS Test Sub-Generator
 
-Your MEAN application comes pre-bundled with the Karma test runner and Jasmine testing framework. To test your AngularJS controllers you'll need to create a test file, which Karma will later use to run the tests. For this purpose we provided you with the AngularJS test sub-generator. Creating a new AngularJS test is effortless, just execute this command:
+The test generator generates unit and e2e test templates for you.
 
 
 ```
-$ yo angularjs-cordova:angular-test <controller-name> 
+$ yo angularjs-cordova:angular-test <name>
 ```
 
-This will create a test file for your controller, and if the sub-generator doesn't find the specified controller file, it will create one for you.
+This will prompt the user with the option to either create a unit test template or an e2e test template for the chosen module and file type.
 
 
-**Don't forget!** You're suppose to pass the controller name as an argument. 
-
-### 
 ## License
 
 MIT
