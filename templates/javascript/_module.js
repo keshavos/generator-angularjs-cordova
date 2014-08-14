@@ -5,4 +5,5 @@
  * @name <%= slugifiedName %>
  * @description <%= slugifiedName %> module
  */
-ApplicationConfiguration.registerModule('<%= slugifiedName %>');
+ApplicationConfiguration
+    .registerModule('<%= slugifiedName %>');

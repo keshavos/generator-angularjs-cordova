@@ -6,9 +6,10 @@
  * @description Home controller
  * @requires ng.$scope
  */
-angular.module('core')
+angular
+    .module('core')
     .controller('HomeController', ['$scope',
         function($scope) {
 
         }
-]);
+    ]);

@@ -8,10 +8,10 @@
 ## Changelog
 
 * 0.2.3
+    * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
-    * Support for generating angular documentation [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
+    * Introduce styleguide/convention for AngularJs code [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
     * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
-
 
 * 0.2.2
     * Replace module name input with list of available modules
@@ -24,7 +24,6 @@
           test2
           test3
         ```
-
 * 0.2.1
     * Updated README
     * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
