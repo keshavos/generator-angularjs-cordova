@@ -24,7 +24,7 @@ angular
                 /**
                  * @ngdoc function
                  * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method2
-                 * @methodOf<%= slugifiedModuleName %>.Services.<%= classifiedName %>
+                 * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
                  * @return {boolean} Returns a boolean value
                  */
                 method2: function() {
