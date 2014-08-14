@@ -31,7 +31,7 @@
         <h1>
 <a name="angularjs-cordova-generator" class="anchor" href="#angularjs-cordova-generator"><span class="octicon octicon-link"></span></a>AngularJS Cordova generator</h1>
 
-<p><a href="https://travis-ci.org/keshavos/generator-angularjs-cordova"><img src="https://travis-ci.org/keshavos/generator-angularjs-cordova.svg?branch=master" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/keshavos/generator-angularjs-cordova"><img src="https://travis-ci.org/keshavos/generator-angularjs-cordova.svg" alt="Build Status"></a></p>
 
 <p><a href="https://nodei.co/npm/generator-angularjs-cordova/"><img src="https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true" alt="NPM"></a></p>
 
@@ -40,13 +40,27 @@
 
 <ul>
 <li>
+<p>0.2.3</p>
+
+<ul>
+<li>Support for generating angular documentation <a href="https://github.com/keshavos/generator-angularjs-cordova/issues/2">#2</a>
+</li>
+<li>Add option to prompt user to add type of service <a href="https://github.com/keshavos/generator-angularjs-cordova/issues/3">#3</a>
+</li>
+<li>Code format of templates and sample app <a href="https://github.com/keshavos/generator-angularjs-cordova/issues/4">#4</a>
+</li>
+<li>Fix bug adding Windows 8 platform  <a href="https://github.com/keshavos/generator-angularjs-cordova/issues/5">#5</a>
+</li>
+</ul>
+</li>
+<li>
 <p>0.2.2</p>
 
 <ul>
-<li>Replace module name input with list of available modules
+<li>Replace module name input with list of available modules</li>
+<li>With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
 
 <ul>
-<li>With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from</li>
 <li>eg <code>yo angularjs-cordova:angular-filter foo</code> will now produce the following prompt:</li>
 </ul>
 <pre><code>[?] Which module does this filter belongs to? (Use arrow keys)
@@ -345,7 +359,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <pre><code>$ yo angularjs-cordova:angular-service &lt;service-name&gt;
 </code></pre>
 
-<p>The sub-generator will ask you for the module name under which you would like to create your new service, and will create a new AngularJS service file in that module's <strong>services</strong> folder.</p>
+<p>The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.</p>
 
 <h2>
 <a name="angularjs-directive-sub-generator" class="anchor" href="#angularjs-directive-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Directive Sub-Generator</h2>
