@@ -1,4 +1,10 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .value('<%= cameledName %>', 42);
+/**
+ * @ngdoc object
+ * @name <%= slugifiedModuleName %>.Values.<%= classifiedName %>
+ * @description Define a value
+ */
+angular
+    .module('<%= slugifiedModuleName %>')
+    .value('<%= classifiedName %>', 42);

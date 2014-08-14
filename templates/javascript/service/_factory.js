@@ -1,16 +1,34 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .factory('<%= cameledName %>', function () {
-    // Service logic
-    // ...
+/**
+ * @ngdoc service
+ * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>
+ * @description <%= classifiedName %> Factory
+ */
+angular
+    .module('<%= slugifiedModuleName %>')
+    .factory('<%= classifiedName %>',
+        function() {
+            return {
 
-    var meaningOfLife = 42;
+                /**
+                 * @ngdoc function
+                 * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method1
+                 * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
+                 * @return {boolean} Returns a boolean value
+                 */
+                method1: function() {
+                    return true;
+                },
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+                /**
+                 * @ngdoc function
+                 * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method2
+                 * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
+                 * @return {boolean} Returns a boolean value
+                 */
+                method2: function() {
+                    return false
+                }
+            };
+    });

@@ -7,9 +7,15 @@
 
 ## Changelog
 
+* 0.2.3
+    * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
+    * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
+    * Code format of templates and sample app [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
+    * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
+
 * 0.2.2
     * Replace module name input with list of available modules
-        * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
+    * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
         * eg `yo angularjs-cordova:angular-filter foo` will now produce the following prompt:
         ```
         [?] Which module does this filter belongs to? (Use arrow keys)
@@ -18,7 +24,6 @@
           test2
           test3
         ```
-
 * 0.2.1
     * Updated README
     * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
@@ -288,7 +293,7 @@ The AngularJS service sub-generator will create a new AngularJS service in the s
 $ yo angularjs-cordova:angular-service <service-name>
 ```
 
-The sub-generator will ask you for the module name under which you would like to create your new service, and will create a new AngularJS service file in that module's **services** folder.
+The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.
 
 
 

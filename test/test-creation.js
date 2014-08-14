@@ -260,25 +260,100 @@ describe('generator-angularjs: ', function(){
      * Service sub-generator
      */
     describe('angular-service sub-generator', function(){
-        /**
-         * Run the sub-generator to generate the necessary files before executing any tests on it
-         */
-        before(function(done){
-            runGenerator('angular-service',
-                'foo',
-                this,{
-                    'moduleName': 'core'
-                }, done);
+
+        describe('angular-service: service', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'serv',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'service'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service Service js file', function() {
+                var expected = [
+                    'app/modules/core/services/serv.js'
+                ];
+                assert.file(expected);
+            });
         });
 
-        /**
-         * Check if the service was successfully created
-         */
-        it('should create the service js file', function(){
-            var expected = [
-                'app/modules/core/services/foo.js'
-            ];
-            assert.file(expected);
+        describe('angular-service: provider', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'prov',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'provider'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service Provider js file', function() {
+                var expected = [
+                    'app/modules/core/services/prov.js'
+                ];
+                assert.file(expected);
+            });
+        });
+
+        describe('angular-service: factory', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'fact',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'factory'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service Factory js file', function() {
+                var expected = [
+                    'app/modules/core/services/fact.js'
+                ];
+                assert.file(expected);
+            });
+        });
+
+        describe('angular-service: value', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'valu',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'value'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service Value js file', function() {
+                var expected = [
+                    'app/modules/core/services/valu.js'
+                ];
+                assert.file(expected);
+            });
+        });
+
+        describe('angular-service: constant', function(){
+            before(function(done) {
+                runGenerator('angular-service',
+                    'cons',
+                    this, {
+                        'moduleName': 'core',
+                        'serviceType' : 'constant'
+                    }, done);
+            });
+
+            //Check if the service was successfully created
+            it('should create the service constant js file', function() {
+                var expected = [
+                    'app/modules/core/services/cons.js'
+                ];
+                assert.file(expected);
+            });
         });
     });
 

@@ -1,4 +1,9 @@
 'use strict';
 
-// Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('<%= slugifiedName %>');
+/**
+ * @ngdoc overview
+ * @name <%= slugifiedName %>
+ * @description <%= slugifiedName %> module
+ */
+ApplicationConfiguration
+    .registerModule('<%= slugifiedName %>');

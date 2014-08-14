@@ -124,7 +124,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
             checked: false
         }, {
             name: 'Windows Phone 8',
-            value: 'wp7',
+            value: 'wp8',
             checked: false
         }]
     }, {

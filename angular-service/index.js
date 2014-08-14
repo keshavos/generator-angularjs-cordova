@@ -43,8 +43,67 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
         }.bind(this));
     },
 
-    renderServiceFile: function() {
-        this.template('../../templates/javascript/service/_service.js', 'app/modules/' + this.slugifiedModuleName + '/services/' + this.slugifiedName + '.js');
+    //Prompt for the type of angular service to add
+    promptServiceType : function(){
+        var done = this.async();
+
+        this.prompt([{
+            type: 'list',
+            name: 'serviceType',
+            message: 'Type of service to add',
+            choices: [{
+                name: 'service',
+                value: 'service',
+                message: 'service'
+            },
+            {
+                name: 'provider',
+                value: 'provider',
+                message: 'provider'
+            },
+            {
+                name: 'factory',
+                value: 'factory',
+                message: 'factory'
+            },
+            {
+                name: 'value',
+                value: 'value',
+                message: 'value'
+            },
+            {
+                name: 'constant',
+                value: 'constant',
+                message: 'constant'
+            }]
+        }], function(props){
+            switch(props.serviceType){
+                case 'service':
+                    this.template('../../templates/javascript/service/_service.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'provider':
+                    this.template('../../templates/javascript/service/_provider.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'factory':
+                    this.template('../../templates/javascript/service/_factory.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'value':
+                    this.template('../../templates/javascript/service/_value.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                case 'constant':
+                    this.template('../../templates/javascript/service/_constant.js', 'app/modules/'+this.slugifiedModuleName+'/services/'+ this.slugifiedName+'.js');
+                    break;
+
+                default:
+
+                    break;
+            }
+            done();
+        }.bind(this));
     }
 });
 

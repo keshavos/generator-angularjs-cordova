@@ -1,25 +1,45 @@
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .provider('<%= cameledName %>', function () {
+/**
+ * @ngdoc service
+ * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
+ * @description <%= classifiedName %> Provider
+ */
+angular
+    .module('<%= slugifiedModuleName %>')
+    .provider('<%= classifiedName %>',
+        function() {
 
-    // Private variables
-    var salutation = 'Hello';
+            /**
+             * @ngdoc property
+             * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>#name
+             * @propertyOf <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
+             * @type {String}
+             */
+            this.name = 'Default';
 
-    // Private constructor
-    function Greeter() {
-      this.greet = function () {
-        return salutation;
-      };
-    }
+            /**
+             * @ngdoc function
+             * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>#$get
+             * @methodOf <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
+             * @return {boolean} Returns an intialized string
+             */
+            this.$get = function() {
+                var self = this;
+                return {
+                    sayHello: function() {
+                        return "Hello, " + self.name + "!"
+                    }
+            };
 
-    // Public API for configuration
-    this.setSalutation = function (s) {
-      salutation = s;
-    };
-
-    // Method for instantiating
-    this.$get = function () {
-      return new Greeter();
-    };
-  });
+            /**
+             * @ngdoc function
+             * @name <%= slugifiedModuleName %>.Providers.<%= classifiedName %>#setName
+             * @methodOf <%= slugifiedModuleName %>.Providers.<%= classifiedName %>
+             * @return {string} Returns the name property
+             */
+            this.setName = function(name) {
+                this.name = name;
+            };
+        };
+    });
