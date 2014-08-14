@@ -10,6 +10,8 @@
 * 0.2.3
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
     * Support for generating angular documentation [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
+    * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
+
 
 * 0.2.2
     * Replace module name input with list of available modules
