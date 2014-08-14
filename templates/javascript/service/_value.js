@@ -5,4 +5,6 @@
  * @name <%= slugifiedModuleName %>.Values.<%= classifiedName %>
  * @description Define a value
  */
-angular.module('<%= slugifiedModuleName %>').value('<%= classifiedName %>', 42);
+angular
+    .module('<%= slugifiedModuleName %>')
+    .value('<%= classifiedName %>', 42);

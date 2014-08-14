@@ -6,10 +6,12 @@
  * @description <%= classifiedControllerName %>Controller
  * @requires ng.$scope
 */
-angular.module('<%= slugifiedModuleName %>').controller('<%= classifiedControllerName %>Controller', ['$scope',
+angular
+    .module('<%= slugifiedModuleName %>')
+    .controller('<%= classifiedControllerName %>Controller', [
+        '$scope',
+        function($scope) {
 
-    function($scope) {
 
-
-    }
+        }
 ]);

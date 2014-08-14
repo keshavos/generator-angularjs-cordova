@@ -7,8 +7,10 @@
  * @requires ng.$urlRouterProvider
  * @description Defines the routes and other config within the core module
  */
-angular.module('core')
-    .config(['$stateProvider', '$urlRouterProvider',
+angular
+    .module('core')
+    .config(['$stateProvider',
+        '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('/');
@@ -23,11 +25,11 @@ angular.module('core')
              *
              * - When the path is `'/'`, route to home
              * */
-            $stateProvider.
-            state('home', {
-                url: '/',
-                templateUrl: 'modules/core/views/home.html',
-                controller: 'HomeController'
-            });
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    templateUrl: 'modules/core/views/home.html',
+                    controller: 'HomeController'
+                });
         }
-]);
+    ]);

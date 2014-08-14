@@ -9,9 +9,9 @@
  * - When the state is `'<%= slugifiedName %>'`, route to <%= slugifiedRoutePath %>
  *
 */
-$stateProvider.
-state('<%= slugifiedName %>', {
-    url: '/<%= slugifiedRoutePath %>',
-    templateUrl: 'modules/<%= slugifiedModuleName %>/views/<%= slugifiedViewName %>.html',
-    controller: '<%= classifiedControllerName %>Controller'
-}).
+$stateProvider
+    .state('<%= slugifiedName %>', {
+        url: '/<%= slugifiedRoutePath %>',
+        templateUrl: 'modules/<%= slugifiedModuleName %>/views/<%= slugifiedViewName %>.html',
+        controller: '<%= classifiedControllerName %>Controller'
+    }).
