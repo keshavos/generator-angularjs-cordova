@@ -33,7 +33,7 @@ describe('generator-angularjs: ', function(){
                 this, {
                 'cordovaappname': 'HelloWorld',
                 'cordovapackagename': 'com.angularjscordova.test',
-                'platforms': ['android'],
+                'platforms': ['android', 'ios', 'blackberry10', 'wp8'],
                 'plugins': ['Splashscreen'],
                 'angularjsName': 'AngularJsApplication',
                 'appDescription': 'AppDescription',
