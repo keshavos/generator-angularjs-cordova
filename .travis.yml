@@ -1,8 +1,16 @@
 language: node_js
 node_js:
   - '0.10'
+language: android
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    # - platform-tools
+    # - tools
+    - android-19
 before_install:
-  - npm install -g bower
-  - npm install -g grunt-cli
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-angularjs-cordova' ]; then cd .. && eval "mv $currentfolder generator-angularjs-cordova" && cd generator-angularjs-cordova; fi
+    - npm install -g bower
+    - npm install -g grunt-cli
+    - currentfolder=${PWD##*/}
+    - if [ "$currentfolder" != 'generator-angularjs-cordova' ]; then cd .. && eval "mv $currentfolder generator-angularjs-cordova" && cd generator-angularjs-cordova; fi
