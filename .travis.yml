@@ -10,6 +10,8 @@ android:
     # - tools
     - android-19
 before_install:
+    - export ANDROID_HOME=`pwd`/android-sdk-linux
+    - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
     - npm install -g bower
     - npm install -g grunt-cli
     - currentfolder=${PWD##*/}
