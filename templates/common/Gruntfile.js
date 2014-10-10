@@ -166,8 +166,8 @@ module.exports = function(grunt) {
                 ],
                 html5Mode: false,
                 startPage: '/api',
-                title: "App Documentation",
-                titleLink: "/api",
+                title: 'App Documentation',
+                titleLink: '/api',
                 bestMatch: true
             },
             api: {
@@ -194,22 +194,22 @@ module.exports = function(grunt) {
         injector: {
             options: {
                 addRootSlash: false,
-                transform: function(filepath, index, length) {
+                transform: function(filepath) {
                     filepath = filepath.substr(4, filepath.length);
-                    switch (filepath.substr((~-filepath.lastIndexOf(".") >>> 0) + 2)) {
+                    switch (filepath.split('.').pop()) {
                         case 'js':
-                            return filepath = '<script src="' + filepath + '"></script>'
-                            break;
+                            return '<script src="' + filepath + '"></script>';
                         case 'css':
-                            return filepath = '<link rel="stylesheet" href="' + filepath + '" />';
-                            break;
+                            return '<link rel="stylesheet" href="' + filepath + '" />';
                         default:
                             console.log('File extension not supported');
                             break;
                     }
                 }
             },
+            /*jshint camelcase: false */
             local_dependencies: {
+            /*jshint camelcase: true */
                 files: {
                     'app/index.html': [
                         'app/js/config.js',
