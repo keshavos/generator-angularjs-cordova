@@ -190,22 +190,10 @@ module.exports = function(grunt) {
         },
 
         //Injects all the scripts into the index html file
-        //TODO a bit messy atm. Could be improved !
         injector: {
             options: {
                 addRootSlash: false,
-                transform: function(filepath) {
-                    filepath = filepath.substr(4, filepath.length);
-                    switch (filepath.split('.').pop()) {
-                        case 'js':
-                            return '<script src="' + filepath + '"></script>';
-                        case 'css':
-                            return '<link rel="stylesheet" href="' + filepath + '" />';
-                        default:
-                            console.log('File extension not supported');
-                            break;
-                    }
-                }
+                ignorePath: 'app/',
             },
             /*jshint camelcase: false */
             local_dependencies: {
