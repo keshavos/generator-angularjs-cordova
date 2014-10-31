@@ -33,11 +33,13 @@ var ServiceGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
-            this.slugifiedModuleName = this._.slugify(this._.humanize(this.moduleName));
+            this.humanizedModuleName = this._.humanize(this.moduleName);
+            this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
 
-            this.slugifiedName = this._.slugify(this.name);
+            this.humanizedName = this._.humanize(this.name);
+            this.slugifiedName = this._.slugify(this.humanizedName);
             this.classifiedName = this._.classify(this.slugifiedName);
-            this.humanizedName = this._.humanize(this.slugifiedName);
+
 
             done();
         }.bind(this));

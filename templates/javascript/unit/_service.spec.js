@@ -1,13 +1,13 @@
 'use strict';
 
-describe('Service: <%= slugifiedTestFileName %>Service', function () {
+describe('Service: <%= classifiedName %>Service', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
 
-    var <%= slugifiedTestFileName %>;
+    var <%= classifiedName %>;
 
-    beforeEach(inject(function (_<%= slugifiedTestFileName %>Service_) {
-        <%= slugifiedTestFileName %>Service = _<%= slugifiedTestFileName %>Service_;
+    beforeEach(inject(function (<%= camelizedName %>Service) {
+        <%= classifiedName %> = <%= camelizedName %>Service;
     }));
 
     it('should ...', function () {

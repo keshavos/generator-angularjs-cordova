@@ -31,15 +31,15 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
         }
 
         this.prompt(prompts, function(props) {
-            this.moduleName = props.moduleName;
             this.controllerName = props.controllerName;
 
-            this.slugifiedModuleName = this._.slugify(this.moduleName);
-            this.humanizedModuleName = this._.humanize(this.moduleName);
-
-            this.slugifiedName = this._.slugify(this._.humanize(this.name));
+            this.moduleName = props.moduleName;
+            this.humanizedModuleName = this._.humanize(this.moduleName)
+            this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
+            
+            this.humanizedName = this._.humanize(this.name);
+            this.slugifiedName = this._.slugify(this.humanizedName);
             this.classifiedName = this._.classify(this.slugifiedName);
-            this.humanizedName = this._.humanize(this.slugifiedName);
 
             done();
         }.bind(this));
@@ -103,8 +103,8 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
     },
 
     renderControllerUnitTestFile : function(){
-        this.slugifiedTestFileName = this.slugifiedControllerName;
-        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedTestFileName + 'controller.spec.js');
+        this.slugifiedName = this.slugifiedControllerName;
+        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-controller.spec.js');
     }
 });
 
