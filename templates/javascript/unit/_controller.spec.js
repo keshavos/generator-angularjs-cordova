@@ -1,15 +1,15 @@
 'use strict';
 
-describe('Controller: <%= slugifiedTestFileName %>Controller', function() {
+describe('Controller: <%= classifiedName %>Controller', function() {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
 
-    var <%= slugifiedTestFileName %>Controller,
+    var <%= classifiedName %>Controller,
         scope;
 
     beforeEach(inject(function($controller, $rootScope) {
         scope = $rootScope.$new();
-        <%= slugifiedTestFileName %>Controller = $controller('<%= slugifiedTestFileName %>Controller', {
+        <%= classifiedName %>Controller = $controller('<%= classifiedName %>Controller', {
         $scope: scope
         });
     }));

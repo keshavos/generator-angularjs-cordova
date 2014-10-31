@@ -1,13 +1,13 @@
 'use strict';
 
-describe('Filter: <%= slugifiedTestFileName %>', function () {
+describe('Filter: <%= classifiedName %>', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
 
-    var <%= slugifiedTestFileName %>;
+    var <%= classifiedName %>;
 
     beforeEach(inject(function ($filter) {
-        <%= slugifiedTestFileName %> = $filter('<%= slugifiedTestFileName %>');
+        <%= classifiedName %> = $filter('<%= classifiedName %>');
     }));
 
     it('should ...', function () {
