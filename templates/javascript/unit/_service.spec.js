@@ -2,12 +2,12 @@
 
 describe('Service: <%= classifiedName %>Service', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
+    beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
     var <%= classifiedName %>;
 
-    beforeEach(inject(function (<%= camelizedName %>Service) {
-        <%= classifiedName %> = <%= camelizedName %>Service;
+    beforeEach(inject(function (_<%= camelizedName %>Service_) {
+        <%= classifiedName %> = _<%= camelizedName %>Service_;
     }));
 
     it('should ...', function () {

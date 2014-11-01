@@ -2,7 +2,7 @@
 
 describe('Controller: <%= classifiedName %>Controller', function() {
 
-    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
+    beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
     var <%= classifiedName %>Controller,
         scope;
