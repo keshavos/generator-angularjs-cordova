@@ -2,12 +2,12 @@
 
 describe('Filter: <%= classifiedName %>', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
+    beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
     var <%= classifiedName %>;
 
     beforeEach(inject(function ($filter) {
-        <%= classifiedName %> = $filter('<%= classifiedName %>');
+        <%= classifiedName %> = $filter('<%= camelizedName %>');
     }));
 
     it('should ...', function () {

@@ -2,7 +2,7 @@
 
 describe('Directive: <%= classifiedName %>', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>').applicationModuleVendorDependencies);
+    beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
     var scope;
 
