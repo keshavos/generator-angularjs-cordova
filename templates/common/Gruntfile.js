@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
             bower: {
                 files: ['bower.json'],
-                tasks: ['bowerInstall']
+                tasks: ['injector']
             },
 
             js: {
@@ -194,6 +194,7 @@ module.exports = function(grunt) {
             options: {
                 addRootSlash: false,
                 ignorePath: 'app/',
+                bowerPrefix: 'bower',
             },
             /*jshint camelcase: false */
             local_dependencies: {
@@ -211,17 +212,15 @@ module.exports = function(grunt) {
                         'app/css/**/*.css'
                     ]
                 }
+            },
+            /*jshint camelcase: false */
+            bower_dependencies: {
+            /*jshint camelcase: true */
+                files: {
+                    'app/index.html': ['bower.json'],
+                }
             }
         },
-
-        // Automatically inject Bower components into the app
-        bowerInstall: {
-            app: {
-                src: ['<%= yeoman.app %>/index.html'],
-                ignorePath: '<%= yeoman.app %>/'
-            }
-        },
-
         // Renames files for browser caching purposes
         rev: {
             dist: {
@@ -400,7 +399,6 @@ module.exports = function(grunt) {
 
         grunt.task.run([
             'clean:server',
-            'bowerInstall',
             'injector',
             'concurrent:server',
             'autoprefixer',
@@ -431,9 +429,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'bowerInstall',
-        'ngdocs',
         'injector',
+        'ngdocs',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
