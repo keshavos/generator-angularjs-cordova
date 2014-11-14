@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
             bower: {
                 files: ['bower.json'],
-                tasks: ['bowerInstall']
+                tasks: ['injector']
             },
 
             js: {
@@ -151,27 +151,27 @@ module.exports = function(grunt) {
             options: {
                 dest: 'docs',
                 scripts: [
-                    'app/lib/jquery/dist/jquery.js',
-                    'app/lib/bootstrap/dist/js/bootstrap.js',
-                    'app/lib/angular/angular.js',
-                    'app/lib/angular-resource/angular-resource.js',
-                    'app/lib/angular-mocks/angular-mocks.js',
-                    'app/lib/angular-cookies/angular-cookies.js',
-                    'app/lib/angular-sanitize/angular-sanitize.js',
-                    'app/lib/angular-animate/angular-animate.js',
-                    'app/lib/angular-touch/angular-touch.js',
-                    'app/lib/angular-bootstrap/ui-bootstrap.js',
-                    'app/lib/angular-ui-utils/ui-utils.js',
-                    'app/lib/angular-ui-router/release/angular-ui-router.js'
+                    '<%= yeoman.app %>/lib/jquery/dist/jquery.js',
+                    '<%= yeoman.app %>/lib/bootstrap/dist/js/bootstrap.js',
+                    '<%= yeoman.app %>/lib/angular/angular.js',
+                    '<%= yeoman.app %>/lib/angular-resource/angular-resource.js',
+                    '<%= yeoman.app %>/lib/angular-mocks/angular-mocks.js',
+                    '<%= yeoman.app %>/lib/angular-cookies/angular-cookies.js',
+                    '<%= yeoman.app %>/lib/angular-sanitize/angular-sanitize.js',
+                    '<%= yeoman.app %>/lib/angular-animate/angular-animate.js',
+                    '<%= yeoman.app %>/lib/angular-touch/angular-touch.js',
+                    '<%= yeoman.app %>/lib/angular-bootstrap/ui-bootstrap.js',
+                    '<%= yeoman.app %>/lib/angular-ui-utils/ui-utils.js',
+                    '<%= yeoman.app %>/lib/angular-ui-router/release/angular-ui-router.js'
                 ],
                 html5Mode: false,
                 startPage: '/api',
-                title: "App Documentation",
-                titleLink: "/api",
+                title: 'App Documentation',
+                titleLink: '/api',
                 bestMatch: true
             },
             api: {
-                src: ['app/js/*.js', 'app/modules/**/*.js'],
+                src: ['<%= yeoman.app %>/js/*.js', '<%= yeoman.app %>/modules/**/*.js'],
                 title: 'App Documentation'
             }
         },
@@ -190,64 +190,51 @@ module.exports = function(grunt) {
         },
 
         //Injects all the scripts into the index html file
-        //TODO a bit messy atm. Could be improved !
         injector: {
             options: {
                 addRootSlash: false,
-                transform: function(filepath, index, length) {
-                    filepath = filepath.substr(4, filepath.length);
-                    switch (filepath.substr((~-filepath.lastIndexOf(".") >>> 0) + 2)) {
-                        case 'js':
-                            return filepath = '<script src="' + filepath + '"></script>'
-                            break;
-                        case 'css':
-                            return filepath = '<link rel="stylesheet" href="' + filepath + '" />';
-                            break;
-                        default:
-                            console.log('File extension not supported');
-                            break;
-                    }
-                }
+                ignorePath: '<%= yeoman.app %>',
+                bowerPrefix: 'bower',
             },
+            /*jshint camelcase: false */
             local_dependencies: {
+            /*jshint camelcase: true */
                 files: {
-                    'app/index.html': [
-                        'app/js/config.js',
-                        'app/js/application.js',
-                        'app/modules/*/*.js',
-                        'app/modules/*/config/*.js',
-                        'app/modules/*/services/*.js',
-                        'app/modules/*/directives/*.js',
-                        'app/modules/*/filters/*.js',
-                        'app/modules/*/controllers/*.js',
-                        'app/css/**/*.css'
+                    '<%= yeoman.app %>/index.html': [
+                        '<%= yeoman.app %>/js/config.js',
+                        '<%= yeoman.app %>/js/application.js',
+                        '<%= yeoman.app %>/modules/*/*.js',
+                        '<%= yeoman.app %>/modules/*/config/*.js',
+                        '<%= yeoman.app %>/modules/*/services/*.js',
+                        '<%= yeoman.app %>/modules/*/directives/*.js',
+                        '<%= yeoman.app %>/modules/*/filters/*.js',
+                        '<%= yeoman.app %>/modules/*/controllers/*.js',
+                        '<%= yeoman.app %>/css/**/*.css'
                     ]
                 }
+            },
+            /*jshint camelcase: false */
+            bower_dependencies: {
+            /*jshint camelcase: true */
+                files: {
+                    'app/index.html': ['bower.json'],
+                }
             }
         },
-
-        // Automatically inject Bower components into the app
-        bowerInstall: {
-            app: {
-                src: ['<%= yeoman.app %>/index.html'],
-                ignorePath: '<%= yeoman.app %>/'
-            }
-        },
-
         // Renames files for browser caching purposes
         rev: {
             dist: {
                 files: {
                     src: [
-                        '<%= yeoman.dist %>/app/js/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/config/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/services/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/directives/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/filters/*.js',
-                        '<%= yeoman.dist %>/app/modules/*/controllers/*.js',
-                        '<%= yeoman.dist %>/app/css/**/*.css',
-                        '<%= yeoman.dist %>/app/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/js/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/config/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/services/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/directives/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/filters/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/modules/*/controllers/*.js',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/css/**/*.css',
+                        '<%= yeoman.dist %>/<%= yeoman.app %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                         '<%= yeoman.dist %>/css/fonts/*'
                     ]
                 }
@@ -344,7 +331,7 @@ module.exports = function(grunt) {
         // Replace Google CDN references
         cdnify: {
             dist: {
-                html: ['<%= yeoman.dist %>/app/index.html']
+                html: ['<%= yeoman.dist %>/<%= yeoman.app %>/index.html']
             }
         },
 
@@ -412,7 +399,6 @@ module.exports = function(grunt) {
 
         grunt.task.run([
             'clean:server',
-            'bowerInstall',
             'injector',
             'concurrent:server',
             'autoprefixer',
@@ -443,7 +429,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'bowerInstall',
         'ngdocs',
         'injector',
         'useminPrepare',
