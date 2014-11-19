@@ -1,10 +1,8 @@
 ## Changelog
 
-* 0.2.4
-    * Remove wp7 support [#13](https://github.com/keshavos/generator-angularjs-cordova/issues/13)
-    * Add mocha coverage feature [#14](https://github.com/keshavos/generator-angularjs-cordova/issues/14)
+* [0.2.4](https://github.com/keshavos/generator-angularjs-cordova/milestones/0.2.4)
 
-* 0.2.3
+* [0.2.3](https://github.com/keshavos/generator-angularjs-cordova/issues?q=milestone%3A0.2.3)
     * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
     * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
     * Code format of templates and sample app [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
