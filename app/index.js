@@ -205,7 +205,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
             this[key] = props[key];
         }
 
-        this.cordovaappname = this._.camelize(this._.slugify(this._.humanize(this.cordovaappname)));
+        this.cordovaappname = props.cordovaappname;
         this.packagename = props.cordovapackagename;
         this.platforms = props.platforms;
         done();
