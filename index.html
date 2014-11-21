@@ -28,15 +28,15 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="angularjs-cordova-generator" class="anchor" href="#angularjs-cordova-generator"><span class="octicon octicon-link"></span></a>AngularJS Cordova generator</h1>
+        <h2>
+<a id="-angularjs-cordova-generator" class="anchor" href="#-angularjs-cordova-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a># AngularJS Cordova generator</h2>
 
 <p><a href="https://travis-ci.org/keshavos/generator-angularjs-cordova"><img src="https://travis-ci.org/keshavos/generator-angularjs-cordova.svg" alt="Build Status"></a></p>
 
 <p><a href="https://nodei.co/npm/generator-angularjs-cordova/"><img src="https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true" alt="NPM"></a></p>
 
 <h2>
-<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
 <ul>
 <li>
@@ -63,6 +63,7 @@
 <ul>
 <li>eg <code>yo angularjs-cordova:angular-filter foo</code> will now produce the following prompt:</li>
 </ul>
+
 <pre><code>[?] Which module does this filter belongs to? (Use arrow keys)
 &gt; core
   test1
@@ -130,34 +131,40 @@
 <li>Minimal Viable Product which works as expected</li>
 </ul>
 </li>
-</ul><h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <pre><code>npm install -g generator-angularjs-cordova
 </code></pre>
 
 <h2>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">angular generator</a> <a href="https://github.com/wangshijun/generator-angular-cordova">angular-cordova</a>. The project scaffolds an AngularJs application as described and implemented with <a href="http://meanjs.org/docs.html#angularjs-modules">MEAN stack</a>.
 This generator is ideal for projects where a tool is required to generate and scaffold a project based on angular and cordova. If you like pre-defined templates such as ionic, there are dedicated generators which do the job.</p>
 
 <h3>
-<a name="technologies" class="anchor" href="#technologies"><span class="octicon octicon-link"></span></a>Technologies:</h3>
+<a id="technologies" class="anchor" href="#technologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies:</h3>
 
 <ul>
 <li><p><a href="http://phonegap.com">Cordova</a> - for packaging your HTML, CSS and Javascript into deployable mobile apps.
 This generator currently has not been tested for its compatibility with phonegap. It might be added in the future.</p></li>
 <li><p><a href="http://angularjs.org">AngularJS</a> - One of the most popular Javascript MVC/MV** frameworks that is available out there</p></li>
 <li><p><a href="http://angular-ui.github.io/">AngularUI</a> - Includes Twitter bootstrap 3 and allows for developing responsive pages. It ships with various pre-defined templates.</p></li>
-</ul><h3>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+</ul>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 
 <ul>
 <li>Uses the <a href="http://meanjs.org/docs.html#angularjs-modules">Vertical Module approach</a> for initializing and extending the angularjs application.
 The project structure suggested by the Angular team with the <a href="https://github.com/angular/angular-seed">angular-seed</a> works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.</li>
-</ul><h2>
-<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+</ul>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <p>Before you begin make sure you have the <a href="http://yeoman.io/generators.html">yo scaffolding tool</a> installed(As it is part of the Yeoman tool set you might have installed it before). To globally install <em>yo</em> you will need to use npm:</p>
 
@@ -197,8 +204,10 @@ yo angularjs-cordova
 <li>concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.</li>
 <li>Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them</li>
 <li>You can further customize the build tasks by suitably editing the Gruntfile</li>
-</ul><h3>
-<a name="tests-new" class="anchor" href="#tests-new"><span class="octicon octicon-link"></span></a>Tests (New)</h3>
+</ul>
+
+<h3>
+<a id="tests-new" class="anchor" href="#tests-new" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests (New)</h3>
 
 <p>To run the e2e protractor tests which come shipped with the sample app, run</p>
 
@@ -209,7 +218,7 @@ protractor protractor-desktop-config.js   ###this will run the protractor tests
 </code></pre>
 
 <h3>
-<a name="available-generators" class="anchor" href="#available-generators"><span class="octicon octicon-link"></span></a>Available generators</h3>
+<a id="available-generators" class="anchor" href="#available-generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available generators</h3>
 
 <p>Once setup, you can use any of the following sub-generators for extending your AngularJs application</p>
 
@@ -224,7 +233,9 @@ protractor protractor-desktop-config.js   ###this will run the protractor tests
 <li><a href="#angularjs-service-sub-generator">angularjs-cordova:angular-service</a></li>
 <li><a href="#angularjs-test-sub-generator">angularjs-cordova:angular-test</a></li>
 <li><a href="#angularjs-view-sub-generator">angularjs-cordova:angular-view</a></li>
-</ul><p>The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.</p>
+</ul>
+
+<p>The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.</p>
 
 <p>All the available cordova commands can be listed by typing the following in the command line:</p>
 
@@ -298,7 +309,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 </code></pre>
 
 <h2>
-<a name="application-generator" class="anchor" href="#application-generator"><span class="octicon octicon-link"></span></a>Application Generator</h2>
+<a id="application-generator" class="anchor" href="#application-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application Generator</h2>
 
 <p>The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder(<code>app/</code>).</p>
 
@@ -310,7 +321,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>Now, the application generator does a great job scaffolding a whole application, but daily work requires us to repeat a lot of structured code. For this purpose we provided you with some sub-generators to help you speed up your development.</p>
 
 <h2>
-<a name="angularjs-module-sub-generator" class="anchor" href="#angularjs-module-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Module Sub-Generator</h2>
+<a id="angularjs-module-sub-generator" class="anchor" href="#angularjs-module-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Module Sub-Generator</h2>
 
 <p>Another redundant task is creating a new AngularJS module structure. For this purpose you can use the Angular module sub-generator. It will create the proper folder structure for you and the module initialization file. Creating a new AngularJS module is simple:</p>
 
@@ -320,7 +331,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask for more information about your folder structure, and will create the empty new AngularJS module. Now, to fill that new module with your business logic, we provided you with several AngularJS entities sub-generators.</p>
 
 <h2>
-<a name="angularjs-route-sub-generator" class="anchor" href="#angularjs-route-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Route Sub-Generator</h2>
+<a id="angularjs-route-sub-generator" class="anchor" href="#angularjs-route-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Route Sub-Generator</h2>
 
 <p>To construct your module you will often need to create a new route. The AngularJS route sub-generator will help you create a view, controller and a proper route in your module <strong>routes.js</strong> file. If it can't find the module routes file the sub-generator will create one for you. Creating a new AngularJS route will involve executing this command:</p>
 
@@ -330,7 +341,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask for more information about your controller, view and routing URL, and will generate the appropriate files for you.</p>
 
 <h2>
-<a name="angularjs-controller-sub-generator" class="anchor" href="#angularjs-controller-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Controller Sub-Generator</h2>
+<a id="angularjs-controller-sub-generator" class="anchor" href="#angularjs-controller-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Controller Sub-Generator</h2>
 
 <p>The AngularJS Controller sub-generator will create a new AngularJS controller in the specified module's <strong>controllers</strong> folder. To create a new AngularJS controller run <em>yo</em> again by using this command:</p>
 
@@ -342,7 +353,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p><strong>Don't forget!</strong> This time you pass the controller name as an argument.</p>
 
 <h2>
-<a name="angularjs-view-sub-generator" class="anchor" href="#angularjs-view-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS View Sub-Generator</h2>
+<a id="angularjs-view-sub-generator" class="anchor" href="#angularjs-view-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS View Sub-Generator</h2>
 
 <p>Once you have your controller file ready, you may want to add a view that makes use of this controller. The AngularJS view sub-generator will create a new AngularJS view in thr specified module's <strong>views</strong> folder, and will allow you to add a route definition for it. To create a new AngularJS view you will need to execute this command:</p>
 
@@ -352,7 +363,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask you for the module name under which you would like to create your new view, and some additional routing information. It will then create a new view file in that module's <strong>views</strong> folder and add a routing state to the module <strong>routes.js</strong> file. If it can't find the module routes file it will create one for you.</p>
 
 <h2>
-<a name="angularjs-service-sub-generator" class="anchor" href="#angularjs-service-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Service Sub-Generator</h2>
+<a id="angularjs-service-sub-generator" class="anchor" href="#angularjs-service-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Service Sub-Generator</h2>
 
 <p>The AngularJS service sub-generator will create a new AngularJS service in the specified module's <strong>services</strong> folder. To create a new AngularJS service you will need to execute this command:</p>
 
@@ -362,7 +373,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.</p>
 
 <h2>
-<a name="angularjs-directive-sub-generator" class="anchor" href="#angularjs-directive-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Directive Sub-Generator</h2>
+<a id="angularjs-directive-sub-generator" class="anchor" href="#angularjs-directive-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Directive Sub-Generator</h2>
 
 <p>The AngularJS directive sub-generator will create a new AngularJS directive in the specified module's <strong>directives</strong> folder. Creating a new AngularJS directive should already look familiar:</p>
 
@@ -372,7 +383,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask you for the module name under which you would like to create your new directive, and will create a new AngularJS directive file in that module's <strong>directives</strong> folder.</p>
 
 <h2>
-<a name="angularjs-filter-sub-generator" class="anchor" href="#angularjs-filter-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Filter Sub-Generator</h2>
+<a id="angularjs-filter-sub-generator" class="anchor" href="#angularjs-filter-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Filter Sub-Generator</h2>
 
 <p>The AngularJS filter sub-generator will create a new AngularJS filter in a specified module's <strong>filters</strong> folder. To create a new AngularJS filter you need to call yo again:</p>
 
@@ -382,7 +393,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask you for the module name under which you would like to create your new filter, and will create a new AngularJS filter file in that module <strong>filters</strong> folder.</p>
 
 <h2>
-<a name="angularjs-config-sub-generator" class="anchor" href="#angularjs-config-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Config Sub-Generator</h2>
+<a id="angularjs-config-sub-generator" class="anchor" href="#angularjs-config-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Config Sub-Generator</h2>
 
 <p>The AngularJS config sub-generator will create a new AngularJS config section in a specified module's <strong>config</strong> folder. To create a new AngularJS config file just call yo:</p>
 
@@ -392,7 +403,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>The sub-generator will ask you for the module name under which you would like to create your new config, and will create a new AngularJS config file in that module's <strong>config</strong> folder.</p>
 
 <h2>
-<a name="angularjs-test-sub-generator" class="anchor" href="#angularjs-test-sub-generator"><span class="octicon octicon-link"></span></a>AngularJS Test Sub-Generator</h2>
+<a id="angularjs-test-sub-generator" class="anchor" href="#angularjs-test-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Test Sub-Generator</h2>
 
 <p>The test generator generates unit and e2e test templates for you.</p>
 
@@ -402,7 +413,7 @@ serve [PORT] .............................. runs a local web server for www/ ass
 <p>This will prompt the user with the option to either create a unit test template or an e2e test template for the chosen module and file type.</p>
 
 <h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>MIT</p>
       </section>
