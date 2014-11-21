@@ -118,11 +118,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
             name: 'Blackberry 10',
             value: 'blackberry10',
             checked: false
-        }, {
-            name: 'Windows Phone 7',
-            value: 'wp7',
-            checked: false
-        }, {
+        },{
             name: 'Windows Phone 8',
             value: 'wp8',
             checked: false
@@ -209,7 +205,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
             this[key] = props[key];
         }
 
-        this.cordovaappname = this._.camelize(this._.slugify(this._.humanize(this.cordovaappname)));
+        this.cordovaappname = props.cordovaappname;
         this.packagename = props.cordovapackagename;
         this.platforms = props.platforms;
         done();

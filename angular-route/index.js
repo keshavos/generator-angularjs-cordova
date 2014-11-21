@@ -88,7 +88,7 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
             var routesFileContent = this.readFileAsString(routesFilePath);
 
             // Append the new state
-            routesFileContent = routesFileContent.replace('$stateProvider.', this.engine(this.read('../../templates/javascript/_route.js'), this));
+            routesFileContent = routesFileContent.replace(/\$stateProvider[\s\n]*\./, this.engine(this.read('../../templates/javascript/_route.js'), this));
 
             // Save route file
             this.writeFileFromString(routesFileContent, routesFilePath);

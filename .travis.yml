@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '0.10'
 before_install:
-  - npm install -g bower
-  - npm install -g grunt-cli
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-angularjs-cordova' ]; then cd .. && eval "mv $currentfolder generator-angularjs-cordova" && cd generator-angularjs-cordova; fi
+    - npm install -g bower
+    - npm install -g grunt-cli
+    - currentfolder=${PWD##*/}
+    - if [ "$currentfolder" != 'generator-angularjs-cordova' ]; then cd .. && eval "mv $currentfolder generator-angularjs-cordova" && cd generator-angularjs-cordova; fi
