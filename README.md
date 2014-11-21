@@ -5,62 +5,30 @@
 [![NPM](https://nodei.co/npm/generator-angularjs-cordova.png?downloads=true)](https://nodei.co/npm/generator-angularjs-cordova/)
 
 
-## Changelog
+## [Changelog](https://github.com/keshavos/generator-angularjs-cordova/blob/master/docs/CHANGELOG.md)
 
-* 0.2.4
-    * Remove wp7 support [#13](https://github.com/keshavos/generator-angularjs-cordova/issues/13)
-    * Add mocha coverage feature [#14](https://github.com/keshavos/generator-angularjs-cordova/issues/14)
+## Installation & Getting started
 
-* 0.2.3
-    * Support for generating angular documentation [#2](https://github.com/keshavos/generator-angularjs-cordova/issues/2)
-    * Add option to prompt user to add type of service [#3](https://github.com/keshavos/generator-angularjs-cordova/issues/3)
-    * Code format of templates and sample app [#4](https://github.com/keshavos/generator-angularjs-cordova/issues/4)
-    * Fix bug adding Windows 8 platform  [#5](https://github.com/keshavos/generator-angularjs-cordova/issues/5)
-
-* 0.2.2
-    * Replace module name input with list of available modules
-    * With any of the sub-generators, the prompt which used to ask the user which module the file should be generated under, all available modules are listed for user to pick from
-        * eg `yo angularjs-cordova:angular-filter foo` will now produce the following prompt:
-        ```
-        [?] Which module does this filter belongs to? (Use arrow keys)
-        > core
-          test1
-          test2
-          test3
-        ```
-* 0.2.1
-    * Updated README
-    * Development folder is now `app/` in the root folder. The source files are copied to `www/` with grunt tasks
-    * Remove option to use the cordova template app
-    * `angular-test` sub-generator prompts to generate test template for unit (targeting controller, service, directive or filter) or end-to-end test
-    * Add grunt tasks to perform build tasks which copies only required source to `www/` for build
-    * Add grunt tasks
-        * `grunt serve` serves the development app on port 9000
-        * `grunt build` performs build related tasks and moves required source to `www/`
-        * `grunt karma` runs karma tests
-        * `protractor protractor-desktop-config.js` runs protractor e2e tests
-            * Requires webdriver to be started, app running
-            * Requires app to be running on `http://127.0.0.1:9000/`
-    * Pre-configured protractor config and working e2e example of default app
-
-* 0.1.4
-    * Upgrade to cordova 3.5
-    * Better dependency declarations.
-    * More tests
-    * Refined documentation/ README
-
-* 0.0.2
-    * Fixes travis file to include bower required for passing tests
-
-* 0.0.1
-    * Minimal Viable Product which works as expected
-
-
-## Installation
-
+```
+$ npm install -g yo
+```
 ```
 npm install -g generator-angularjs-cordova
 ```
+```
+mkdir testapp && cd testapp
+yo angularjs-cordova
+```
+This presents you with a series of options to initialize and customize your application
+
+Once this is done, run
+
+```grunt serve``` to run the app on your browser
+
+```grunt build``` which performs various build related tasks and copies it on to the `www/` folder where you can use the cordova commands to build/ deploy the app to emulator/ devices
+ - concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.
+ - Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them
+ - You can further customize the build tasks by suitably editing the Gruntfile
 
 ## Overview
 
@@ -82,47 +50,7 @@ This generator currently has not been tested for its compatibility with phonegap
 The project structure suggested by the Angular team with the [angular-seed](https://github.com/angular/angular-seed) works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.
 
 
-## Getting Started
-
-Before you begin make sure you have the [yo scaffolding tool](http://yeoman.io/generators.html) installed(As it is part of the Yeoman tool set you might have installed it before). To globally install *yo* you will need to use npm:
-
-**Note:** Your user might not have the permissions to install package globally, so use a super user or **sudo**.
-
-```
-$ npm install -g yo
-```
-
-Once ready, you should be able to use this with
-
-```
-npm install -g generator-angularjs-cordova
-```
-
-Create and navigate into a new directory and run the yo command to initialize a new project
-
-```
-mkdir testapp && cd testapp
-yo angularjs-cordova
-```
-
-This presents you with a series of options to initialize and customize your application
-
-Once this is done, run
-```
-grunt serve
-```
-to run the app on your browser
-
-Use
-```
-grunt build
-```
-which performs various build related tasks and copies it on to the `www/` folder where you can use the cordova commands to build/ deploy the app to emulator/ devices
- - concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.
- - Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them
- - You can further customize the build tasks by suitably editing the Gruntfile
-
-###Tests (New)
+###Tests
 
 To run the e2e protractor tests which come shipped with the sample app, run
 
@@ -134,7 +62,7 @@ protractor protractor-desktop-config.js   ###this will run the protractor tests
 ```
 
 
-### Available generators
+### Available sub-generators
 
 Once setup, you can use any of the following sub-generators for extending your AngularJs application
 
@@ -151,72 +79,7 @@ Once setup, you can use any of the following sub-generators for extending your A
 
 The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.
 
-All the available cordova commands can be listed by typing the following in the command line:
-
-`cordova help`
-
-As per **cordova v3.5.0-0.2.4**, these are the available options
-
-Synopsis
-
-    cordova command [options]
-
-Global Commands
-
-    create <PATH> [ID [NAME [CONFIG]]] ....... creates a Cordova project in the specified PATH, with
-                                               ID reverse-domain-style package name - used in <widget id>
-                                               NAME is a human readable field
-                                               CONFIG is a json string whose key/values will be included
-                                               in [PATH]/.cordova/config.json
-                  [--copy-from|src=<PATH>] ... use custom www assets instead of the stock Cordova hello-world.
-                  [--link-to=<PATH>] ......... symlink to custom www assets without creating a copy.
-
-    help ..................................... shows this syntax summary
-
-    info ..................................... print out useful information helpful for submitting bug
-                                               reports and getting help.  Creates an info.txt file at the
-                                               base of your project
-
-Project-Level Commands
-
-    platform(s) [{add|remove|rm} <PLATFORM>] .. add or remove a specified PLATFORM, OR
-                [{list|ls}] ................... list all installed and available platforms
-                [{update|up} <PLATFORM>] ...... update the version of Cordova used for a specific
-                                                PLATFORM; use after updating the CLI.
-                [check] ....................... list platforms which can be updated by `platform update`
-
-    plugin add <SPEC1> [<SPEC2> ...] .......... SPEC can be a plugin ID, a local path, or a git URL.
-               [--searchpath <directory>] ..... When looking up plugins by ID, look in this directory and
-                                                each of its subdirectories for the plugin before hitting the registry.
-                                                Multiple search paths can be used by either specifying the flag multiple
-                                                times, or by separating paths with a delimiter (: on 'nix, ; on Windows).
-
-    plugin(s) rm <plugin_id1> [<plugin_id2>] .. remove a plugin with the given IDs.
-
-              [{ls|list}] ..................... list all currently installed plugins
-              [search <keyword1 keyword2...>] . search the plugin registry for plugins matching the keywords
-
-    prepare [PLATFORM..] ...................... copies files for specified platforms, or all platforms,
-                                                so that the project is ready to build in each SDK
-
-    compile [PLATFORM..] ...................... builds the app for specified platforms, or all platforms
-
-    build [PLATFORM...] ....................... shortcut for prepare, then compile
-
-    run [--debug|--release]
-        [--device|--emulator|--target=FOO]
-        [PLATFORM] ............................ deploys app on specified platform devices / emulators
-
-    emulate [PLATFORM...] ..................... alias for "run --emulator"
-
-    serve [PORT] .............................. runs a local web server for www/ assets. Port defaults to 8000.
-                                                Access projects at: http://HOST_IP:PORT/PLATFORM/www
-
-Command-line Flags/Options
-
-    -v, --version ............................. prints out this utility's version
-    -d, --verbose ............................. debug mode produces verbose log output for all activity,
-                                                including output of sub-commands cordova invokes
+All the available cordova commands can be listed with `cordova help`
 
 ## Application Generator
 
