@@ -33,16 +33,10 @@ Once this is done, run
 ## Overview
 
 A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as [angular generator](https://github.com/yeoman/generator-angular) [angular-cordova](https://github.com/wangshijun/generator-angular-cordova). The project scaffolds an AngularJs application as described and implemented with [MEAN stack](http://meanjs.org/docs.html#angularjs-modules).
-This generator is ideal for projects where a tool is required to generate and scaffold a project based on angular and cordova. If you like pre-defined templates such as ionic, there are dedicated generators which do the job.
 
 ### Technologies:
 
-* [Cordova](http://phonegap.com) - for packaging your HTML, CSS and Javascript into deployable mobile apps.
-This generator currently has not been tested for its compatibility with phonegap. It might be added in the future.
-
-* [AngularJS](http://angularjs.org) - One of the most popular Javascript MVC/MV** frameworks that is available out there
-
-* [AngularUI](http://angular-ui.github.io/) - Includes Twitter bootstrap 3 and allows for developing responsive pages. It ships with various pre-defined templates.
+[Cordova](http://phonegap.com), [AngularJS](http://angularjs.org), [AngularUI](http://angular-ui.github.io/)
 
 ### Features
 
@@ -132,10 +126,6 @@ $ yo angularjs-cordova:angular-controller <controller-name>
 ```
 
 The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module **controllers** folder and a test file in the **tests** folder.
-
-
-**Don't forget!** This time you pass the controller name as an argument.
-
 
 
 ## AngularJS View Sub-Generator
