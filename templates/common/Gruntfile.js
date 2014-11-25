@@ -196,9 +196,7 @@ module.exports = function(grunt) {
                 ignorePath: 'app/',
                 bowerPrefix: 'bower',
             },
-            /*jshint camelcase: false */
-            local_dependencies: {
-            /*jshint camelcase: true */
+            localDependencies: {
                 files: {
                     'app/index.html': [
                         'app/js/config.js',
@@ -213,11 +211,20 @@ module.exports = function(grunt) {
                     ]
                 }
             },
-            /*jshint camelcase: false */
-            bower_dependencies: {
-            /*jshint camelcase: true */
+            bowerDependencies: {
                 files: {
                     'app/index.html': ['bower.json'],
+                }
+            },
+            karmaDependencies: {
+                options: {
+                    ignorePath: '',
+                    transform: function(filepath) {
+                        return '\'' + filepath + '\',';
+                    }
+                },
+                files: {
+                    'karma.conf.js': ['bower.json'],
                 }
             }
         },
