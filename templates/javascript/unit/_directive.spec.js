@@ -1,17 +1,16 @@
 'use strict';
 
-describe('Directive: <%= slugifiedTestFileName %>', function () {
+describe('Directive: <%= classifiedName %>', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
-    var element,
-        scope;
+    var scope;
 
     beforeEach(inject(function ($rootScope) {
         scope = $rootScope.$new();
     }));
 
-    it('should ...', inject(function ($compile) {
+    it('should ...', inject(function () {
 
     }));
 });
