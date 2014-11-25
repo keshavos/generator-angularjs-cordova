@@ -37,7 +37,9 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
-            this.slugifiedModuleName = this._.slugify(this.moduleName);
+            this.humanizedModuleName = this._.humanize(this.moduleName);
+            this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
+            this.classifiedModuleName = this._.classify(this.slugifiedModuleName);
             done();
         }.bind(this));
     },
@@ -89,11 +91,13 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
             }]
         }], function(props) {
 
-            this.slugifiedTestFileName = this._.slugify(this._.humanize(this.name));
+            this.slugifiedName = this._.slugify(this._.humanize(this.name));
+            this.classifiedName = this._.classify(this.slugifiedName);
+            this.camelizedName = this._.camelize(this.slugifiedName);
 
             if (props.testType == 'unitTest') {
 
-                this.template('../../templates/javascript/unit/_' + props.unitTestType + '.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedTestFileName + props.unitTestType + '.spec.js');
+                this.template('../../templates/javascript/unit/_' + props.unitTestType + '.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-' + props.unitTestType + '.spec.js');
 
             } else if (props.testType == 'e2eTest') {
 

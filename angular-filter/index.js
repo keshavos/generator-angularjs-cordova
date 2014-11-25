@@ -32,11 +32,13 @@ var FilterGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
-            this.slugifiedModuleName = this._.slugify(this.moduleName);
+            this.humanizedModuleName = this._.humanize(this.moduleName)
+            this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
 
-            this.slugifiedName = this._.slugify(this._.humanize(this.name));
+            this.humanizedName = this._.humanize(this.name);
+            this.slugifiedName = this._.slugify(this.humanizedName);
             this.camelizedName = this._.camelize(this.slugifiedName);
-            this.humanizedName = this._.humanize(this.slugifiedName);
+            this.classifiedName = this._.classify(this.slugifiedName);
 
             done();
         }.bind(this));
@@ -47,8 +49,7 @@ var FilterGenerator = yeoman.generators.NamedBase.extend({
     },
 
     renderFilterUnitTestFile : function(){
-        this.slugifiedTestFileName = this.slugifiedName;
-        this.template('../../templates/javascript/unit/_filter.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + 'filter.spec.js');
+        this.template('../../templates/javascript/unit/_filter.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-filter.spec.js');
     }
 });
 
