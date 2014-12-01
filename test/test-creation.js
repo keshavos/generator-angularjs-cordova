@@ -12,7 +12,7 @@ var async = require('async');
  * Should create a basic cordova angularjs app with the set default options
  */
 describe('generator-angularjs: ', function(){
-    this.timeout(15000);
+    this.timeout(30000);
     after(function(){
         temp.cleanup();
     });
@@ -160,7 +160,7 @@ describe('generator-angularjs: ', function(){
         it('should create controller and test files', function(){
             var expected = [
                 'app/modules/core/controllers/foo.js',
-                'app/modules/core/tests/unit/foocontroller.spec.js'
+                'app/modules/core/tests/unit/foo-controller.spec.js'
             ];
 
             assert.file(expected);
@@ -189,7 +189,7 @@ describe('generator-angularjs: ', function(){
         it('should create the directive and unit test files', function(){
             var expected = [
                 'app/modules/core/directives/foo.js',
-                'app/modules/core/tests/unit/foodirective.spec.js'
+                'app/modules/core/tests/unit/foo-directive.spec.js'
             ];
             assert.file(expected);
         });
@@ -217,7 +217,7 @@ describe('generator-angularjs: ', function(){
         it('should create the filter and unit test files', function(){
             var expected = [
                 'app/modules/core/filters/foo.js',
-                'app/modules/core/tests/unit/foofilter.spec.js'
+                'app/modules/core/tests/unit/foo-filter.spec.js'
             ];
             assert.file(expected);
         });
@@ -248,7 +248,7 @@ describe('generator-angularjs: ', function(){
         it('should create the partial, controller and controller unit test files', function(){
             var expected = [
                 'app/modules/core/controllers/foo.js',
-                'app/modules/core/tests/unit/foocontroller.spec.js',
+                'app/modules/core/tests/unit/foo-controller.spec.js',
                 'app/modules/core/views/foo.html',
             ];
             assert.file(expected);
@@ -407,7 +407,7 @@ describe('generator-angularjs: ', function(){
 
         it('should generate a unit test file for a controller', function(){
             var expected = [
-                'app/modules/core/tests/unit/foounitcontroller.spec.js'
+                'app/modules/core/tests/unit/foounit-controller.spec.js'
             ];
             assert.file(expected);
         });
@@ -433,7 +433,7 @@ describe('generator-angularjs: ', function(){
 
         it('should generate a unit test file for a service', function(){
             var expected = [
-                'app/modules/core/tests/unit/foounitservice.spec.js'
+                'app/modules/core/tests/unit/foounit-service.spec.js'
             ];
             assert.file(expected);
         });
@@ -459,7 +459,7 @@ describe('generator-angularjs: ', function(){
 
         it('should generate a unit test file for a directive', function(){
             var expected = [
-                'app/modules/core/tests/unit/foounitdirective.spec.js'
+                'app/modules/core/tests/unit/foounit-directive.spec.js'
             ];
             assert.file(expected);
         });
@@ -485,7 +485,7 @@ describe('generator-angularjs: ', function(){
 
         it('should generate a unit test file for a filter', function(){
             var expected = [
-                'app/modules/core/tests/unit/foounitfilter.spec.js'
+                'app/modules/core/tests/unit/foounit-filter.spec.js'
             ];
             assert.file(expected);
         });
