@@ -68,7 +68,8 @@ describe('generator-angularjs: ', function(){
                 'app/modules/core/tests/e2e/home/home.po.js',
                 'app/modules/core/tests/e2e/home/home.spec.js',
                 'app/modules/core/tests/unit/home.spec.js',
-                'app/modules/core/views/home.html'
+                'app/modules/core/views/home.html',
+                'www/.gitignore'
             ];
 
             assert.file(expected);

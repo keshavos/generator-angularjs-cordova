@@ -378,7 +378,7 @@ Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     this.copy('../../templates/common/travis.yml', '.travis.yml');
     this.copy('../../templates/common/Gruntfile.js', 'Gruntfile.js');
     this.copy('../../templates/common/protractor-desktop-config.js', 'protractor-desktop-config.js.js');
-
+    this.copy('../../templates/common/www-gitignore', 'www/.gitignore');
     this.copy('../../templates/hooks/before_build/010_grunt_build.js', 'hooks/before_build/010_grunt_build.js');
 
     this.config.save(); //http://yeoman.io/blog/cleanup.html
