@@ -2,7 +2,10 @@
 
 describe('Filter: <%= classifiedName %>', function () {
 
-    beforeEach(module(ApplicationConfiguration.applicationModuleName));
+    //Load the ui.router module
+    beforeEach(module('ui.router'));
+    //Load the module
+    beforeEach(module('<%= moduleName%>'));
 
     var <%= classifiedName %>;
 
