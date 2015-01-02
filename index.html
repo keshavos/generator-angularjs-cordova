@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>Generator-angularjs-cordova</h1>
-        <p>A Yeoman generator for creating a Cordova-AngularJS application</p>
+        <p>A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJS based cordova mobile app using a module based approach.</p>
 
         <p class="view"><a href="https://github.com/keshavos/generator-angularjs-cordova">View the Project on GitHub <small>keshavos/generator-angularjs-cordova</small></a></p>
 
@@ -40,65 +40,85 @@
 </h2>
 
 <h2>
-<a id="installation--getting-started" class="anchor" href="#installation--getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation &amp; Getting started</h2>
-
-<pre><code>$ npm install -g yo
-</code></pre>
-
-<pre><code>npm install -g generator-angularjs-cordova
-</code></pre>
-
-<pre><code>mkdir testapp &amp;&amp; cd testapp
-yo angularjs-cordova
-</code></pre>
-
-<p>This presents you with a series of options to initialize and customize your application</p>
-
-<p>Once this is done, run</p>
-
-<p><code>grunt serve</code> to run the app on your browser</p>
-
-<p><code>grunt build</code> which performs various build related tasks and copies it on to the <code>www/</code> folder where you can use the cordova commands to build/ deploy the app to emulator/ devices</p>
-
-<ul>
-<li>concatenating all vendor files into a single file and all user code into a single file. This makes the distribution source cleaner.</li>
-<li>Note: All user generated files are automatically injected into the index.html file, so the user doesn't have to manually include them</li>
-<li>You can further customize the build tasks by suitably editing the Gruntfile</li>
-</ul>
-
-<h2>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>A yeoman generator which combines the best features and practices for cordova based mobile app development  extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">angular generator</a> <a href="https://github.com/wangshijun/generator-angular-cordova">angular-cordova</a>. The project scaffolds an AngularJs application as described and implemented with <a href="http://meanjs.org/docs.html#angularjs-modules">MEAN stack</a>.</p>
+<p>A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJs based cordova mobile app using a <a href="http://meanjs.org/docs.html#angularjs-modules">module based approach</a>. Extended from the already available yeoman generators such as <a href="https://github.com/yeoman/generator-angular">angular generator</a> and <a href="https://github.com/meanjs/generator-meanjs">MEAN</a>.</p>
 
 <h3>
-<a id="technologies" class="anchor" href="#technologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies:</h3>
+<a id="technologies" class="anchor" href="#technologies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies</h3>
 
-<p><a href="http://phonegap.com">Cordova</a>, <a href="http://angularjs.org">AngularJS</a>, <a href="http://angular-ui.github.io/">AngularUI</a></p>
+<ul>
+<li><a href="http://phonegap.com">Cordova</a></li>
+<li><a href="http://angularjs.org">AngularJS</a></li>
+<li><a href="http://angular-ui.github.io/">AngularUI</a></li>
+</ul>
 
 <h3>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 
 <ul>
-<li>Uses the <a href="http://meanjs.org/docs.html#angularjs-modules">Vertical Module approach</a> for initializing and extending the angularjs application.
-The project structure suggested by the Angular team with the <a href="https://github.com/angular/angular-seed">angular-seed</a> works well but can get quite difficult to maintain and extend as the project grows. The vertical approach when used along the generator removes the hassle involved in manually including and injecting new services, defining routes and binding the views. It also allows for developers to work on individual modules which can then be combined seamlessly into the project.</li>
+<li>
+<a href="http://meanjs.org/docs.html#angularjs-modules">Vertical Module approach</a> for initializing and scaffolding the AngularJS application.</li>
+<li>CLI user-prompt based <a href="#available-sub-generators">sub-generators</a>, which generate angular templates</li>
+<li>Templates generated based on industry standard best-practices<sup>*</sup>
+</li>
 </ul>
 
+<h2>
+<a id="installation-quick-start" class="anchor" href="#installation-quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation/ Quick start</h2>
+
+<pre><code>$&gt; npm install -g yo
+
+$&gt; npm install -g generator-angularjs-cordova
+
+$&gt; mkdir testapp &amp;&amp; cd testapp
+
+$&gt; yo angularjs-cordova
+
+</code></pre>
+
+<p>This presents you with a series of options to initialize and customize your application.</p>
+
+<h2>
+<a id="grunt-tasks" class="anchor" href="#grunt-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grunt tasks</h2>
+
+<ul>
+<li><p><code>grunt serve</code> - run the app from within the <code>app/</code>, on a browser and trigger grunt tasks up on changes in the fileset</p></li>
+<li><p><code>grunt serve --dist</code> - run the app from within the <code>www/</code>, on a browser</p></li>
+<li><p><code>grunt build</code> - perform various build related tasks and copies processed source to <code>www/</code> (clean, minify, inject dependencies etc.,)</p></li>
+<li><p><code>grunt docs</code>- generate documentation from the dockblocks of the AngularJS source code</p></li>
+<li><p><code>grunt test</code> - run karma unit tests</p></li>
+</ul>
+
+<h2>
+<a id="cordova-tasks" class="anchor" href="#cordova-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cordova tasks</h2>
+
+<p><code>grunt build</code> task is run as a cordova pre-build hook.</p>
+
+<pre><code>e.g. $&gt; cordova build android
+</code></pre>
+
+<p>will trigger a <code>grunt build</code> task before performing any cordova's android build related tasks.</p>
+
+<p>For a list of all available cordova commands, use:</p>
+
+<p><code>$&gt; cordova --help</code></p>
+
 <h3>
-<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h3>
+<a id="e2e-tests" class="anchor" href="#e2e-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>e2e tests</h3>
 
-<p>To run the e2e protractor tests which come shipped with the sample app, run</p>
+<p>To run the e2e protractor tests which come shipped with the sample app, run the following commands in parallel</p>
 
-<pre><code>webdriver-manager update
-webdriver-manager start         ###this should start the webdriver
-grunt serve                     ###this will serve your app on http://127.0.0.1:9000/
-protractor protractor-desktop-config.js   ###this will run the protractor tests
+<pre><code>$&gt; webdriver-manager update        ###update webdriver
+$&gt; webdriver-manager start         ###start the webdriver
+$&gt; grunt serve                     ###serves the app on http://127.0.0.1:9000/
+$&gt; protractor protractor-desktop-config.js   ###run the protractor tests
 </code></pre>
 
 <h3>
 <a id="available-sub-generators" class="anchor" href="#available-sub-generators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available sub-generators</h3>
 
-<p>Once setup, you can use any of the following sub-generators for extending your AngularJs application</p>
+<p>Use any of the following sub-generators for extending the AngularJS application</p>
 
 <ul>
 <li><a href="#application-generator">angularjs-cordova</a></li>
@@ -113,116 +133,132 @@ protractor protractor-desktop-config.js   ###this will run the protractor tests
 <li><a href="#angularjs-view-sub-generator">angularjs-cordova:angular-view</a></li>
 </ul>
 
-<p>The generators does not provide sub-generators for the cordova side of the application. This is with the intention that the onus of using cordova commands should be on the developer as this can make for remembering the command list an overhead.</p>
-
-<p>All the available cordova commands can be listed with <code>cordova help</code></p>
-
 <h2>
 <a id="application-generator" class="anchor" href="#application-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application Generator</h2>
 
-<p>The application generator will help you create a fresh copy of a AngularJs application in your working Cordova folder(<code>app/</code>).</p>
+<p>Generates an AngularJs application within <code>app/</code>.</p>
 
-<pre><code>$ yo angularjs-cordova
+<pre><code>$&gt; yo angularjs-cordova
 </code></pre>
 
 <p>The generator will ask you a few questions about your new application and will generate it for you.</p>
 
-<p>Now, the application generator does a great job scaffolding a whole application, but daily work requires us to repeat a lot of structured code. For this purpose we provided you with some sub-generators to help you speed up your development.</p>
+<p><strong>NOTE:</strong> This sub-generator should be used only once to initialise the application. Once generated, use specific sub-generators to further extend the application.</p>
 
 <h2>
 <a id="angularjs-module-sub-generator" class="anchor" href="#angularjs-module-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Module Sub-Generator</h2>
 
-<p>Another redundant task is creating a new AngularJS module structure. For this purpose you can use the Angular module sub-generator. It will create the proper folder structure for you and the module initialization file. Creating a new AngularJS module is simple:</p>
+<p>Creates and initialises a module within the <code>modules/</code>.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-module &lt;module-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-module &lt;module-name&gt;
 </code></pre>
 
-<p>The sub-generator will ask for more information about your folder structure, and will create the empty new AngularJS module. Now, to fill that new module with your business logic, we provided you with several AngularJS entities sub-generators.</p>
+<p>Example scenario/ usage of modules:</p>
+
+<ul>
+<li>login (contain all login related features)</li>
+<li>register (contain  all registration related features)</li>
+<li>core (contain shared features which can be used by all other modules</li>
+</ul>
 
 <h2>
 <a id="angularjs-route-sub-generator" class="anchor" href="#angularjs-route-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Route Sub-Generator</h2>
 
-<p>To construct your module you will often need to create a new route. The AngularJS route sub-generator will help you create a view, controller and a proper route in your module <strong>routes.js</strong> file. If it can't find the module routes file the sub-generator will create one for you. Creating a new AngularJS route will involve executing this command:</p>
+<p>The sub-generator will prompt for information about the required controller, view and routing path and generates the required files, inserts routing logic in the modules' <strong>config/routes.js</strong> file.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-route &lt;route-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-route &lt;route-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask for more information about your controller, view and routing URL, and will generate the appropriate files for you.</p>
 
 <h2>
 <a id="angularjs-controller-sub-generator" class="anchor" href="#angularjs-controller-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Controller Sub-Generator</h2>
 
-<p>The AngularJS Controller sub-generator will create a new AngularJS controller in the specified module's <strong>controllers</strong> folder. To create a new AngularJS controller run <em>yo</em> again by using this command:</p>
+<p>Generates an new AngularJS controller in the specified module's <strong>controllers/</strong>.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-controller &lt;controller-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-controller &lt;controller-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name under which you would like to create your new controller, and will create a new AngularJS controller file in that module <strong>controllers</strong> folder and a test file in the <strong>tests</strong> folder.</p>
 
 <h2>
 <a id="angularjs-view-sub-generator" class="anchor" href="#angularjs-view-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS View Sub-Generator</h2>
 
-<p>Once you have your controller file ready, you may want to add a view that makes use of this controller. The AngularJS view sub-generator will create a new AngularJS view in thr specified module's <strong>views</strong> folder, and will allow you to add a route definition for it. To create a new AngularJS view you will need to execute this command:</p>
+<p>Generates an new AngularJS view file in the specified modules' <strong>views/</strong> and adds routing config in <strong>config/routes.js</strong>.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-view &lt;view-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-view &lt;view-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name under which you would like to create your new view, and some additional routing information. It will then create a new view file in that module's <strong>views</strong> folder and add a routing state to the module <strong>routes.js</strong> file. If it can't find the module routes file it will create one for you.</p>
 
 <h2>
 <a id="angularjs-service-sub-generator" class="anchor" href="#angularjs-service-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Service Sub-Generator</h2>
 
-<p>The AngularJS service sub-generator will create a new AngularJS service in the specified module's <strong>services</strong> folder. To create a new AngularJS service you will need to execute this command:</p>
+<p>Prompts user for type of AngularJS service file required (provider, service, factory) and generates the required file within the modules' <strong>services</strong> folder.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-service &lt;service-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-service &lt;service-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name and the type of service you would like to create. This will then create the chosen type of service under the selected module.</p>
 
 <h2>
 <a id="angularjs-directive-sub-generator" class="anchor" href="#angularjs-directive-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Directive Sub-Generator</h2>
 
-<p>The AngularJS directive sub-generator will create a new AngularJS directive in the specified module's <strong>directives</strong> folder. Creating a new AngularJS directive should already look familiar:</p>
+<p>Generates an AngularJS directive in the specified modules' <strong>directives/</strong>.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-directive &lt;directive-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-directive &lt;directive-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name under which you would like to create your new directive, and will create a new AngularJS directive file in that module's <strong>directives</strong> folder.</p>
 
 <h2>
 <a id="angularjs-filter-sub-generator" class="anchor" href="#angularjs-filter-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Filter Sub-Generator</h2>
 
-<p>The AngularJS filter sub-generator will create a new AngularJS filter in a specified module's <strong>filters</strong> folder. To create a new AngularJS filter you need to call yo again:</p>
+<p>Generates an AngularJS filter in a specified module's <strong>filters/</strong>.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-filter &lt;filter-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-filter &lt;filter-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name under which you would like to create your new filter, and will create a new AngularJS filter file in that module <strong>filters</strong> folder.</p>
 
 <h2>
 <a id="angularjs-config-sub-generator" class="anchor" href="#angularjs-config-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Config Sub-Generator</h2>
 
-<p>The AngularJS config sub-generator will create a new AngularJS config section in a specified module's <strong>config</strong> folder. To create a new AngularJS config file just call yo:</p>
+<p>Generates an AngularJS config file within the modules' <strong>config/</strong></p>
 
-<pre><code>$ yo angularjs-cordova:angular-config &lt;config-name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-config &lt;config-name&gt;
 </code></pre>
-
-<p>The sub-generator will ask you for the module name under which you would like to create your new config, and will create a new AngularJS config file in that module's <strong>config</strong> folder.</p>
 
 <h2>
 <a id="angularjs-test-sub-generator" class="anchor" href="#angularjs-test-sub-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>AngularJS Test Sub-Generator</h2>
 
-<p>The test generator generates unit and e2e test templates for you.</p>
+<p>Prompts user for type of test file requried (unit/ e2e) and generates a template test file within the modules' <strong>tests/unit</strong> or <strong>tests/e2e</strong> accordingly.</p>
 
-<pre><code>$ yo angularjs-cordova:angular-test &lt;name&gt;
+<pre><code>$&gt; yo angularjs-cordova:angular-test &lt;name&gt;
 </code></pre>
 
-<p>This will prompt the user with the option to either create a unit test template or an e2e test template for the chosen module and file type.</p>
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<p>For a list of all contributors, please see the <a href="https://github.com/keshavos/generator-angularjs-cordova/graphs/contributors">contributions graph</a>, as this would be updated based on any accepted PR's.</p>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
 
-<p>MIT</p>
+<p>A contributing guideline document will be updated soon. Please do report any issues/ bugs/ feature requests as issues and mark them with appropriate labels to be picked up on by interested devs.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 Keshav OS</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/keshavos">keshavos</a></p>
