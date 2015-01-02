@@ -33,23 +33,23 @@ var ControllerGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
-            this.slugifiedModuleName = this._.slugify(this.moduleName);
+            this.humanizedModuleName = this._.humanize(this.moduleName)
+            this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
 
-            this.slugifiedControllerName = this._.slugify(this._.humanize(this.name));
-            this.classifiedControllerName = this._.classify(this.slugifiedControllerName);
-            this.humanizedControllerName = this._.humanize(this.slugifiedControllerName);
+            this.humanizedName = this._.humanize(this.name);
+            this.slugifiedName = this._.slugify(this.humanizedName);
+            this.classifiedName = this._.classify(this.slugifiedName);
 
             done();
         }.bind(this));
     },
 
     renderControllerFiles: function() {
-        this.template('../../templates/javascript/_controller.js', 'app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedControllerName + '.js');
+        this.template('../../templates/javascript/_controller.js', 'app/modules/' + this.slugifiedModuleName + '/controllers/' + this.slugifiedName + '.js');
     },
 
     renderControllerUnitTestFile : function(){
-        this.slugifiedTestFileName = this.slugifiedControllerName;
-        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedTestFileName + 'controller.spec.js');
+        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-controller.spec.js');
     }
 
 });

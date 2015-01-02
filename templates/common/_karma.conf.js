@@ -13,16 +13,8 @@ module.exports = function(config) {
 
         // List of files / patterns to load in the browser
         files: [
-            'app/lib/angular/angular.js',
-            'app/lib/angular-resource/angular-resource.js',
-            'app/lib/angular-mocks/angular-mocks.js',
-            'app/lib/angular-cookies/angular-cookies.js',
-            'app/lib/angular-sanitize/angular-sanitize.js',
-            'app/lib/angular-animate/angular-animate.js',
-            'app/lib/angular-touch/angular-touch.js',
-            'app/lib/angular-bootstrap/ui-bootstrap.js',
-            'app/lib/angular-ui-utils/ui-utils.js',
-            'app/lib/angular-ui-router/release/angular-ui-router.js',
+            <!-- injector:bowerjs -->
+            <!-- endinjector -->
 
             'app/js/config.js',
             'app/js/application.js',

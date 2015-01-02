@@ -1,5 +1,7 @@
 ## Changelog
 
+* [1.0.0](https://github.com/keshavos/generator-angularjs-cordova/milestones/1.0.0)
+
 * [0.2.4](https://github.com/keshavos/generator-angularjs-cordova/milestones/0.2.4)
 
 * [0.2.3](https://github.com/keshavos/generator-angularjs-cordova/issues?q=milestone%3A0.2.3)

@@ -1,13 +1,16 @@
 'use strict';
 
-describe('Service: <%= slugifiedTestFileName %>Service', function () {
+describe('Service: <%= classifiedName %>Service', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    //Load the ui.router module
+    beforeEach(module('ui.router'));
+    //Load the module
+    beforeEach(module('<%= moduleName%>'));
 
-    var <%= slugifiedTestFileName %>;
+    var <%= classifiedName %>;
 
-    beforeEach(inject(function (_<%= slugifiedTestFileName %>Service_) {
-        <%= slugifiedTestFileName %>Service = _<%= slugifiedTestFileName %>Service_;
+    beforeEach(inject(function (_<%= camelizedName %>Service_) {
+        <%= classifiedName %> = _<%= camelizedName %>Service_;
     }));
 
     it('should ...', function () {

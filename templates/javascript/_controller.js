@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc object
- * @name <%= slugifiedModuleName %>.Controllers.<%= classifiedControllerName %>Controller
- * @description <%= classifiedControllerName %>Controller
+ * @name <%= slugifiedModuleName %>.Controllers.<%= classifiedName %>Controller
+ * @description <%= classifiedName %>Controller
  * @requires ng.$scope
 */
 angular
     .module('<%= slugifiedModuleName %>')
-    .controller('<%= classifiedControllerName %>Controller', [
+    .controller('<%= classifiedName %>Controller', [
         '$scope',
         function($scope) {
 

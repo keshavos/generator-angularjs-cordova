@@ -1,13 +1,16 @@
 'use strict';
 
-describe('Filter: <%= slugifiedTestFileName %>', function () {
+describe('Filter: <%= classifiedName %>', function () {
 
-    beforeEach(module('<%= slugifiedModuleName %>'));
+    //Load the ui.router module
+    beforeEach(module('ui.router'));
+    //Load the module
+    beforeEach(module('<%= moduleName%>'));
 
-    var <%= slugifiedTestFileName %>;
+    var <%= classifiedName %>;
 
     beforeEach(inject(function ($filter) {
-        <%= slugifiedTestFileName %> = $filter('<%= slugifiedTestFileName %>');
+        <%= classifiedName %> = $filter('<%= camelizedName %>');
     }));
 
     it('should ...', function () {

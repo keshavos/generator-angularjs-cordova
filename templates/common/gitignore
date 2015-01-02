@@ -1,13 +1,13 @@
 .DS_Store
 *.log
-node_modules
-dist/
+node_modules/
+/dist/
 .tmp
 .sass-cache
-app/bower_components
+/app/lib
 .idea/
+/docs/
 
-www/
 ##########Platforms##########
 
 
