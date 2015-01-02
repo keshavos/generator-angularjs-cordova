@@ -11,7 +11,7 @@
 
 A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJs based cordova mobile app using a [module based approach](http://meanjs.org/docs.html#angularjs-modules). Extended from the already available yeoman generators such as [angular generator](https://github.com/yeoman/generator-angular) and [MEAN](https://github.com/meanjs/generator-meanjs).
 
-### Technologies:
+### Technologies
 
 - [Cordova](http://phonegap.com)
 - [AngularJS](http://angularjs.org)
@@ -55,8 +55,9 @@ This presents you with a series of options to initialize and customize your appl
 
 ```
 e.g. $> cordova build android
-will trigger a 'grunt build' task before performing any cordova's android build related tasks.
 ```
+will trigger a `grunt build` task before performing any cordova's android build related tasks.
+
 For a list of all available cordova commands, use:
 
 `$> cordova --help`
@@ -67,10 +68,10 @@ For a list of all available cordova commands, use:
 To run the e2e protractor tests which come shipped with the sample app, run the following commands in parallel
 
 ```
-webdriver-manager update        ###update webdriver
-webdriver-manager start         ###start the webdriver
-grunt serve                     ###serves the app on http://127.0.0.1:9000/
-protractor protractor-desktop-config.js   ###run the protractor tests
+$> webdriver-manager update        ###update webdriver
+$> webdriver-manager start         ###start the webdriver
+$> grunt serve                     ###serves the app on http://127.0.0.1:9000/
+$> protractor protractor-desktop-config.js   ###run the protractor tests
 ```
 
 ###Available sub-generators
@@ -94,7 +95,7 @@ Use any of the following sub-generators for extending the AngularJS application
 Generates an AngularJs application within `app/`.
 
 ```
-$ yo angularjs-cordova
+$> yo angularjs-cordova
 ```
 
 The generator will ask you a few questions about your new application and will generate it for you.
@@ -106,7 +107,7 @@ The generator will ask you a few questions about your new application and will g
 Creates and initialises a module within the `modules/`.
 
 ```
-$ yo angularjs-cordova:angular-module <module-name>
+$> yo angularjs-cordova:angular-module <module-name>
 ```
 
 Example scenario/ usage of modules:
@@ -119,7 +120,7 @@ Example scenario/ usage of modules:
 The sub-generator will prompt for information about the required controller, view and routing path and generates the required files, inserts routing logic in the modules' **config/routes.js** file.
 
 ```
-$ yo angularjs-cordova:angular-route <route-name>
+$> yo angularjs-cordova:angular-route <route-name>
 ```
 
 ## AngularJS Controller Sub-Generator
@@ -127,7 +128,7 @@ $ yo angularjs-cordova:angular-route <route-name>
 Generates an new AngularJS controller in the specified module's **controllers/**.
 
 ```
-$ yo angularjs-cordova:angular-controller <controller-name>
+$> yo angularjs-cordova:angular-controller <controller-name>
 ```
 
 ## AngularJS View Sub-Generator
@@ -135,7 +136,7 @@ $ yo angularjs-cordova:angular-controller <controller-name>
 Generates an new AngularJS view file in the specified modules' **views/** and adds routing config in **config/routes.js**.
 
 ```
-$ yo angularjs-cordova:angular-view <view-name>
+$> yo angularjs-cordova:angular-view <view-name>
 ```
 
 ## AngularJS Service Sub-Generator
@@ -143,14 +144,14 @@ $ yo angularjs-cordova:angular-view <view-name>
 Prompts user for type of AngularJS service file required (provider, service, factory) and generates the required file within the modules' **services** folder.
 
 ```
-$ yo angularjs-cordova:angular-service <service-name>
+$> yo angularjs-cordova:angular-service <service-name>
 ```
 
 ## AngularJS Directive Sub-Generator
 
 Generates an AngularJS directive in the specified modules' **directives/**.
 ```
-$ yo angularjs-cordova:angular-directive <directive-name>
+$> yo angularjs-cordova:angular-directive <directive-name>
 ```
 
 ## AngularJS Filter Sub-Generator
@@ -158,7 +159,7 @@ $ yo angularjs-cordova:angular-directive <directive-name>
 Generates an AngularJS filter in a specified module's **filters/**.
 
 ```
-$ yo angularjs-cordova:angular-filter <filter-name>
+$> yo angularjs-cordova:angular-filter <filter-name>
 ```
 
 ## AngularJS Config Sub-Generator
@@ -166,7 +167,7 @@ $ yo angularjs-cordova:angular-filter <filter-name>
 Generates an AngularJS config file within the modules' **config/**
 
 ```
-$ yo angularjs-cordova:angular-config <config-name>
+$> yo angularjs-cordova:angular-config <config-name>
 ```
 
 ## AngularJS Test Sub-Generator
@@ -174,7 +175,7 @@ $ yo angularjs-cordova:angular-config <config-name>
 Prompts user for type of test file requried (unit/ e2e) and generates a template test file within the modules' **tests/unit** or **tests/e2e** accordingly.
 
 ```
-$ yo angularjs-cordova:angular-test <name>
+$> yo angularjs-cordova:angular-test <name>
 ```
 
 ##Contributors
