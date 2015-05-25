@@ -36,7 +36,7 @@
     "wiredep": "~1.0.0",
     "yeoman-generator": "~0.16.0",
     "chalk": "~0.4.0",
-    "cordova": "~3.5.0-0.2.4",
+    "cordova": "3.6.3-0.2.13",
     "fs-extra": "~0.8.1",
     "underscore.inflections": "~0.2.1"
   },
