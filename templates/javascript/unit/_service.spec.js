@@ -1,20 +1,29 @@
-'use strict';
+describe('<%= moduleName%>.services: <%= classifiedName %>', function() {
 
-describe('Service: <%= classifiedName %>Service', function () {
+    'use strict';
+
+    var <%= classifiedName %> ;
 
     //Load the ui.router module
     beforeEach(module('ui.router'));
     //Load the module
     beforeEach(module('<%= moduleName%>'));
 
-    var <%= classifiedName %>;
-
-    beforeEach(inject(function (_<%= camelizedName %>Service_) {
-        <%= classifiedName %> = _<%= camelizedName %>Service_;
+    beforeEach(inject(function(_<%= camelizedName %>_) {
+        <%= classifiedName %> = _<%= camelizedName %>_;
     }));
 
-    it('should ...', function () {
+    it(': should validate methods on the service', function() {
+        expect(angular.isFunction(<%= classifiedName %>.method1)).toBeTruthy();
+        expect(angular.isFunction(<%= classifiedName %>.method2)).toBeTruthy()
+    });
 
+    it(': should return true when method1 is called', function() {
+        expect(<%= classifiedName %>.method1()).toBeTruthy();
+    });
+
+    it(': should return false when method2 is called', function() {
+        expect(<%= classifiedName %>.method2()).toBeFalsy();
     });
 
 });

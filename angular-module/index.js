@@ -1,8 +1,8 @@
 'use strict';
+
 var util = require('util'),
     inflections = require('underscore.inflections'),
     yeoman = require('yeoman-generator');
-
 
 var ModuleGenerator = yeoman.generators.NamedBase.extend({
     init: function() {
@@ -65,27 +65,40 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
             this.addServicesFolder = this._.contains(props.folders, 'addServicesFolder');
             this.addTestsFolder = this._.contains(props.folders, 'addTestsFolder');
             this.addViewsFolder = this._.contains(props.folders, 'addViewsFolder');
-
             done();
         }.bind(this));
     },
 
     renderModule: function() {
-        // Create module folder
         this.mkdir('app/modules/' + this.slugifiedName);
+        if (this.addConfigFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/config');
+        }
+        if (this.addControllersFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/controllers');
+        }
+        if (this.addCSSFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/css');
+        }
+        if (this.addDirectivesFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/directives');
+        }
+        if (this.addFiltersFolder) {
+            this.mkdir('app//modules/' + this.slugifiedName + '/filters');
+        }
+        if (this.addImagesFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/img');
+        }
+        if (this.addServicesFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/services');
+        }
+        if (this.addTestsFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/tests');
+        }
+        if (this.addViewsFolder) {
+            this.mkdir('app/modules/' + this.slugifiedName + '/views');
+        }
 
-        // Create module sub-folders
-        if (this.addConfigFolder) this.mkdir('app/modules/' + this.slugifiedName + '/config');
-        if (this.addControllersFolder) this.mkdir('app/modules/' + this.slugifiedName + '/controllers');
-        if (this.addCSSFolder) this.mkdir('app/modules/' + this.slugifiedName + '/css');
-        if (this.addDirectivesFolder) this.mkdir('app/modules/' + this.slugifiedName + '/directives');
-        if (this.addFiltersFolder) this.mkdir('app//modules/' + this.slugifiedName + '/filters');
-        if (this.addImagesFolder) this.mkdir('app/modules/' + this.slugifiedName + '/img');
-        if (this.addServicesFolder) this.mkdir('app/modules/' + this.slugifiedName + '/services');
-        if (this.addTestsFolder) this.mkdir('app/modules/' + this.slugifiedName + '/tests');
-        if (this.addViewsFolder) this.mkdir('app/modules/' + this.slugifiedName + '/views');
-
-        // Render angular module definition
         this.template('../../templates/javascript/_module.js', 'app/modules/' + this.slugifiedName + '/' + this.slugifiedName + '.js');
     }
 });

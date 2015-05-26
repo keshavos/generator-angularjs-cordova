@@ -1,36 +1,42 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc service
- * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>
- * @description <%= classifiedName %> Service
- */
-angular
-    .module('<%= slugifiedModuleName %>')
-    .service('<%= classifiedName %>', [
+    'use strict';
 
-        function() {
+    /**
+     * @ngdoc service
+     * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>
+     * @description <%= classifiedName %> Service
+     */
+    angular
+        .module('<%= slugifiedModuleName %>')
+        .service('<%= classifiedName %>', <%= classifiedName %> );
 
-            /**
-             * @ngdoc function
-             * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method1
-             * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
-             * @return {boolean} Returns a boolean value
-             */
-            method1 = function() {
-                return true;
-            };
+    function <%= classifiedName %> () {
 
-
-            /**
-             * @ngdoc function
-             * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method2
-             * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
-             * @return {boolean} Returns a boolean value
-             */
-            method2 = function() {
-                return false;
-            };
-
+        return {
+            method1: method1,
+            method2: method2
         }
-    ]);
+
+        /**
+         * @ngdoc function
+         * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>#method1
+         * @methodOf <%= slugifiedModuleName %>.services:<%= classifiedName %>
+         * @return {boolean} Returns a boolean value
+         */
+        function method1() {
+            return true;
+        }
+
+        /**
+         * @ngdoc function
+         * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>#method2
+         * @methodOf <%= slugifiedModuleName %>.services:<%= classifiedName %>
+         * @return {boolean} Returns a boolean value
+         */
+        function method2() {
+            return false;
+        }
+    }
+
+})();

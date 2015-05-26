@@ -1,60 +1,60 @@
 {
-  "name": "generator-angularjs-cordova",
-  "version": "1.0.0",
-  "description": "A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJS based cordova mobile app using a module based approach. Includes Angular UI, Bootstrap 3.",
-  "license": "MIT",
-  "homepage": "http://keshavos.github.io/generator-angularjs-cordova",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/keshavos/generator-angularjs-cordova.git"
-  },
-  "preferGlobal": "true",
-  "author": {
-    "name": "Keshav OS",
-    "email": "keshav.os@gmail.com",
-    "url": "https://github.com/keshavos"
-  },
-  "bugs": {
-    "url": "http://github.com/keshavos/generator-angularjs-cordova/issues",
-    "email": "keshav.os@gmail.com"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
-  },
-  "keywords": [
-    "yeoman-generator",
-    "angularjs",
-    "cordova",
-    "phonegap",
-    "bootstrap3",
-    "grunt"
-  ],
-  "dependencies": {
-    "wiredep": "~1.0.0",
-    "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0",
-    "cordova": "~3.5.0-0.2.4",
-    "fs-extra": "~0.8.1",
-    "underscore.inflections": "~0.2.1"
-  },
-  "devDependencies": {
-    "async": "~0.2.9",
-    "csslint": "^0.10.0",
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-release": "~0.6.0",
-    "jshint": "^2.5.1",
-    "load-grunt-tasks": "~0.3.0",
-    "mocha": "~1.21.4",
-    "semver": "~2.2.1",
-    "temp": "~0.8.1",
-    "underscore.string": "~2.3.1",
-    "xunit-file": "0.0.5"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
-  }
+    "name": "generator-angularjs-cordova",
+    "version": "1.0.0",
+    "description": "A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJS based cordova mobile app using a module based approach. Includes Angular UI, Bootstrap 3.",
+    "license": "MIT",
+    "homepage": "http://keshavos.github.io/generator-angularjs-cordova",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/keshavos/generator-angularjs-cordova.git"
+    },
+    "preferGlobal": "true",
+    "author": {
+        "name": "Keshav OS",
+        "email": "keshav.os@gmail.com",
+        "url": "https://github.com/keshavos"
+    },
+    "bugs": {
+        "url": "http://github.com/keshavos/generator-angularjs-cordova/issues",
+        "email": "keshav.os@gmail.com"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/mocha"
+    },
+    "keywords": [
+        "yeoman-generator",
+        "angularjs",
+        "cordova",
+        "phonegap",
+        "bootstrap3",
+        "grunt"
+    ],
+    "dependencies": {
+        "wiredep": "~1.0.0",
+        "yeoman-generator": "~0.16.0",
+        "chalk": "~0.4.0",
+        "cordova": "~3.5.0-0.2.4",
+        "fs-extra": "~0.8.1",
+        "underscore.inflections": "~0.2.1"
+    },
+    "devDependencies": {
+        "async": "~0.2.9",
+        "csslint": "^0.10.0",
+        "grunt": "~0.4.1",
+        "grunt-contrib-jshint": "~0.8.0",
+        "grunt-release": "~0.6.0",
+        "jshint": "^2.5.1",
+        "load-grunt-tasks": "~0.3.0",
+        "mocha": "~1.21.4",
+        "semver": "~2.2.1",
+        "temp": "~0.8.1",
+        "underscore.string": "~2.3.1",
+        "xunit-file": "0.0.5"
+    },
+    "peerDependencies": {
+        "yo": ">=1.0.0"
+    }
 }

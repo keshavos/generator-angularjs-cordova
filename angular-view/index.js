@@ -3,7 +3,6 @@ var util = require('util'),
     fs = require('fs'),
     yeoman = require('yeoman-generator');
 
-
 var ViewGenerator = yeoman.generators.NamedBase.extend({
     askForModuleName: function() {
         var modulesFolder = process.cwd() + '/app/modules/';
@@ -17,7 +16,7 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
             choices: []
         }];
 
-        if (fs.existsSync(modulesFolder)){
+        if (fs.existsSync(modulesFolder)) {
             fs.readdirSync(modulesFolder).forEach(function(folder) {
                 var stat = fs.statSync(modulesFolder + '/' + folder);
 
@@ -33,15 +32,11 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
             this.controllerName = props.controllerName;
-
             this.humanizedModuleName = this._.humanize(this.moduleName);
             this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
-
             this.humanizedName = this._.humanize(this.name);
             this.slugifiedName = this._.slugify(this.humanizedName);
             this.classifiedName = this._.classify(this.slugifiedName);
-
-
             done();
         }.bind(this));
     },
@@ -57,10 +52,8 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.controllerName = props.controllerName;
-
             this.slugifiedControllerName = this._.slugify(this.controllerName);
             this.classifiedControllerName = this._.classify(this.slugifiedControllerName);
-
             done();
         }.bind(this));
     },
@@ -105,15 +98,9 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
         if (this.addRoute) {
             var routesFilePath = process.cwd() + '/app/modules/' + this.slugifiedModuleName + '/config/routes.js';
 
-            // If routes file exists we add a new state otherwise we render a new one
             if (fs.existsSync(routesFilePath)) {
-                // Read the source routes file content
                 var routesFileContent = this.readFileAsString(routesFilePath);
-
-                // Append the new state
                 routesFileContent = routesFileContent.replace('$stateProvider.', this.engine(this.read('_route.js'), this));
-
-                // Save route file
                 this.writeFileFromString(routesFileContent, routesFilePath);
             } else {
                 this.template('_routes.js', 'app/modules/' + this.slugifiedModuleName + '/config/routes.js')

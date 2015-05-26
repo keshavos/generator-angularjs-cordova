@@ -1,35 +1,41 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc object
- * @name core.config
- * @requires ng.$stateProvider
- * @requires ng.$urlRouterProvider
- * @description Defines the routes and other config within the core module
- */
-angular
-    .module('core')
-    .config(['$stateProvider',
-        '$urlRouterProvider',
-        function($stateProvider, $urlRouterProvider) {
+    'use strict';
 
-            $urlRouterProvider.otherwise('/');
+    /**
+     * @ngdoc object
+     * @name core.config:Coreconfig
+     * @requires ng.$stateProvider
+     * @requires ng.$urlRouterProvider
+     * @description Defines the routes and other config within the core module
+     */
+    angular
+        .module('core')
+        .config(Coreconfig);
 
-            /**
-             * @ngdoc event
-             * @name core.config.route
-             * @eventOf core.config
-             * @description
-             *
-             * Define routes and the associated paths
-             *
-             * - When the path is `'/'`, route to home
-             * */
-            $stateProvider
-                .state('home', {
-                    url: '/',
-                    templateUrl: 'modules/core/views/home.html',
-                    controller: 'HomeController'
-                });
-        }
-    ]);
+    Coreconfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function Coreconfig($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise('/');
+
+        var home = {
+            name: 'home',
+            url: '/',
+            templateUrl: 'modules/core/views/home.html',
+            controller: 'Home'
+        };
+
+        /**
+         * @ngdoc event
+         * @description
+         *
+         * Define routes and the associated paths
+         *
+         * - When the path is `'/'`, route to state:home
+         * */
+        $stateProvider
+            .state(home);
+    };
+
+})();

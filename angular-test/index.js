@@ -4,12 +4,8 @@ var util = require('util'),
     fs = require('fs'),
     yeoman = require('yeoman-generator');
 
-
 var TestGenerator = yeoman.generators.NamedBase.extend({
 
-    /**
-     * Assign all app variables required to generate test files
-     */
     askForModuleName: function() {
         var modulesFolder = process.cwd() + '/app/modules/';
         var done = this.async();
@@ -22,7 +18,7 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
             choices: []
         }];
 
-        if (fs.existsSync(modulesFolder)){
+        if (fs.existsSync(modulesFolder)) {
             fs.readdirSync(modulesFolder).forEach(function(folder) {
                 var stat = fs.statSync(modulesFolder + '/' + folder);
 
@@ -44,9 +40,6 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
         }.bind(this));
     },
 
-    /**
-     * Prompt for either unit or e2e test
-     */
     promptModuleType: function() {
         var done = this.async();
 
@@ -90,27 +83,21 @@ var TestGenerator = yeoman.generators.NamedBase.extend({
                 checked: false,
             }]
         }], function(props) {
-
             this.slugifiedName = this._.slugify(this._.humanize(this.name));
             this.classifiedName = this._.classify(this.slugifiedName);
             this.camelizedName = this._.camelize(this.slugifiedName);
 
             if (props.testType == 'unitTest') {
-
-                this.template('../../templates/javascript/unit/_' + props.unitTestType + '.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-' + props.unitTestType + '.spec.js');
+                this.template('../../templates/javascript/unit/_' + props.unitTestType + '.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '.' + props.unitTestType + '.spec.js');
 
             } else if (props.testType == 'e2eTest') {
-
                 this.slugifiedE2eFolder = this._.slugify(this._.humanize(this.name));
-
-                this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/'+this.slugifiedE2eFolder+'.po.js');
-                this.template('../../templates/javascript/e2e/pageSpec.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/'+this.slugifiedE2eFolder+'.spec.js');
+                this.template('../../templates/javascript/e2e/pageObject.po.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/' + this.slugifiedE2eFolder + '.po.js');
+                this.template('../../templates/javascript/e2e/pageSpec.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/e2e/' + '/' + this.slugifiedE2eFolder + '.spec.js');
             }
-
             done();
         }.bind(this));
     }
-
 });
 
 module.exports = TestGenerator;

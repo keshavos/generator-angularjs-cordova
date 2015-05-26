@@ -17,7 +17,7 @@ var ConfigGenerator = yeoman.generators.NamedBase.extend({
             choices: []
         }];
 
-        if (fs.existsSync(modulesFolder)){
+        if (fs.existsSync(modulesFolder)) {
             fs.readdirSync(modulesFolder).forEach(function(folder) {
                 var stat = fs.statSync(modulesFolder + '/' + folder);
 
@@ -32,13 +32,10 @@ var ConfigGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.moduleName = props.moduleName;
-
             this.humanizedModuleName = this._.humanize(this.moduleName);
             this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
-
-
             this.slugifiedName = this._.slugify(this.name);
-
+            this.classifiedName = this._.classify(this.slugifiedName);
             done();
         }.bind(this));
     },

@@ -1,25 +1,31 @@
 'use strict';
 
-describe('HomeController', function() {
+describe('Core.Controllers: Home', function() {
 
-    var HomeController, scope;
+    var $rootScope,
+        ctrl,
+        home,
+        scope;
 
     //Load the ui.router module
     beforeEach(module('ui.router'));
-    // Load the main application module
+
+    // Load the core module
     beforeEach(module('core'));
 
-    beforeEach(inject(function($controller, $rootScope) {
-
+    beforeEach(inject(function(_$rootScope_, $controller) {
+        $rootScope = _$rootScope_;
         scope = $rootScope.$new();
+        ctrl = $controller('Home as home', {
 
-        HomeController = $controller('HomeController', {
-            $scope : scope
         });
     }));
 
-    //Tests
-    it('should have scope bound to the controller', function(){
+    it(': should vm bound to the controller', function(){
         expect(scope).toBeDefined();
+    });
+
+    it(': should verify title', function() {
+        expect(scope.title).toBe('Home');
     });
 });

@@ -1,10 +1,14 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc object
- * @name <%= slugifiedModuleName %>.Values.<%= classifiedName %>
- * @description Define a value
- */
-angular
-    .module('<%= slugifiedModuleName %>')
-    .value('<%= classifiedName %>', 42);
+    'use strict';
+
+    /**
+     * @ngdoc object
+     * @name <%= slugifiedModuleName %>.values:<%= classifiedName %>
+     * @description Define a value
+     */
+    angular
+        .module('<%= slugifiedModuleName %>')
+        .value('<%= classifiedName %>', 42);
+
+})();

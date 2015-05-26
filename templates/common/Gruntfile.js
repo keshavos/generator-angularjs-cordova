@@ -22,8 +22,18 @@ module.exports = function(grunt) {
             },
 
             js: {
-                files: ['<%= yeoman.app %>/modules/*/*.js', '<%= yeoman.app %>/modules/*/config/*.js', '<%= yeoman.app %>/modules/*/controllers/*.js', '<%= yeoman.app %>/modules/*/services/*.js', '<%= yeoman.app %>/modules/*/directives/*.js', '<%= yeoman.app %>/modules/*/filters/*.js'],
-                tasks: ['newer:jshint:all', 'ngdocs'],
+                files: [
+                    '<%= yeoman.app %>/modules/*/*.js',
+                    '<%= yeoman.app %>/modules/*/config/*.js',
+                    '<%= yeoman.app %>/modules/*/controllers/*.js',
+                    '<%= yeoman.app %>/modules/*/services/*.js',
+                    '<%= yeoman.app %>/modules/*/directives/*.js',
+                    '<%= yeoman.app %>/modules/*/filters/*.js'
+                ],
+                tasks: [
+                    'newer:jshint:all',
+                    'ngdocs'
+                ],
                 options: {
                     livereload: true
                 }
@@ -36,7 +46,10 @@ module.exports = function(grunt) {
 
             styles: {
                 files: ['<%= yeoman.app %>/css/**/*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
+                tasks: [
+                    'newer:copy:styles',
+                    'autoprefixer'
+                ]
             },
 
             gruntfile: {
@@ -146,8 +159,8 @@ module.exports = function(grunt) {
 
         /**
          * Generate AngularJs Documentation
-        */
-        ngdocs : {
+         */
+        ngdocs: {
             options: {
                 dest: 'docs',
                 scripts: [
@@ -177,15 +190,15 @@ module.exports = function(grunt) {
         },
 
         /**
-        * Strip comments from the distribution code
-        */
+         * Strip comments from the distribution code
+         */
         comments: {
             dist: {
                 options: {
                     singleline: true,
                     multiline: true
                 },
-                src: [ 'www/scripts/custom.js']
+                src: ['www/scripts/custom.js']
             },
         },
 

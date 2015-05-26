@@ -19,6 +19,5 @@ angular
             window.location.hash = '#!';
         }
         angular
-            .bootstrap(document,
-                [ApplicationConfiguration.applicationModuleName]);
+            .bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
     });

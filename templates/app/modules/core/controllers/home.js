@@ -1,15 +1,19 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc object
- * @name core.Controllers.HomeController
- * @description Home controller
- * @requires ng.$scope
- */
-angular
-    .module('core')
-    .controller('HomeController', ['$scope',
-        function($scope) {
+    'use strict';
 
-        }
-    ]);
+    /**
+     * @ngdoc object
+     * @name core.controllers:Home
+     * @description Controller for the home page
+     */
+    angular
+        .module('core')
+        .controller('Home', Home);
+
+    function Home() {
+        var vm = this;
+        vm.title = 'Home';
+    };
+
+})();
