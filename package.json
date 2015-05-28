@@ -52,7 +52,8 @@
     "semver": "~2.2.1",
     "temp": "~0.8.1",
     "underscore.string": "~2.3.1",
-    "xunit-file": "0.0.5"
+    "xunit-file": "0.0.5",
+    "grunt-mocha-istanbul": "^2.4.0"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
