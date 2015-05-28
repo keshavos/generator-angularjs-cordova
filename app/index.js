@@ -1,4 +1,5 @@
 'use strict';
+
 var fs = require('fs');
 var fsextra = require('fs-extra');
 var path = require('path');
@@ -8,7 +9,6 @@ var yeoman = require('yeoman-generator');
 var wiredep = require('wiredep');
 var chalk = require('chalk');
 var cordova = require('cordova');
-
 
 var Generator = module.exports = function Generator(args, options) {
     yeoman.generators.Base.apply(this, arguments);
@@ -31,12 +31,10 @@ var Generator = module.exports = function Generator(args, options) {
 
     this.appPath = this.env.options.appPath;
 
-    //AngularJs setup responses
     this.appName;
     this.appDescription;
     this.appKeywords;
     this.appAuthor;
-
     this.slugifiedAppName;
     this.humanizedAppName;
     this.capitalizedAppAuthor;
@@ -118,7 +116,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
             name: 'Blackberry 10',
             value: 'blackberry10',
             checked: false
-        },{
+        }, {
             name: 'Windows Phone 8',
             value: 'wp8',
             checked: false
@@ -380,8 +378,7 @@ Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     this.copy('../../templates/common/protractor-desktop-config.js', 'protractor-desktop-config.js.js');
     this.copy('../../templates/common/www-gitignore', 'www/.gitignore');
     this.copy('../../templates/hooks/before_build/010_grunt_build.js', 'hooks/before_build/010_grunt_build.js');
-
-    this.config.save(); //http://yeoman.io/blog/cleanup.html
+    this.config.save();
 };
 
 /**

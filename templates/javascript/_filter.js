@@ -1,18 +1,20 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc filter
- * @name <%= slugifiedModuleName %>.Filters.<%= camelizedName %>
- * @description <%= camelizedName %> filter
- */
-angular
-    .module('<%= slugifiedModuleName %>')
-    .filter('<%= camelizedName %>', [
+    'use strict';
 
-        function() {
-            return function(input) {
+    /**
+     * @ngdoc filter
+     * @name <%= slugifiedModuleName %>.filters:<%= camelizedName %>
+     * @description <%= camelizedName %>
+     */
+    angular
+        .module('<%= slugifiedModuleName %>')
+        .filter('<%= camelizedName %>', <%= camelizedName %>);
 
-                return '<%= camelizedName %> filter: ' + input;
-            };
-        }
-]);
+    function <%= camelizedName %> () {
+        return function(input) {
+            return '<%= camelizedName %> filter: ' + input;
+        };
+    }
+
+})();

@@ -1,34 +1,42 @@
-'use strict';
+(function() {
 
-/**
- * @ngdoc service
- * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>
- * @description <%= classifiedName %> Factory
- */
-angular
-    .module('<%= slugifiedModuleName %>')
-    .factory('<%= classifiedName %>',
-        function() {
-            return {
+    'use strict';
 
-                /**
-                 * @ngdoc function
-                 * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method1
-                 * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
-                 * @return {boolean} Returns a boolean value
-                 */
-                method1: function() {
-                    return true;
-                },
+    /**
+     * @ngdoc service
+     * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>
+     * @description <%= classifiedName %> Factory
+     */
+    angular
+        .module('<%= slugifiedModuleName %>')
+        .factory('<%= classifiedName %>', <%= classifiedName %>);
 
-                /**
-                 * @ngdoc function
-                 * @name <%= slugifiedModuleName %>.Services.<%= classifiedName %>#method2
-                 * @methodOf <%= slugifiedModuleName %>.Services.<%= classifiedName %>
-                 * @return {boolean} Returns a boolean value
-                 */
-                method2: function() {
-                    return false
-                }
-            };
-    });
+    function <%= classifiedName %>() {
+
+        return {
+            method1: method1,
+            method2: method2
+        };
+
+        /**
+         * @ngdoc function
+         * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>#method1
+         * @methodOf <%= slugifiedModuleName %>.services:<%= classifiedName %>
+         * @return {boolean} Returns a boolean value
+         */
+        function method1() {
+            return true;
+        }
+
+        /**
+         * @ngdoc function
+         * @name <%= slugifiedModuleName %>.services:<%= classifiedName %>#method2
+         * @methodOf <%= slugifiedModuleName %>.services:<%= classifiedName %>
+         * @return {boolean} Returns a boolean value
+         */
+        function method2() {
+            return false
+        }
+    };
+
+})();

@@ -5,8 +5,6 @@ var homePage = (function(){
         this.heading = element(by.id('app-heading'));
         this.homeh1 = element(by.id('home-h1'));
         this.homeContent = element(by.id('home-content'));
-
-
     }
 
     /**
@@ -37,8 +35,6 @@ var homePage = (function(){
     homePage.prototype.getHomeContent = function(){
         return this.homeContent.getText('value');
     };
-
-
 
     return homePage;
 })();

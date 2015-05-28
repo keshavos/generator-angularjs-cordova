@@ -1,22 +1,22 @@
-'use strict';
+(function() {
 
+    'use strict';
 
-// <%= humanizedModuleName %> module config
-/**
- * @ngdoc object
- * @name <%= slugifiedModuleName %>.config
- * @description <%= slugifiedModuleName %> description
-*/
-angular
-    .module('<%= slugifiedModuleName %>')
-    .config([
+    /**
+     * @ngdoc object
+     * @name <%= slugifiedModuleName %>.config:<%= classifiedName %>
+     * @description Custom config for the <%= slugifiedModuleName %> module
+     */
+    angular
+        .module('<%= slugifiedModuleName %>')
+        .config(userConfig);
 
-        /**
-         * @ngdoc event
-         * @name <%= slugifiedModuleName %>.config#method1
-         * @eventOf <%= slugifiedModuleName %>.config
-         */
-        function method1() {
+    /**
+     * @ngdoc event
+     * @name <%= slugifiedModuleName %>.config#userConfig
+     * @eventOf <%= slugifiedModuleName %>.config
+     */
+    function userConfig() {
+    };
 
-        }
-]);
+})();

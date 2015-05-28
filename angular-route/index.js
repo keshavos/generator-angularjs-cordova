@@ -1,8 +1,8 @@
 'use strict';
+
 var util = require('util'),
     fs = require('fs'),
     yeoman = require('yeoman-generator');
-
 
 var ViewGenerator = yeoman.generators.NamedBase.extend({
     askForModuleName: function() {
@@ -17,7 +17,7 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
             choices: []
         }];
 
-        if (fs.existsSync(modulesFolder)){
+        if (fs.existsSync(modulesFolder)) {
             fs.readdirSync(modulesFolder).forEach(function(folder) {
                 var stat = fs.statSync(modulesFolder + '/' + folder);
 
@@ -32,14 +32,13 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
 
         this.prompt(prompts, function(props) {
             this.controllerName = props.controllerName;
-
             this.moduleName = props.moduleName;
             this.humanizedModuleName = this._.humanize(this.moduleName)
             this.slugifiedModuleName = this._.slugify(this.humanizedModuleName);
-            
             this.humanizedName = this._.humanize(this.name);
             this.slugifiedName = this._.slugify(this.humanizedName);
             this.classifiedName = this._.classify(this.slugifiedName);
+            this.camelizedName = this._.camelize(this.classifiedName, false);
 
             done();
         }.bind(this));
@@ -66,31 +65,20 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
             this.routePath = props.routePath;
             this.viewName = props.viewName;
             this.controllerName = props.controllerName;
-
             this.slugifiedRoutePath = this._.slugify(this.routePath);
-
             this.slugifiedViewName = this._.slugify(this.viewName);
             this.humanizedViewName = this._.humanize(this.viewName);
-
             this.slugifiedControllerName = this._.slugify(this._.humanize(this.controllerName));
             this.classifiedControllerName = this._.classify(this.slugifiedControllerName);
-
             done();
         }.bind(this));
     },
 
     renderRoute: function() {
         var routesFilePath = process.cwd() + '/app/modules/' + this.slugifiedModuleName + '/config/routes.js';
-
-        // If routes file exists we add a new state otherwise we render a new one
         if (fs.existsSync(routesFilePath)) {
-            // Read the source routes file content
             var routesFileContent = this.readFileAsString(routesFilePath);
-
-            // Append the new state
             routesFileContent = routesFileContent.replace(/\$stateProvider[\s\n]*\./, this.engine(this.read('../../templates/javascript/_route.js'), this));
-
-            // Save route file
             this.writeFileFromString(routesFileContent, routesFilePath);
         } else {
             this.template('../../templates/javascript/_routes.js', 'app/modules/' + this.slugifiedModuleName + '/config/routes.js')
@@ -102,9 +90,9 @@ var ViewGenerator = yeoman.generators.NamedBase.extend({
         this.template('../../templates/javascript/_view.html', 'app/modules/' + this.slugifiedModuleName + '/views/' + this.slugifiedViewName + '.html')
     },
 
-    renderControllerUnitTestFile : function(){
+    renderControllerUnitTestFile: function() {
         this.slugifiedName = this.slugifiedControllerName;
-        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '-controller.spec.js');
+        this.template('../../templates/javascript/unit/_controller.spec.js', 'app/modules/' + this.slugifiedModuleName + '/tests/unit/' + this.slugifiedName + '.controller.spec.js');
     }
 });
 

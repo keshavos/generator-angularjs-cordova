@@ -1,13 +1,13 @@
-'use strict';
+describe('<%= moduleName%>.filters: <%= classifiedName %>', function () {
 
-describe('Filter: <%= classifiedName %>', function () {
+    'use strict';
+
+    var <%= classifiedName %>;
 
     //Load the ui.router module
     beforeEach(module('ui.router'));
     //Load the module
     beforeEach(module('<%= moduleName%>'));
-
-    var <%= classifiedName %>;
 
     beforeEach(inject(function ($filter) {
         <%= classifiedName %> = $filter('<%= camelizedName %>');
