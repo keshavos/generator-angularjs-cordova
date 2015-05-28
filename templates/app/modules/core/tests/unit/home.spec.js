@@ -17,7 +17,7 @@ describe('Core.Controllers: Home', function() {
         $rootScope = _$rootScope_;
         scope = $rootScope.$new();
         ctrl = $controller('Home as home', {
-
+            $scope: scope
         });
     }));
 
@@ -26,6 +26,6 @@ describe('Core.Controllers: Home', function() {
     });
 
     it(': should verify title', function() {
-        expect(scope.title).toBe('Home');
+        expect(scope.home.title).toBe('Home');
     });
 });

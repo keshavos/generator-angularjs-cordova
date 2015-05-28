@@ -3,7 +3,7 @@
     'use strict';
 
     /**
-     * @ngdoc object
+     * @ngdoc controller
      * @name core.controllers:Home
      * @description Controller for the home page
      */

@@ -4,7 +4,7 @@
 
     /**
      * @ngdoc object
-     * @name core.config:Coreconfig
+     * @name core.config:routes
      * @requires ng.$stateProvider
      * @requires ng.$urlRouterProvider
      * @description Defines the routes and other config within the core module
@@ -28,12 +28,17 @@
 
         /**
          * @ngdoc event
+         * @name core.config:routes#route1
+         * @eventOf core.config:routes
          * @description
          *
          * Define routes and the associated paths
          *
-         * - When the path is `'/'`, route to state:home
-         * */
+         * - When the state is `'home'`, route to '/''
+         *
+         * - Controller: {@link core.controllers:Home Home}
+         *
+         */
         $stateProvider
             .state(home);
     };

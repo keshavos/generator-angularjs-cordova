@@ -19,8 +19,8 @@
 
         /**
          * @ngdoc function
-         * @name @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>#method1
-         * @methodOf @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>
+         * @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>#method1
+         * @methodOf <%= slugifiedModuleName %>.controllers:<%= classifiedName %>
          * @description <%= slugifiedModuleName %> controller method
          */
         function method1() {
@@ -29,8 +29,8 @@
 
         /**
          * @ngdoc function
-         * @name @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>#method2
-         * @methodOf @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>
+         * @name <%= slugifiedModuleName %>.controllers:<%= classifiedName %>#method2
+         * @methodOf <%= slugifiedModuleName %>.controllers:<%= classifiedName %>
          * @description <%= slugifiedModuleName %> controller method2
          */
         function method2() {
