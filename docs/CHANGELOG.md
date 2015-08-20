@@ -1,5 +1,8 @@
 ## Changelog
 
+* [1.0.1](https://github.com/keshavos/generator-angularjs-cordova/milestones/1.0.1)
+    * Bug fix: Only include modules selected during app instantiation [#43](https://github.com/keshavos/generator-angularjs-cordova/issues/43)
+
 * [1.0.0](https://github.com/keshavos/generator-angularjs-cordova/milestones/1.0.0)
 
 * [0.2.4](https://github.com/keshavos/generator-angularjs-cordova/milestones/0.2.4)

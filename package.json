@@ -1,6 +1,6 @@
 {
   "name": "generator-angularjs-cordova",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A yeoman generator which combines the best features and practices to initialise and scaffold an AngularJS based cordova mobile app using a module based approach. Includes Angular UI, Bootstrap 3.",
   "license": "MIT",
   "homepage": "http://keshavos.github.io/generator-angularjs-cordova",
