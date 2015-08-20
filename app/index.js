@@ -399,6 +399,7 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp() {
 
     // Copy app folder modules
     this.directory('../../templates/app/', 'app/');
+    this.template('../../templates/app/js/config.js', 'app/js/config.js');
     done();
 };
 
