@@ -1,3 +1,15 @@
+#test_img_rel{
+  background: url('../img/android_rel.png');
+  width:128px;
+  height:128px;
+}
+
+#test_img_abs{
+  background: url('/img/android_abs.png');
+  width:128px;
+  height:128px;
+}
+
 body {
     opacity: 1;
     -webkit-transition: opacity 1s ease;
