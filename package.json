@@ -53,8 +53,5 @@
     "temp": "~0.8.1",
     "underscore.string": "~2.3.1",
     "xunit-file": "0.0.5"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }
