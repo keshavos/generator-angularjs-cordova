@@ -437,7 +437,6 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'injector',
-        'ngdocs',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
