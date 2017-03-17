@@ -68,18 +68,6 @@ function addPlatformsToCordova(index, platforms, next) {
     }
 }
 
-function addPluginsToCordova(index, plugins, next) {
-    if (!(index < plugins.length)) {
-        next();
-        return;
-    }
-
-    cordova.plugin('add', plugins[index], function() {
-        console.log(chalk.green('? ') + ' added ' + chalk.gray(plugins[index]));
-        addPluginsToCordova(index + 1, plugins, next);
-    });
-}
-
 util.inherits(Generator, yeoman.Base);
 
 Generator.prototype.welcome = function welcome() {
@@ -90,7 +78,7 @@ Generator.prototype.welcome = function welcome() {
 };
 
 /**
- * Prompt Cordova platform, plugin details
+ * Prompt Cordova platform and app details
  */
 Generator.prototype.askCordovaDetails = function askCordovaDetails() {
     var done = this.async();
@@ -121,80 +109,6 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
         },{
             name: 'Windows Phone 8',
             value: 'wp8',
-            checked: false
-        }]
-    }, {
-        type: 'checkbox',
-        name: 'plugins',
-        message: 'What plugins would you like to include by default? (X is selected. Press space to toggle)',
-
-        choices: [{
-            name: 'Splashscreen',
-            value: 'org.apache.cordova.splashscreen',
-            checked: false
-        }, {
-            name: 'Device Info',
-            value: 'org.apache.cordova.device',
-            checked: false
-        }, {
-            name: 'Dialogs',
-            value: 'org.apache.cordova.dialogs',
-            checked: false
-        }, {
-            name: 'Network Information',
-            value: 'org.apache.cordova.network-information',
-            checked: false
-        }, {
-            name: 'Vibration',
-            value: 'org.apache.cordova.vibration',
-            checked: false
-        }, {
-            name: 'Battery Events',
-            value: 'org.apache.cordova.battery-status',
-            checked: false
-        }, {
-            name: 'Accelerometer (Device motion)',
-            value: 'org.apache.cordova.device-motion',
-            checked: false
-        }, {
-            name: 'Accelerometer (Device orientation)',
-            value: 'org.apache.cordova.device-orientation',
-            checked: false
-        }, {
-            name: 'Camera',
-            value: 'org.apache.cordova.camera',
-            checked: false
-        }, {
-            name: 'Contacts',
-            value: 'org.apache.cordova.contacts',
-            checked: false
-        }, {
-            name: 'Geolocation',
-            value: 'org.apache.cordova.geolocation',
-            checked: false
-        }, {
-            name: 'In App Browser',
-            value: 'org.apache.cordova.inappbrowser',
-            checked: false
-        }, {
-            name: 'Media',
-            value: 'org.apache.cordova.media',
-            checked: false
-        }, {
-            name: 'Media Capture',
-            value: 'org.apache.cordova.media-capture',
-            checked: false
-        }, {
-            name: 'Access files on device',
-            value: 'org.apache.cordova.file',
-            checked: false
-        }, {
-            name: 'Access files on network/ File transfer (File API)',
-            value: 'org.apache.cordova.file-transfer',
-            checked: false
-        }, {
-            name: 'Globalization',
-            value: 'org.apache.cordova.globalization',
             checked: false
         }]
     }];
@@ -234,27 +148,6 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions() {
         name: 'appAuthor',
         message: 'What is your company/author name?',
         default: 'xyz'
-    }, {
-        type: 'checkbox',
-        name: 'modules',
-        message: 'Which additional AngularJS modules would you like to include?',
-        choices: [{
-            value: 'angularCookies',
-            name: 'ngCookies',
-            checked: false
-        }, {
-            value: 'angularAnimate',
-            name: 'ngAnimate',
-            checked: false
-        }, {
-            value: 'angularTouch',
-            name: 'ngTouch',
-            checked: false
-        }, {
-            value: 'angularSanitize',
-            name: 'ngSanitize',
-            checked: false
-        }]
     }], function(props) {
         //AngularJs setup responses
         this.appName = props.angularjsName;
@@ -348,26 +241,9 @@ Generator.prototype.addPlatforms = function() {
     addPlatformsToCordova(0, this.platforms, next);
 };
 
-/**
- * Adds the cordova plugins
- */
-Generator.prototype.addPlugins = function addPlugins() {
-    console.log('*****************************************');
-    console.log('4. Selected Cordova plugins installed');
-    console.log('*****************************************');
-
-    var next = this.async();
-    if (this.plugins.length) {
-        addPluginsToCordova(0, this.plugins, next);
-    } else {
-        console.log(chalk.gray('no plugin selected'));
-        next();
-    }
-};
-
 Generator.prototype.copyProjectFiles = function copyProjectFiles() {
     console.log('*****************************************');
-    console.log('5. Copying required files');
+    console.log('4. Copying required files');
     console.log('*****************************************');
 
     this.copy('../../templates/common/jshintrc', '.jshintrc');
@@ -391,7 +267,7 @@ Generator.prototype.setupAngularJsApp = function setupAngularJsApp() {
     var done = this.async();
 
     console.log('*****************************************');
-    console.log('6. Generating sample AngularJs app');
+    console.log('5. Generating sample AngularJs app');
     console.log('*****************************************');
 
     // Create angularjs app folder
