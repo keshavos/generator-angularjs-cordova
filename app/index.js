@@ -11,7 +11,7 @@ var cordova = require('cordova');
 
 
 var Generator = module.exports = function Generator(args, options) {
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
     this.argument('appname', {
         type: String,
         required: false
@@ -80,7 +80,7 @@ function addPluginsToCordova(index, plugins, next) {
     });
 }
 
-util.inherits(Generator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.Base);
 
 Generator.prototype.welcome = function welcome() {
     if (!this.options['skip-welcome-message']) {

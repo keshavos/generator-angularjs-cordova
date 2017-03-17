@@ -6,7 +6,7 @@
     "scripts": {
         "start": "grunt",
         "test": "grunt test",
-        "postinstall": "bower install --config.interactive=false"
+        "postinstall": "bower install --config.interactive=false && grunt build"
     },
     "repository": {
         "type": "git",
