@@ -131,7 +131,7 @@ Generator.prototype.askCordovaDetails = function askCordovaDetails() {
         choices: [{
             name: 'Splashscreen',
             value: 'org.apache.cordova.splashscreen',
-            checked: true
+            checked: false
         }, {
             name: 'Device Info',
             value: 'org.apache.cordova.device',
@@ -241,19 +241,19 @@ Generator.prototype.setAngularJsOptions = function setAngularJsOptions() {
         choices: [{
             value: 'angularCookies',
             name: 'ngCookies',
-            checked: true
+            checked: false
         }, {
             value: 'angularAnimate',
             name: 'ngAnimate',
-            checked: true
+            checked: false
         }, {
             value: 'angularTouch',
             name: 'ngTouch',
-            checked: true
+            checked: false
         }, {
             value: 'angularSanitize',
             name: 'ngSanitize',
-            checked: true
+            checked: false
         }]
     }], function(props) {
         //AngularJs setup responses
