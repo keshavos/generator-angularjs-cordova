@@ -46,7 +46,7 @@
     "jshint": "^2.5.1",
     "load-grunt-tasks": "~0.3.0",
     "mocha": "~1.21.4",
-    "semver": "~2.2.1",
+    "semver": ">=4.3.2",
     "temp": "~0.8.1",
     "underscore.string": "~2.3.1",
     "xunit-file": "0.0.5"
