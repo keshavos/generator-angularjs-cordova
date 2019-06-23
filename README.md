@@ -42,7 +42,7 @@ This presents you with a series of options to initialize and customize your appl
 
 - `grunt serve` - run the app from within the `app/`, on a browser and trigger grunt tasks up on changes in the fileset
 
-- `grunt serve --dist` - run the app from within the `www/`, on a browser
+- `grunt serve:dist` - run the app from within the `www/`, on a browser
 
 - `grunt build` - perform various build related tasks and copies processed source to `www/` (clean, minify, inject dependencies etc.,)
 
